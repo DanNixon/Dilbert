@@ -8,3 +8,5 @@
 - [ ] NeoPixels
 - [ ] IO expansion?
 - [ ] Beeper
+- [ ] Lanyard holes
+- [ ] Teacup holders
