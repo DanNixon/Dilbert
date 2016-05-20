@@ -197,6 +197,40 @@
 <rectangle x1="-8" y1="6" x2="8" y2="13" layer="41"/>
 <rectangle x1="-8" y1="6" x2="8" y2="13" layer="42"/>
 </package>
+<package name="TACT_PANA-EVQ">
+<pad name="P$1" x="-3.25" y="0" drill="1.3" diameter="2.54"/>
+<pad name="P$2" x="3.25" y="0" drill="1.3" diameter="2.54"/>
+<wire x1="-3" y1="1.75" x2="3" y2="1.75" width="0.127" layer="51"/>
+<wire x1="3" y1="1.75" x2="3" y2="0.5" width="0.127" layer="51"/>
+<wire x1="3" y1="0.5" x2="3" y2="-0.5" width="0.127" layer="51"/>
+<wire x1="3" y1="-0.5" x2="3" y2="-1.75" width="0.127" layer="51"/>
+<wire x1="3" y1="-1.75" x2="-3" y2="-1.75" width="0.127" layer="51"/>
+<wire x1="-3" y1="-1.75" x2="-3" y2="-0.5" width="0.127" layer="51"/>
+<wire x1="-3" y1="-0.5" x2="-3" y2="0.5" width="0.127" layer="51"/>
+<wire x1="-3" y1="0.5" x2="-3" y2="1.75" width="0.127" layer="51"/>
+<wire x1="3.95" y1="-0.5" x2="3.95" y2="0.5" width="0.127" layer="51"/>
+<wire x1="3.95" y1="0.5" x2="3" y2="0.5" width="0.127" layer="51"/>
+<wire x1="3" y1="0.5" x2="3" y2="-0.5" width="0.127" layer="51"/>
+<wire x1="3" y1="-0.5" x2="3.95" y2="-0.5" width="0.127" layer="51"/>
+<wire x1="3.95" y1="0.5" x2="3" y2="0.5" width="0.127" layer="51"/>
+<wire x1="-3.95" y1="0" x2="-3.95" y2="0.5" width="0.127" layer="51"/>
+<wire x1="-3.95" y1="0.5" x2="-3" y2="0.5" width="0.127" layer="51"/>
+<wire x1="-3" y1="0.5" x2="-3" y2="-0.5" width="0.127" layer="51"/>
+<wire x1="-3" y1="-0.5" x2="-3.95" y2="-0.5" width="0.127" layer="51"/>
+<wire x1="-3.95" y1="-0.5" x2="-3.95" y2="0" width="0.127" layer="51"/>
+<wire x1="-1.5" y1="0.7" x2="1.5" y2="0.7" width="0.127" layer="51"/>
+<wire x1="1.5" y1="0.7" x2="1.5" y2="-0.7" width="0.127" layer="51"/>
+<wire x1="1.5" y1="-0.7" x2="-1.5" y2="-0.7" width="0.127" layer="51"/>
+<wire x1="-1.5" y1="-0.7" x2="-1.5" y2="0.7" width="0.127" layer="51"/>
+<wire x1="-3.1" y1="1.5" x2="-3.1" y2="1.9" width="0.127" layer="21"/>
+<wire x1="-3.1" y1="1.9" x2="3.1" y2="1.9" width="0.127" layer="21"/>
+<wire x1="3.1" y1="1.9" x2="3.1" y2="1.5" width="0.127" layer="21"/>
+<wire x1="-3.1" y1="-1.5" x2="-3.1" y2="-1.9" width="0.127" layer="21"/>
+<wire x1="-3.1" y1="-1.9" x2="3.1" y2="-1.9" width="0.127" layer="21"/>
+<wire x1="3.1" y1="-1.9" x2="3.1" y2="-1.5" width="0.127" layer="21"/>
+<text x="-3.043" y="2.17" size="0.8128" layer="25" ratio="18">&gt;NAME</text>
+<text x="-3.016" y="-2.451" size="0.4064" layer="27" ratio="10">&gt;VALUE</text>
+</package>
 </packages>
 </library>
 </libraries>
@@ -385,51 +419,82 @@ design rules under a new name.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="LED1" library="adafruit" package="WS2812B" value="WS2812B5050" x="3.81" y="-3.81"/>
-<element name="LED2" library="adafruit" package="WS2812B" value="WS2812B5050" x="3.81" y="-10.16"/>
-<element name="LED3" library="adafruit" package="WS2812B" value="WS2812B5050" x="3.81" y="-16.51"/>
-<element name="LED4" library="adafruit" package="WS2812B" value="WS2812B5050" x="3.81" y="-22.86"/>
-<element name="X1" library="adafruit" package="ESP-12" value="" x="-10.16" y="-11.43"/>
+<element name="LED1" library="adafruit" package="WS2812B" value="WS2812B5050" x="8.89" y="30.48"/>
+<element name="LED2" library="adafruit" package="WS2812B" value="WS2812B5050" x="20.32" y="30.48"/>
+<element name="LED3" library="adafruit" package="WS2812B" value="WS2812B5050" x="31.75" y="30.48"/>
+<element name="LED4" library="adafruit" package="WS2812B" value="WS2812B5050" x="43.18" y="30.48"/>
+<element name="X1" library="adafruit" package="ESP-12" value="" x="26.67" y="63.5"/>
+<element name="SW1" library="adafruit" package="TACT_PANA-EVQ" value="UP" x="16.51" y="21.59"/>
+<element name="SW2" library="adafruit" package="TACT_PANA-EVQ" value="DOWN" x="16.51" y="11.43"/>
+<element name="SW3" library="adafruit" package="TACT_PANA-EVQ" value="LEFT" x="10.16" y="16.51"/>
+<element name="SW4" library="adafruit" package="TACT_PANA-EVQ" value="RIGHT" x="22.86" y="16.51"/>
+<element name="SW5" library="adafruit" package="TACT_PANA-EVQ" value="A" x="36.83" y="12.7"/>
+<element name="SW6" library="adafruit" package="TACT_PANA-EVQ" value="B" x="44.45" y="20.32"/>
 </elements>
 <signals>
 <signal name="N$1">
 <contactref element="LED1" pad="2-DOUT"/>
 <contactref element="LED2" pad="4-DIN"/>
-<wire x1="6.26" y1="-2.16" x2="1.36" y2="-11.81" width="0" layer="19" extent="1-1"/>
+<wire x1="11.34" y1="32.13" x2="17.87" y2="28.83" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$2">
 <contactref element="LED2" pad="2-DOUT"/>
 <contactref element="LED3" pad="4-DIN"/>
-<wire x1="6.26" y1="-8.51" x2="1.36" y2="-18.16" width="0" layer="19" extent="1-1"/>
+<wire x1="22.77" y1="32.13" x2="29.3" y2="28.83" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$3">
 <contactref element="LED3" pad="2-DOUT"/>
 <contactref element="LED4" pad="4-DIN"/>
-<wire x1="6.26" y1="-14.86" x2="1.36" y2="-24.51" width="0" layer="19" extent="1-1"/>
+<wire x1="34.2" y1="32.13" x2="40.73" y2="28.83" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$5">
 <contactref element="LED3" pad="1-VDD"/>
 <contactref element="LED4" pad="1-VDD"/>
 <contactref element="LED1" pad="1-VDD"/>
 <contactref element="LED2" pad="1-VDD"/>
-<wire x1="6.26" y1="-18.16" x2="6.26" y2="-24.51" width="0" layer="19" extent="1-1"/>
-<wire x1="6.26" y1="-11.81" x2="6.26" y2="-18.16" width="0" layer="19" extent="1-1"/>
-<wire x1="6.26" y1="-5.46" x2="6.26" y2="-11.81" width="0" layer="19" extent="1-1"/>
+<wire x1="34.2" y1="28.83" x2="45.63" y2="28.83" width="0" layer="19" extent="1-1"/>
+<wire x1="22.77" y1="28.83" x2="34.2" y2="28.83" width="0" layer="19" extent="1-1"/>
+<wire x1="11.34" y1="28.83" x2="22.77" y2="28.83" width="0" layer="19" extent="1-1"/>
 </signal>
-<signal name="N$6">
+<signal name="GND">
+<contactref element="SW1" pad="P$1"/>
+<contactref element="SW4" pad="P$1"/>
+<contactref element="SW5" pad="P$1"/>
+<contactref element="SW6" pad="P$1"/>
 <contactref element="LED1" pad="3-GND"/>
 <contactref element="LED2" pad="3-GND"/>
 <contactref element="LED3" pad="3-GND"/>
 <contactref element="LED4" pad="3-GND"/>
-<wire x1="1.36" y1="-14.86" x2="1.36" y2="-21.21" width="0" layer="19" extent="1-1"/>
-<wire x1="1.36" y1="-8.51" x2="1.36" y2="-14.86" width="0" layer="19" extent="1-1"/>
-<wire x1="1.36" y1="-2.16" x2="1.36" y2="-8.51" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="VCC">
-<contactref element="X1" pad="8"/>
-</signal>
-<signal name="GND">
 <contactref element="X1" pad="9"/>
+<wire x1="33.58" y1="12.7" x2="41.2" y2="20.32" width="0" layer="19" extent="1-1"/>
+<wire x1="19.61" y1="16.51" x2="33.58" y2="12.7" width="0" layer="19" extent="1-1"/>
+<wire x1="13.26" y1="21.59" x2="19.61" y2="16.51" width="0" layer="19" extent="1-1"/>
+<wire x1="34.17" y1="54" x2="13.26" y2="21.59" width="0" layer="19" extent="1-1"/>
+<wire x1="40.73" y1="32.13" x2="34.17" y2="54" width="0" layer="19" extent="1-1"/>
+<wire x1="29.3" y1="32.13" x2="40.73" y2="32.13" width="0" layer="19" extent="1-1"/>
+<wire x1="17.87" y1="32.13" x2="29.3" y2="32.13" width="0" layer="19" extent="1-1"/>
+<wire x1="6.44" y1="32.13" x2="17.87" y2="32.13" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="BTN_U">
+<contactref element="SW1" pad="P$2"/>
+</signal>
+<signal name="BTN_D">
+<contactref element="SW2" pad="P$2"/>
+</signal>
+<signal name="BTN_L">
+<contactref element="SW3" pad="P$2"/>
+</signal>
+<signal name="BTN_R">
+<contactref element="SW4" pad="P$2"/>
+</signal>
+<signal name="BTN_A">
+<contactref element="SW5" pad="P$2"/>
+</signal>
+<signal name="BTN_B">
+<contactref element="SW6" pad="P$2"/>
+</signal>
+<signal name="N$4">
+<contactref element="X1" pad="8"/>
 </signal>
 </signals>
 </board>
