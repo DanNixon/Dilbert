@@ -11,8 +11,8 @@
 class Dilbert
 {
   public:
-    uint8_t TFT_CS_PIN = D2;
-    uint8_t TFT_DC_PIN = D1;
+    uint8_t TFT_CS_PIN = 4;
+    uint8_t TFT_DC_PIN = 5;
 
   public:
     Dilbert();
