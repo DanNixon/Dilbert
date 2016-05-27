@@ -12,9 +12,9 @@
 class Dilbert
 {
 public:
-  uint8_t TFT_CS_GPIO = 4;
-  uint8_t TFT_DC_GPIO = 5;
-  uint8_t NEOPIXEL_GPIO = 15;
+  static const uint8_t TFT_CS_GPIO = 4;
+  static const uint8_t TFT_DC_GPIO = 2;
+  static const uint8_t NEOPIXEL_GPIO = 15;
 
 public:
   Dilbert(size_t numNeoPixels = 4);
