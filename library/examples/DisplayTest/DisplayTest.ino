@@ -33,17 +33,11 @@ void setup()
   x = badge->display().readcommand8(ILI9341_RDSELFDIAG);
   Serial.print("Self Diagnostic: 0x");
   Serial.println(x, HEX);
-
-  draw();
 }
 
 void loop()
 {
-}
-
-void draw()
-{
-  badge->display().fillScreen(ILI9341_BLACK);
+  badge->display().setCursor(0, 0);
 
   badge->display().setTextColor(ILI9341_RED);
   badge->display().setTextSize(3);
@@ -54,4 +48,14 @@ void draw()
   badge->display().setTextColor(ILI9341_BLUE);
   badge->display().setTextSize(3);
   badge->display().println("My name is\nDilbert!");
+
+  badge->display().setCursor(0, 150);
+
+  badge->display().fillRect(0, 150, 240, 20, ILI9341_BLACK);
+
+  badge->display().setTextColor(ILI9341_YELLOW);
+  badge->display().setTextSize(2);
+  badge->display().println(millis());
+
+  delay(1000);
 }

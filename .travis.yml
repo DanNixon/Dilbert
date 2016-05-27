@@ -9,6 +9,8 @@ install:
   - arduino --install-library "Adafruit GFX Library"
   - arduino --install-library "Adafruit ILI9341"
 
+  - ln -s $PWD/library $HOME/arduino_ide/libraries/Dilbert
+
 script:
   - build_platform esp8266
 
