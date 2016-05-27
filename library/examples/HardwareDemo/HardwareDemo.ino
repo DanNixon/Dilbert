@@ -13,7 +13,7 @@ void setup()
   badge = new Dilbert();
 
   Serial.begin(9600);
-  Serial.println("Display test");
+  Serial.println("Hardware demo");
 
 #ifdef TFT_DEBUG
   uint8_t x;
