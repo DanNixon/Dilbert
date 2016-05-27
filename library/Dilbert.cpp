@@ -8,6 +8,9 @@ Dilbert::Dilbert(size_t numNeoPixels)
   // Init display
   m_tftDisplay->begin();
   m_tftDisplay->fillScreen(ILI9341_BLACK);
+
+  // Init backlight
+  pinMode(TFT_BACKLIGHT_GPIO, OUTPUT);
   setBacklightOn(true);
 
   // Init NeoPixels
@@ -26,18 +29,17 @@ Dilbert::~Dilbert()
  */
 void Dilbert::setBacklightOn(bool on)
 {
-  setBacklight(on ? 255 : 0);
+  setBacklight(on ? PWMRANGE : 0);
 }
 
 /**
  * @brief Sets the backlight intensity.
  * @param intensity Intensity
  *
- * Where 0 is off and 255 is brightest.
+ * Where 0 is off and 1023 is brightest.
  */
-void Dilbert::setBacklight(uint8_t intensity)
+void Dilbert::setBacklight(uint16_t intensity)
 {
   m_backlightIntensity = intensity;
-
-  // TODO
+  analogWrite(TFT_BACKLIGHT_GPIO, intensity);
 }

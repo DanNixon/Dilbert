@@ -10871,11 +10871,12 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="152.4" y="134.62" size="1.778" layer="95" rot="MR180"/>
 </segment>
 </net>
-<net name="N$7" class="0">
+<net name="GPIO16" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="GPIO16"/>
 <pinref part="J4" gate="G$1" pin="5"/>
 <wire x1="66.04" y1="73.66" x2="45.72" y2="73.66" width="0.1524" layer="91"/>
+<label x="63.5" y="73.66" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="SCK" class="0">
@@ -10902,7 +10903,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="63.5" y="68.58" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
-<net name="TFT_CS" class="0">
+<net name="GPIO4" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="GPIO4"/>
 <pinref part="J5" gate="G$1" pin="3"/>
@@ -10915,6 +10916,17 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="R3" gate="G$1" pin="1"/>
 <wire x1="175.26" y1="139.7" x2="175.26" y2="134.62" width="0.1524" layer="91"/>
 <label x="175.26" y="134.62" size="1.778" layer="95" rot="MR180"/>
+</segment>
+<segment>
+<pinref part="J5" gate="G$1" pin="6"/>
+<pinref part="X1" gate="G$1" pin="GPIO2"/>
+<wire x1="121.92" y1="68.58" x2="101.6" y2="68.58" width="0.1524" layer="91"/>
+<label x="104.14" y="68.58" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="R4" gate="G$1" pin="1"/>
+<wire x1="193.04" y1="134.62" x2="193.04" y2="139.7" width="0.1524" layer="91"/>
+<label x="193.04" y="134.62" size="1.778" layer="95" rot="MR180"/>
 </segment>
 </net>
 <net name="N$14" class="0">
@@ -11054,19 +11066,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="R4" gate="G$1" pin="2"/>
 <wire x1="193.04" y1="154.94" x2="193.04" y2="149.86" width="0.1524" layer="91"/>
 <label x="193.04" y="154.94" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="TFT_DC" class="0">
-<segment>
-<pinref part="J5" gate="G$1" pin="6"/>
-<pinref part="X1" gate="G$1" pin="GPIO2"/>
-<wire x1="121.92" y1="68.58" x2="101.6" y2="68.58" width="0.1524" layer="91"/>
-<label x="104.14" y="68.58" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="R4" gate="G$1" pin="1"/>
-<wire x1="193.04" y1="134.62" x2="193.04" y2="139.7" width="0.1524" layer="91"/>
-<label x="193.04" y="134.62" size="1.778" layer="95" rot="MR180"/>
 </segment>
 </net>
 </nets>

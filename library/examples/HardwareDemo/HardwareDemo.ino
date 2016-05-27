@@ -43,7 +43,9 @@ void setup()
   Serial.println(x, HEX);
 #endif
 
-  badge->neoPixels().setBrightness(8);
+  badge->setBacklight(100);
+
+  badge->neoPixels().setBrightness(4);
 
   badge->neoPixels().setPixelColor(0, Adafruit_NeoPixel::Color(255, 0, 0));
   badge->neoPixels().show();

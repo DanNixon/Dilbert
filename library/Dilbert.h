@@ -16,6 +16,7 @@ class Dilbert
 public:
   static const uint8_t TFT_CS_GPIO = 4;
   static const uint8_t TFT_DC_GPIO = 2;
+  static const uint8_t TFT_BACKLIGHT_GPIO = 16;
   static const uint8_t NEOPIXEL_GPIO = 15;
 
 public:
@@ -35,15 +36,15 @@ public:
    * @brief Gets the backlight intensity.
    * @return Intensity
    *
-   * Where 0 is off and 255 is brightest.
+   * Where 0 is off and 1023 is brightest.
    */
-  uint8_t backlight() const
+  uint16_t backlight() const
   {
     return m_backlightIntensity;
   }
 
   void setBacklightOn(bool on);
-  void setBacklight(uint8_t intensity);
+  void setBacklight(uint16_t intensity);
 
   /**
    * @brief Gets the NeoPixel LED driver.
@@ -65,7 +66,7 @@ public:
 
 private:
   Adafruit_ILI9341 *m_tftDisplay;
-  uint8_t m_backlightIntensity;
+  uint16_t m_backlightIntensity;
 
   Adafruit_NeoPixel *m_neopixels;
 
