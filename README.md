@@ -19,9 +19,12 @@ An interactive badge based on the ESP8266.
 
 Uses the following Arduino libraries:
 
-- [Adafruit ILI9341](https://github.com/adafruit/Adafruit_ILI9341)
+- modified [Adafruit ILI9341](https://github.com/adafruit/Adafruit_ILI9341)
 - [Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library)
 - [Adafruit NeoPixel](https://github.com/adafruit/Adafruit_NeoPixel)
+- [Adafruit MCP23017](https://github.com/adafruit/Adafruit-MCP23017-Arduino-Library)
+- modified [SdFat](https://github.com/greiman/SdFat)
+- [Universal Inputs](https://github.com/DanNixon/ArduinoUniversalInput)
 
 ## Parts
 
