@@ -23,3 +23,8 @@ Uses the following Arduino libraries:
 
 - [Adafruit ILI9341](https://github.com/adafruit/Adafruit_ILI9341)
 - [Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library)
+
+## Parts
+
+- ESP-12 module
+- 2.2" TFT display with ILI9341 driver (http://www.ebay.co.uk/itm/262448340175)
