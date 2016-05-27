@@ -29,6 +29,8 @@
   #include <pgmspace.h>
 #endif
 
+#include <Adafruit_MCP23017.h>
+
 
 #if defined (__AVR__) || defined(TEENSYDUINO) || defined (__arm__)
 #define USE_FAST_PINIO
@@ -121,7 +123,7 @@ class Adafruit_ILI9341 : public Adafruit_GFX {
 
   Adafruit_ILI9341(int8_t _CS, int8_t _DC, int8_t _MOSI, int8_t _SCLK,
 		   int8_t _RST, int8_t _MISO);
-  Adafruit_ILI9341(int8_t _CS, int8_t _DC, int8_t _RST = -1);
+  Adafruit_ILI9341(int8_t _CS, int8_t _DC, int8_t _RST = -1, Adafruit_MCP23017 *io = NULL);
 
   void     begin(void),
            setAddrWindow(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1),
@@ -152,9 +154,26 @@ class Adafruit_ILI9341 : public Adafruit_GFX {
   uint8_t  spiread(void);
 
  private:
+  inline void doPinMode(uint8_t pin, uint8_t state)
+  {
+    if (m_io)
+      m_io->pinMode(pin, state);
+    else
+      pinMode(pin, state);
+  }
+
+  inline void doDigitalWrite(uint8_t pin, uint8_t state)
+  {
+    if (m_io)
+      m_io->digitalWrite(pin, state);
+    else
+      digitalWrite(pin, state);
+  }
+
+ private:
   uint8_t  tabcolor;
 
-
+  Adafruit_MCP23017 *m_io;
 
   boolean  hwSPI;
 #if defined (__AVR__) || defined(TEENSYDUINO)

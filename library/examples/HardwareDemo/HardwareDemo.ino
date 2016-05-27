@@ -1,7 +1,11 @@
 #include <SPI.h>
+#include <Wire.h>
 #include <Adafruit_GFX.h>
-#include <Adafruit_ILI9341.h>
 #include <Adafruit_NeoPixel.h>
+#include <Adafruit_MCP23017.h>
+
+#include <Adafruit_ILI9341.h>
+
 #include <Dilbert.h>
 
 /* #define TFT_DEBUG */
@@ -38,6 +42,8 @@ void setup()
   Serial.print("Self Diagnostic: 0x");
   Serial.println(x, HEX);
 #endif
+
+  badge->neoPixels().setBrightness(8);
 
   badge->neoPixels().setPixelColor(0, Adafruit_NeoPixel::Color(255, 0, 0));
   badge->neoPixels().show();

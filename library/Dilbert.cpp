@@ -14,13 +14,20 @@ Dilbert::Dilbert(size_t numNeoPixels)
   m_neopixels->begin();
 }
 
-Dilbert::~Dilbert() { delete m_tftDisplay; }
+Dilbert::~Dilbert()
+{
+  delete m_tftDisplay;
+  delete m_neopixels;
+}
 
 /**
  * @brief Sets the backlight intensity.
  * @param on Boolean intensity
  */
-void Dilbert::setBacklightOn(bool on) { setBacklight(on ? 255 : 0); }
+void Dilbert::setBacklightOn(bool on)
+{
+  setBacklight(on ? 255 : 0);
+}
 
 /**
  * @brief Sets the backlight intensity.

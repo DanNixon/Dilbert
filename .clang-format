@@ -8,5 +8,7 @@ BreakBeforeBraces: Allman
 BreakConstructorInitializersBeforeComma: true
 AllowShortBlocksOnASingleLine: false
 AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: false
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
+NamespaceIndentation: Inner

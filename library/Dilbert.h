@@ -1,8 +1,10 @@
 #ifndef _DILBERT_H_
 #define _DILBERT_H_
 
-#include <Adafruit_ILI9341.h>
 #include <Adafruit_NeoPixel.h>
+#include <Adafruit_MCP23017.h>
+
+#include <Adafruit_ILI9341.h>
 
 /**
  * @class Dilbert
@@ -24,7 +26,10 @@ public:
    * @brief Gets the TFT display driver.
    * @returns Reference to display driver
    */
-  inline Adafruit_ILI9341 &display() { return *m_tftDisplay; }
+  inline Adafruit_ILI9341 &display()
+  {
+    return *m_tftDisplay;
+  }
 
   /**
    * @brief Gets the backlight intensity.
@@ -32,7 +37,10 @@ public:
    *
    * Where 0 is off and 255 is brightest.
    */
-  uint8_t backlight() const { return m_backlightIntensity; }
+  uint8_t backlight() const
+  {
+    return m_backlightIntensity;
+  }
 
   void setBacklightOn(bool on);
   void setBacklight(uint8_t intensity);
@@ -41,13 +49,27 @@ public:
    * @brief Gets the NeoPixel LED driver.
    * @return Reference to NeoPixel driver
    */
-  inline Adafruit_NeoPixel &neoPixels() { return *m_neopixels; }
+  inline Adafruit_NeoPixel &neoPixels()
+  {
+    return *m_neopixels;
+  }
+
+  /**
+   * @brief Gets the IO expender driver.
+   * @return Reference to the IO expander driver
+   */
+  inline Adafruit_MCP23017 &io()
+  {
+    return *m_io;
+  }
 
 private:
   Adafruit_ILI9341 *m_tftDisplay;
   uint8_t m_backlightIntensity;
 
   Adafruit_NeoPixel *m_neopixels;
+
+  Adafruit_MCP23017 *m_io;
 };
 
 #endif

@@ -59,17 +59,19 @@ Adafruit_ILI9341::Adafruit_ILI9341(int8_t cs, int8_t dc, int8_t mosi,
   _sclk = sclk;
   _rst  = rst;
   hwSPI = false;
+  m_io = NULL;
 }
 
 
 // Constructor when using hardware SPI.  Faster, but must use SPI pins
 // specific to each board type (e.g. 11,13 for Uno, 51,52 for Mega, etc.)
-Adafruit_ILI9341::Adafruit_ILI9341(int8_t cs, int8_t dc, int8_t rst) : Adafruit_GFX(ILI9341_TFTWIDTH, ILI9341_TFTHEIGHT) {
+Adafruit_ILI9341::Adafruit_ILI9341(int8_t cs, int8_t dc, int8_t rst, Adafruit_MCP23017 *io) : Adafruit_GFX(ILI9341_TFTWIDTH, ILI9341_TFTHEIGHT) {
   _cs   = cs;
   _dc   = dc;
   _rst  = rst;
   hwSPI = true;
   _mosi  = _sclk = 0;
+  m_io = io;
 }
 
 void Adafruit_ILI9341::spiwrite(uint8_t c) {
@@ -94,26 +96,26 @@ void Adafruit_ILI9341::spiwrite(uint8_t c) {
 #if defined(ESP8266) || defined (ARDUINO_ARCH_ARC32)
     for(uint8_t bit = 0x80; bit; bit >>= 1) {
       if(c & bit) {
-	digitalWrite(_mosi, HIGH); 
+	doDigitalWrite(_mosi, HIGH); 
       } else {
-	digitalWrite(_mosi, LOW); 
+	doDigitalWrite(_mosi, LOW); 
       }
-      digitalWrite(_sclk, HIGH);
-      digitalWrite(_sclk, LOW);
+      doDigitalWrite(_sclk, HIGH);
+      doDigitalWrite(_sclk, LOW);
     }
 #else
     // Fast SPI bitbang swiped from LPD8806 library
     for(uint8_t bit = 0x80; bit; bit >>= 1) {
       if(c & bit) {
-	//digitalWrite(_mosi, HIGH); 
+	//doDigitalWrite(_mosi, HIGH); 
 	*mosiport |=  mosipinmask;
       } else {
-	//digitalWrite(_mosi, LOW); 
+	//doDigitalWrite(_mosi, LOW); 
 	*mosiport &= ~mosipinmask;
       }
-      //digitalWrite(_sclk, HIGH);
+      //doDigitalWrite(_sclk, HIGH);
       *clkport |=  clkpinmask;
-      //digitalWrite(_sclk, LOW);
+      //doDigitalWrite(_sclk, LOW);
       *clkport &= ~clkpinmask;
     }
 #endif
@@ -126,9 +128,9 @@ void Adafruit_ILI9341::writecommand(uint8_t c) {
   *dcport &= ~dcpinmask;
   *csport &= ~cspinmask;
 #else
-  digitalWrite(_dc, LOW);
-  digitalWrite(_sclk, LOW);
-  digitalWrite(_cs, LOW);
+  doDigitalWrite(_dc, LOW);
+  doDigitalWrite(_sclk, LOW);
+  doDigitalWrite(_cs, LOW);
 #endif
 
   spiwrite(c);
@@ -136,7 +138,7 @@ void Adafruit_ILI9341::writecommand(uint8_t c) {
 #if defined (USE_FAST_PINIO)
   *csport |= cspinmask;
 #else
-  digitalWrite(_cs, HIGH);
+  doDigitalWrite(_cs, HIGH);
 #endif
 }
 
@@ -146,8 +148,8 @@ void Adafruit_ILI9341::writedata(uint8_t c) {
   *dcport |=  dcpinmask;
   *csport &= ~cspinmask;
 #else
-  digitalWrite(_dc, HIGH);
-  digitalWrite(_cs, LOW);
+  doDigitalWrite(_dc, HIGH);
+  doDigitalWrite(_cs, LOW);
 #endif
 
   spiwrite(c);
@@ -155,7 +157,7 @@ void Adafruit_ILI9341::writedata(uint8_t c) {
 #if defined (USE_FAST_PINIO)
   *csport |= cspinmask;
 #else
-  digitalWrite(_cs, HIGH);
+  doDigitalWrite(_cs, HIGH);
 #endif
 } 
 
@@ -196,12 +198,12 @@ void Adafruit_ILI9341::commandList(uint8_t *addr) {
 
 void Adafruit_ILI9341::begin(void) {
   if (_rst > 0) {
-    pinMode(_rst, OUTPUT);
-    digitalWrite(_rst, LOW);
+    doPinMode(_rst, OUTPUT);
+    doDigitalWrite(_rst, LOW);
   }
 
-  pinMode(_dc, OUTPUT);
-  pinMode(_cs, OUTPUT);
+  doPinMode(_dc, OUTPUT);
+  doPinMode(_cs, OUTPUT);
 
 #if defined (USE_FAST_PINIO)
   csport    = portOutputRegister(digitalPinToPort(_cs));
@@ -226,9 +228,9 @@ void Adafruit_ILI9341::begin(void) {
   #endif
 #endif
   } else {
-    pinMode(_sclk, OUTPUT);
-    pinMode(_mosi, OUTPUT);
-    pinMode(_miso, INPUT);
+    doPinMode(_sclk, OUTPUT);
+    doPinMode(_mosi, OUTPUT);
+    doPinMode(_miso, INPUT);
 
 #if defined (USE_FAST_PINIO)
     clkport     = portOutputRegister(digitalPinToPort(_sclk));
@@ -242,11 +244,11 @@ void Adafruit_ILI9341::begin(void) {
 
   // toggle RST low to reset
   if (_rst > 0) {
-    digitalWrite(_rst, HIGH);
+    doDigitalWrite(_rst, HIGH);
     delay(5);
-    digitalWrite(_rst, LOW);
+    doDigitalWrite(_rst, LOW);
     delay(20);
-    digitalWrite(_rst, HIGH);
+    doDigitalWrite(_rst, HIGH);
     delay(150);
   }
 
@@ -404,8 +406,8 @@ void Adafruit_ILI9341::pushColor(uint16_t color) {
   *dcport |=  dcpinmask;
   *csport &= ~cspinmask;
 #else
-  digitalWrite(_dc, HIGH);
-  digitalWrite(_cs, LOW);
+  doDigitalWrite(_dc, HIGH);
+  doDigitalWrite(_cs, LOW);
 #endif
 
   spiwrite(color >> 8);
@@ -414,7 +416,7 @@ void Adafruit_ILI9341::pushColor(uint16_t color) {
 #if defined(USE_FAST_PINIO)
   *csport |= cspinmask;
 #else
-  digitalWrite(_cs, HIGH);
+  doDigitalWrite(_cs, HIGH);
 #endif
 
   if (hwSPI) spi_end();
@@ -431,8 +433,8 @@ void Adafruit_ILI9341::drawPixel(int16_t x, int16_t y, uint16_t color) {
   *dcport |=  dcpinmask;
   *csport &= ~cspinmask;
 #else
-  digitalWrite(_dc, HIGH);
-  digitalWrite(_cs, LOW);
+  doDigitalWrite(_dc, HIGH);
+  doDigitalWrite(_cs, LOW);
 #endif
 
   spiwrite(color >> 8);
@@ -441,7 +443,7 @@ void Adafruit_ILI9341::drawPixel(int16_t x, int16_t y, uint16_t color) {
 #if defined(USE_FAST_PINIO)
   *csport |= cspinmask;
 #else
-  digitalWrite(_cs, HIGH);
+  doDigitalWrite(_cs, HIGH);
 #endif
 
   if (hwSPI) spi_end();
@@ -466,8 +468,8 @@ void Adafruit_ILI9341::drawFastVLine(int16_t x, int16_t y, int16_t h,
   *dcport |=  dcpinmask;
   *csport &= ~cspinmask;
 #else
-  digitalWrite(_dc, HIGH);
-  digitalWrite(_cs, LOW);
+  doDigitalWrite(_dc, HIGH);
+  doDigitalWrite(_cs, LOW);
 #endif
 
   while (h--) {
@@ -478,7 +480,7 @@ void Adafruit_ILI9341::drawFastVLine(int16_t x, int16_t y, int16_t h,
 #if defined(USE_FAST_PINIO)
   *csport |= cspinmask;
 #else
-  digitalWrite(_cs, HIGH);
+  doDigitalWrite(_cs, HIGH);
 #endif
 
   if (hwSPI) spi_end();
@@ -499,8 +501,8 @@ void Adafruit_ILI9341::drawFastHLine(int16_t x, int16_t y, int16_t w,
   *dcport |=  dcpinmask;
   *csport &= ~cspinmask;
 #else
-  digitalWrite(_dc, HIGH);
-  digitalWrite(_cs, LOW);
+  doDigitalWrite(_dc, HIGH);
+  doDigitalWrite(_cs, LOW);
 #endif
   while (w--) {
     spiwrite(hi);
@@ -509,7 +511,7 @@ void Adafruit_ILI9341::drawFastHLine(int16_t x, int16_t y, int16_t w,
 #if defined(USE_FAST_PINIO)
   *csport |= cspinmask;
 #else
-  digitalWrite(_cs, HIGH);
+  doDigitalWrite(_cs, HIGH);
 #endif
   if (hwSPI) spi_end();
 }
@@ -536,8 +538,8 @@ void Adafruit_ILI9341::fillRect(int16_t x, int16_t y, int16_t w, int16_t h,
   *dcport |=  dcpinmask;
   *csport &= ~cspinmask;
 #else
-  digitalWrite(_dc, HIGH);
-  digitalWrite(_cs, LOW);
+  doDigitalWrite(_dc, HIGH);
+  doDigitalWrite(_cs, LOW);
 #endif
 
   for(y=h; y>0; y--) {
@@ -549,7 +551,7 @@ void Adafruit_ILI9341::fillRect(int16_t x, int16_t y, int16_t w, int16_t h,
 #if defined(USE_FAST_PINIO)
   *csport |= cspinmask;
 #else
-  digitalWrite(_cs, HIGH);
+  doDigitalWrite(_cs, HIGH);
 #endif
 
   if (hwSPI) spi_end();
@@ -634,8 +636,8 @@ uint8_t Adafruit_ILI9341::spiread(void) {
   } else {
 
     for (uint8_t i=0; i<8; i++) {
-      digitalWrite(_sclk, LOW);
-      digitalWrite(_sclk, HIGH);
+      doDigitalWrite(_sclk, LOW);
+      doDigitalWrite(_sclk, HIGH);
       r <<= 1;
       if (digitalRead(_miso))
 	r |= 0x1;
@@ -647,10 +649,10 @@ uint8_t Adafruit_ILI9341::spiread(void) {
 }
 
  uint8_t Adafruit_ILI9341::readdata(void) {
-   digitalWrite(_dc, HIGH);
-   digitalWrite(_cs, LOW);
+   doDigitalWrite(_dc, HIGH);
+   doDigitalWrite(_cs, LOW);
    uint8_t r = spiread();
-   digitalWrite(_cs, HIGH);
+   doDigitalWrite(_cs, HIGH);
    
    return r;
 }
@@ -658,21 +660,21 @@ uint8_t Adafruit_ILI9341::spiread(void) {
 
 uint8_t Adafruit_ILI9341::readcommand8(uint8_t c, uint8_t index) {
    if (hwSPI) spi_begin();
-   digitalWrite(_dc, LOW); // command
-   digitalWrite(_cs, LOW);
+   doDigitalWrite(_dc, LOW); // command
+   doDigitalWrite(_cs, LOW);
    spiwrite(0xD9);  // woo sekret command?
-   digitalWrite(_dc, HIGH); // data
+   doDigitalWrite(_dc, HIGH); // data
    spiwrite(0x10 + index);
-   digitalWrite(_cs, HIGH);
+   doDigitalWrite(_cs, HIGH);
 
-   digitalWrite(_dc, LOW);
-   digitalWrite(_sclk, LOW);
-   digitalWrite(_cs, LOW);
+   doDigitalWrite(_dc, LOW);
+   doDigitalWrite(_sclk, LOW);
+   doDigitalWrite(_cs, LOW);
    spiwrite(c);
  
-   digitalWrite(_dc, HIGH);
+   doDigitalWrite(_dc, HIGH);
    uint8_t r = spiread();
-   digitalWrite(_cs, HIGH);
+   doDigitalWrite(_cs, HIGH);
    if (hwSPI) spi_end();
    return r;
 }
@@ -682,28 +684,28 @@ uint8_t Adafruit_ILI9341::readcommand8(uint8_t c, uint8_t index) {
 /*
 
  uint16_t Adafruit_ILI9341::readcommand16(uint8_t c) {
- digitalWrite(_dc, LOW);
+ doDigitalWrite(_dc, LOW);
  if (_cs)
- digitalWrite(_cs, LOW);
+ doDigitalWrite(_cs, LOW);
  
  spiwrite(c);
- pinMode(_sid, INPUT); // input!
+ doPinMode(_sid, INPUT); // input!
  uint16_t r = spiread();
  r <<= 8;
  r |= spiread();
  if (_cs)
- digitalWrite(_cs, HIGH);
+ doDigitalWrite(_cs, HIGH);
  
- pinMode(_sid, OUTPUT); // back to output
+ doPinMode(_sid, OUTPUT); // back to output
  return r;
  }
  
  uint32_t Adafruit_ILI9341::readcommand32(uint8_t c) {
- digitalWrite(_dc, LOW);
+ doDigitalWrite(_dc, LOW);
  if (_cs)
- digitalWrite(_cs, LOW);
+ doDigitalWrite(_cs, LOW);
  spiwrite(c);
- pinMode(_sid, INPUT); // input!
+ doPinMode(_sid, INPUT); // input!
  
  dummyclock();
  dummyclock();
@@ -716,9 +718,9 @@ uint8_t Adafruit_ILI9341::readcommand8(uint8_t c, uint8_t index) {
  r <<= 8;
  r |= spiread();
  if (_cs)
- digitalWrite(_cs, HIGH);
+ doDigitalWrite(_cs, HIGH);
  
- pinMode(_sid, OUTPUT); // back to output
+ doPinMode(_sid, OUTPUT); // back to output
  return r;
  }
  
