@@ -1,7 +1,10 @@
-#include "SPI.h"
-#include "Adafruit_GFX.h"
-#include "Adafruit_ILI9341.h"
+#include <SPI.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_ILI9341.h>
+#include <Adafruit_NeoPixel.h>
 #include <Dilbert.h>
+
+#define TFT_DEBUG
 
 Dilbert *badge;
 
@@ -12,6 +15,7 @@ void setup()
   Serial.begin(9600);
   Serial.println("Display test");
 
+#ifdef TFT_DEBUG
   uint8_t x;
 
   x = badge->display().readcommand8(ILI9341_RDMODE);
@@ -33,6 +37,16 @@ void setup()
   x = badge->display().readcommand8(ILI9341_RDSELFDIAG);
   Serial.print("Self Diagnostic: 0x");
   Serial.println(x, HEX);
+#endif
+
+  badge->neoPixels().setPixelColor(0, Adafruit_NeoPixel::Color(255, 0, 0));
+  badge->neoPixels().show();
+  badge->neoPixels().setPixelColor(1, Adafruit_NeoPixel::Color(0, 255, 0));
+  badge->neoPixels().show();
+  badge->neoPixels().setPixelColor(2, Adafruit_NeoPixel::Color(0, 0, 255));
+  badge->neoPixels().show();
+  badge->neoPixels().setPixelColor(3, Adafruit_NeoPixel::Color(120, 120, 120));
+  badge->neoPixels().show();
 }
 
 void loop()

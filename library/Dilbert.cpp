@@ -1,12 +1,16 @@
 #include "Dilbert.h"
 
-Dilbert::Dilbert() :
-  m_tftDisplay(new Adafruit_ILI9341(TFT_CS_PIN, TFT_DC_PIN))
+Dilbert::Dilbert(size_t numNeoPixels) :
+  m_tftDisplay(new Adafruit_ILI9341(TFT_CS_GPIO, TFT_DC_GPIO))
+  , m_neopixels(new Adafruit_NeoPixel(numNeoPixels, NEOPIXEL_GPIO, NEO_GRB + NEO_KHZ800))
 {
   // Init display
   m_tftDisplay->begin();
   m_tftDisplay->fillScreen(ILI9341_BLACK);
   setBacklightOn(true);
+
+  // Init NeoPixels
+  m_neopixels->begin();
 }
 
 Dilbert::~Dilbert()

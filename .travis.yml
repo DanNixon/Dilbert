@@ -8,6 +8,7 @@ before_install:
 install:
   - arduino --install-library "Adafruit GFX Library"
   - arduino --install-library "Adafruit ILI9341"
+  - arduino --install-library "Adafruit NeoPixel"
 
   - ln -s $PWD/library $HOME/arduino_ide/libraries/Dilbert
 
