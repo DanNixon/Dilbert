@@ -4,7 +4,7 @@
 #include <Adafruit_NeoPixel.h>
 #include <Dilbert.h>
 
-#define TFT_DEBUG
+/* #define TFT_DEBUG */
 
 Dilbert *badge;
 
