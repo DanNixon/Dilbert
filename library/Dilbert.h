@@ -20,7 +20,7 @@ public:
   static const uint8_t NEOPIXEL_GPIO = 15;
 
 public:
-  Dilbert(size_t numNeoPixels = 4);
+  Dilbert(size_t numNeoPixels = 8);
   virtual ~Dilbert();
 
   /**
