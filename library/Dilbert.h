@@ -58,6 +58,10 @@ public:
   /**
    * @brief Gets the IO expender driver.
    * @return Reference to the IO expander driver
+   *
+   * Warning: some of the IO pins are used for specific functions that are
+   * managed elsewhere, do not set a pin that alreadyhas a function, this will
+   * probably break something else.
    */
   inline Adafruit_MCP23017 &io()
   {
@@ -65,12 +69,12 @@ public:
   }
 
 private:
+  Adafruit_MCP23017 *m_io;
+
   Adafruit_ILI9341 *m_tftDisplay;
   uint16_t m_backlightIntensity;
 
   Adafruit_NeoPixel *m_neopixels;
-
-  Adafruit_MCP23017 *m_io;
 };
 
 #endif
