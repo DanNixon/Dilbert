@@ -3,7 +3,6 @@
 
 #include <Adafruit_NeoPixel.h>
 #include <Adafruit_MCP23017.h>
-
 #include <Adafruit_ILI9341.h>
 
 /**
@@ -14,7 +13,8 @@
 class Dilbert
 {
 public:
-  static const uint8_t TFT_CS_GPIO = 4;
+  static const uint8_t MCP23017_INT_GPIO = -1; //TODO
+  static const uint8_t TFT_CS_GPIO = 0;
   static const uint8_t TFT_DC_GPIO = 2;
   static const uint8_t TFT_BACKLIGHT_GPIO = 16;
   static const uint8_t NEOPIXEL_GPIO = 15;

@@ -7,9 +7,9 @@ An interactive badge based on the ESP8266.
 - Lanyard holes
 - ESP8266
 - Colour LCD
-- IO expansion (MCP23017)
+- IO expansion ([MCP23017](http://ww1.microchip.com/downloads/en/DeviceDoc/21952b.pdf))
 - D-pad + A/B buttons
-- 4 NeoPixels + expansion header
+- 8 NeoPixels + expansion header
 - UART and I2C expansion headers
 - Buck converter
 - Battery voltage monitoring
@@ -19,11 +19,10 @@ An interactive badge based on the ESP8266.
 
 Uses the following Arduino libraries:
 
-- modified [Adafruit ILI9341](https://github.com/adafruit/Adafruit_ILI9341)
+- [Adafruit ILI9341](https://github.com/adafruit/Adafruit_ILI9341)
 - [Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library)
 - [Adafruit NeoPixel](https://github.com/adafruit/Adafruit_NeoPixel)
 - [Adafruit MCP23017](https://github.com/adafruit/Adafruit-MCP23017-Arduino-Library)
-- modified [SdFat](https://github.com/greiman/SdFat)
 - [Universal Inputs](https://github.com/DanNixon/ArduinoUniversalInput)
 
 ## Parts

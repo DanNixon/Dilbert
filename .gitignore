@@ -1,5 +1,7 @@
 *~
 
+*.bin
+
 # Ignore list for Eagle, a PCB layout tool
 
 # Backup files

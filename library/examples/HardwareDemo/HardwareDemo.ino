@@ -3,21 +3,20 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_NeoPixel.h>
 #include <Adafruit_MCP23017.h>
-
 #include <Adafruit_ILI9341.h>
 
 #include <Dilbert.h>
 
-/* #define TFT_DEBUG */
+#define TFT_DEBUG
 
 Dilbert *badge;
 
 void setup()
 {
-  badge = new Dilbert();
-
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println("Hardware demo");
+
+  badge = new Dilbert();
 
 #ifdef TFT_DEBUG
   uint8_t x;
