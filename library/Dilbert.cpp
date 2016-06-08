@@ -14,6 +14,8 @@ Dilbert::Dilbert(size_t numNeoPixels)
 
   // Init IO
   m_io->begin();
+  m_io->setupInterrupts(true, false, LOW);
+  pinMode(MCP23017_INT_GPIO, INPUT_PULLUP);
 
   // Init display
   m_tftDisplay->begin();

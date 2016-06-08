@@ -1,3 +1,5 @@
+/* #include <GDBStub.h> */
+
 #include <SPI.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
@@ -7,14 +9,16 @@
 
 #include <Dilbert.h>
 
-#define TFT_DEBUG
+/* #define TFT_DEBUG */
 
 Dilbert *badge;
 
+volatile bool gpio_interrupt;
+
 void setup()
 {
-  Serial.begin(115200);
-  Serial.println("Hardware demo");
+  /* Serial.begin(115200); */
+  /* Serial.println("Hardware demo"); */
 
   badge = new Dilbert();
 
@@ -44,6 +48,7 @@ void setup()
 
   badge->setBacklight(100);
 
+  // Set NeoPixels
   badge->neoPixels().setBrightness(4);
 
   badge->neoPixels().setPixelColor(0, Adafruit_NeoPixel::Color(255, 0, 0));
@@ -54,10 +59,31 @@ void setup()
   badge->neoPixels().show();
   badge->neoPixels().setPixelColor(3, Adafruit_NeoPixel::Color(120, 120, 120));
   badge->neoPixels().show();
+  badge->neoPixels().setPixelColor(4, Adafruit_NeoPixel::Color(255, 0, 0));
+  badge->neoPixels().show();
+  badge->neoPixels().setPixelColor(5, Adafruit_NeoPixel::Color(0, 255, 0));
+  badge->neoPixels().show();
+  badge->neoPixels().setPixelColor(6, Adafruit_NeoPixel::Color(0, 0, 255));
+  badge->neoPixels().show();
+  badge->neoPixels().setPixelColor(7, Adafruit_NeoPixel::Color(120, 120, 120));
+  badge->neoPixels().show();
+
+  // Setup GPIO
+  for (size_t i = 0; i < 15; i++)
+  {
+    badge->io().pinMode(i, INPUT);
+    badge->io().pullUp(i, HIGH);
+    badge->io().setupInterruptPin(i, CHANGE);
+  }
+
+  gpio_interrupt = false;
+
+  attachInterrupt(Dilbert::MCP23017_INT_GPIO, handle_int, FALLING);
 }
 
 void loop()
 {
+  // Display demo
   badge->display().setCursor(0, 0);
 
   badge->display().setTextColor(ILI9341_RED);
@@ -72,11 +98,29 @@ void loop()
 
   badge->display().setCursor(0, 150);
 
-  badge->display().fillRect(0, 150, 240, 20, ILI9341_BLACK);
+  badge->display().fillRect(0, 150, 240, 50, ILI9341_BLACK);
 
   badge->display().setTextColor(ILI9341_YELLOW);
   badge->display().setTextSize(2);
   badge->display().println(millis());
+  badge->display().println();
 
+  badge->setBacklight(100);
+
+  // Output GPIO expander ports
+  if (gpio_interrupt)
+  {
+    badge->display().println(badge->io().readGPIOAB(), BIN);
+    /* Serial.println(badge->io().readGPIOAB(), BIN); */
+    gpio_interrupt = false;
+  }
+
+  // Wait a bit
   delay(1000);
+}
+
+void handle_int()
+{
+  gpio_interrupt = true;
+  badge->setBacklight(500);
 }

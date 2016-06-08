@@ -13,7 +13,7 @@
 class Dilbert
 {
 public:
-  static const uint8_t MCP23017_INT_GPIO = -1; //TODO
+  static const uint8_t MCP23017_INT_GPIO = 3;
   static const uint8_t TFT_CS_GPIO = 0;
   static const uint8_t TFT_DC_GPIO = 2;
   static const uint8_t TFT_BACKLIGHT_GPIO = 16;
