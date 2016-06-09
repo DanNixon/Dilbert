@@ -9646,6 +9646,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <junction x="35.56" y="160.02"/>
 <pinref part="SW3" gate="G$1" pin="P$1"/>
 <junction x="35.56" y="149.86"/>
+<junction x="35.56" y="139.7"/>
 </segment>
 <segment>
 <pinref part="SW5" gate="G$1" pin="P$1"/>
@@ -9653,6 +9654,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="68.58" y1="149.86" x2="68.58" y2="139.7" width="0.1524" layer="91"/>
 <label x="68.58" y="134.62" size="1.778" layer="95" rot="MR180"/>
 <wire x1="68.58" y1="139.7" x2="68.58" y2="134.62" width="0.1524" layer="91"/>
+<junction x="68.58" y="139.7"/>
 </segment>
 <segment>
 <pinref part="X1" gate="G$1" pin="GND"/>
@@ -9831,6 +9833,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="109.22" y1="152.4" x2="114.3" y2="152.4" width="0.1524" layer="91"/>
 <label x="114.3" y="152.4" size="1.778" layer="95"/>
 <pinref part="R1" gate="G$1" pin="1"/>
+<junction x="109.22" y="152.4"/>
 </segment>
 </net>
 <net name="SDA" class="0">
@@ -10181,6 +10184,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="132.08" y1="152.4" x2="132.08" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="137.16" y1="152.4" x2="132.08" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="R5" gate="G$1" pin="1"/>
+<junction x="132.08" y="152.4"/>
 </segment>
 </net>
 <net name="SD_CS" class="0">
@@ -10381,6 +10385,27 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="104,1,58.42,53.34,LED1,VDD,3V3,,,"/>
+<approved hash="104,1,86.36,53.34,LED2,VDD,3V3,,,"/>
+<approved hash="104,1,114.3,53.34,LED3,VDD,3V3,,,"/>
+<approved hash="104,1,142.24,53.34,LED4,VDD,3V3,,,"/>
+<approved hash="104,1,66.04,63.5,X1,VCC,3V3,,,"/>
+<approved hash="104,1,48.26,233.68,IC1,VDD,3V3,,,"/>
+<approved hash="104,1,48.26,193.04,IC1,VSS,GND,,,"/>
+<approved hash="104,1,187.96,78.74,U$1,VCC,3V3,,,"/>
+<approved hash="104,1,170.18,53.34,LED5,VDD,3V3,,,"/>
+<approved hash="104,1,198.12,53.34,LED6,VDD,3V3,,,"/>
+<approved hash="104,1,226.06,53.34,LED7,VDD,3V3,,,"/>
+<approved hash="104,1,254,53.34,LED8,VDD,3V3,,,"/>
+<approved hash="106,1,66.04,78.74,ESP_ADC,,,,,"/>
+<approved hash="206,1,187.96,99.06,MISO,,,,,"/>
+<approved hash="206,1,248.92,88.9,MISO,,,,,"/>
+<approved hash="106,1,45.72,116.84,UART_CTS,,,,,"/>
+<approved hash="106,1,45.72,106.68,UART_DTR,,,,,"/>
+<approved hash="113,1,83.82,76.2,X1,,,,,"/>
+<approved hash="113,1,151.545,95.25,C1,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
