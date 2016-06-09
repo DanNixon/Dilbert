@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
@@ -9541,6 +9541,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <classes>
 <class number="0" name="default" width="0" drill="0">
 </class>
+<class number="1" name="power" width="0.508" drill="0">
+</class>
 </classes>
 <parts>
 <part name="LED1" library="adafruit" deviceset="WS2812B" device="5050"/>
@@ -9631,7 +9633,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <busses>
 </busses>
 <nets>
-<net name="GND" class="0">
+<net name="GND" class="1">
 <segment>
 <pinref part="SW1" gate="G$1" pin="P$1"/>
 <pinref part="SW4" gate="G$1" pin="P$1"/>
@@ -9705,9 +9707,28 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <segment>
 <pinref part="LED8" gate="G$1" pin="GND"/>
 <pinref part="LED1" gate="G$1" pin="GND"/>
-<wire x1="248.92" y1="27.94" x2="53.34" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="248.92" y1="27.94" x2="220.98" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="220.98" y1="27.94" x2="193.04" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="193.04" y1="27.94" x2="165.1" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="27.94" x2="137.16" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="27.94" x2="109.22" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="27.94" x2="81.28" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="27.94" x2="53.34" y2="27.94" width="0.1524" layer="91"/>
 <wire x1="251.46" y1="27.94" x2="248.92" y2="27.94" width="0.1524" layer="91"/>
 <label x="251.46" y="27.94" size="1.778" layer="95"/>
+<pinref part="LED2" gate="G$1" pin="GND"/>
+<junction x="81.28" y="27.94"/>
+<pinref part="LED3" gate="G$1" pin="GND"/>
+<junction x="109.22" y="27.94"/>
+<pinref part="LED5" gate="G$1" pin="GND"/>
+<junction x="165.1" y="27.94"/>
+<pinref part="LED4" gate="G$1" pin="GND"/>
+<junction x="137.16" y="27.94"/>
+<junction x="248.92" y="27.94"/>
+<pinref part="LED7" gate="G$1" pin="GND"/>
+<junction x="220.98" y="27.94"/>
+<pinref part="LED6" gate="G$1" pin="GND"/>
+<junction x="193.04" y="27.94"/>
 </segment>
 <segment>
 <pinref part="JP1" gate="G$1" pin="1"/>
@@ -9993,7 +10014,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="254" y="88.9" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="3V3" class="0">
+<net name="3V3" class="1">
 <segment>
 <pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="109.22" y1="170.18" x2="109.22" y2="165.1" width="0.1524" layer="91"/>
@@ -10057,9 +10078,28 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <segment>
 <pinref part="LED1" gate="G$1" pin="VDD"/>
 <pinref part="LED8" gate="G$1" pin="VDD"/>
-<wire x1="58.42" y1="53.34" x2="254" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="53.34" x2="86.36" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="86.36" y1="53.34" x2="114.3" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="53.34" x2="142.24" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="53.34" x2="170.18" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="53.34" x2="198.12" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="198.12" y1="53.34" x2="226.06" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="226.06" y1="53.34" x2="254" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="256.54" y1="53.34" x2="254" y2="53.34" width="0.1524" layer="91"/>
 <label x="256.54" y="53.34" size="1.778" layer="95"/>
+<pinref part="LED3" gate="G$1" pin="VDD"/>
+<junction x="114.3" y="53.34"/>
+<pinref part="LED2" gate="G$1" pin="VDD"/>
+<junction x="86.36" y="53.34"/>
+<pinref part="LED4" gate="G$1" pin="VDD"/>
+<junction x="142.24" y="53.34"/>
+<pinref part="LED5" gate="G$1" pin="VDD"/>
+<junction x="170.18" y="53.34"/>
+<junction x="254" y="53.34"/>
+<pinref part="LED7" gate="G$1" pin="VDD"/>
+<junction x="226.06" y="53.34"/>
+<pinref part="LED6" gate="G$1" pin="VDD"/>
+<junction x="198.12" y="53.34"/>
 </segment>
 <segment>
 <pinref part="JP3" gate="G$1" pin="3"/>
