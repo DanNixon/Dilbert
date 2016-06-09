@@ -12,8 +12,6 @@ An interactive badge based on the ESP8266.
 - 8 NeoPixels + expansion header
 - UART and I2C expansion headers
 - Buck converter
-- Battery voltage monitoring
-- Beeper
 
 ## Requirements
 
