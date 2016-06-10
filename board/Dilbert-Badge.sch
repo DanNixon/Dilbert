@@ -10324,6 +10324,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="C4" library="SparkFun-Capacitors" deviceset="1.0UF-25V-+80/-20(0805)" device="&quot;" value="1.0uF"/>
 <part name="C5" library="SparkFun-Capacitors" deviceset="1.0UF-25V-+80/-20(0805)" device="&quot;" value="1.0uF"/>
 <part name="U$4" library="mechanical" deviceset="5MM_MOUNTING_HOLE" device=""/>
+<part name="U$5" library="mechanical" deviceset="5MM_MOUNTING_HOLE" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -10377,6 +10378,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="C4" gate="G$1" x="238.76" y="266.7"/>
 <instance part="C5" gate="G$1" x="256.54" y="266.7"/>
 <instance part="U$4" gate="G$1" x="76.2" y="10.16"/>
+<instance part="U$5" gate="G$1" x="93.98" y="10.16"/>
 </instances>
 <busses>
 </busses>
