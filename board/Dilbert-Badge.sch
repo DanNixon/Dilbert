@@ -10557,9 +10557,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="48.26" y="149.86" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="G$1" pin="GPA3"/>
-<label x="76.2" y="226.06" size="1.778" layer="95"/>
-<wire x1="76.2" y1="226.06" x2="73.66" y2="226.06" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="GPA0"/>
+<label x="76.2" y="233.68" size="1.778" layer="95"/>
+<wire x1="73.66" y1="233.68" x2="76.2" y2="233.68" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="BTN_R" class="0">
@@ -10569,9 +10569,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="48.26" y="139.7" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="G$1" pin="GPA0"/>
-<label x="76.2" y="233.68" size="1.778" layer="95"/>
-<wire x1="73.66" y1="233.68" x2="76.2" y2="233.68" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="GPA3"/>
+<label x="76.2" y="226.06" size="1.778" layer="95"/>
+<wire x1="76.2" y1="226.06" x2="73.66" y2="226.06" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="BTN_A" class="0">
