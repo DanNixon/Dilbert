@@ -7,6 +7,7 @@
 Dilbert::Dilbert(size_t numNeoPixels)
     : m_io(new Adafruit_MCP23017())
     , m_tftDisplay(new Adafruit_ILI9341(TFT_CS_GPIO, TFT_DC_GPIO))
+    , m_buttons(new UniversalInputManager())
     , m_neopixels(new Adafruit_NeoPixel(numNeoPixels, NEOPIXEL_GPIO,
                                         NEO_GRB + NEO_KHZ800))
 {
@@ -25,6 +26,9 @@ Dilbert::Dilbert(size_t numNeoPixels)
   pinMode(TFT_BACKLIGHT_GPIO, OUTPUT);
   setBacklightOn(true);
 
+  // Init buttons and add to manager
+  // TODO
+
   // Init NeoPixels
   m_neopixels->begin();
 
@@ -35,6 +39,7 @@ Dilbert::~Dilbert()
 {
   delete m_io;
   delete m_tftDisplay;
+  delete m_buttons;
   delete m_neopixels;
 }
 

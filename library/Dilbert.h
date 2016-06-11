@@ -4,6 +4,7 @@
 #include <Adafruit_NeoPixel.h>
 #include <Adafruit_MCP23017.h>
 #include <Adafruit_ILI9341.h>
+#include <UniversalInputManager.h>
 
 /**
  * @class Dilbert
@@ -19,6 +20,14 @@ public:
   static const uint8_t TFT_DC_GPIO = 2;
   static const uint8_t TFT_BACKLIGHT_GPIO = 16;
   static const uint8_t NEOPIXEL_GPIO = 15;
+
+  // TODO
+  static const uint8_t BUTTON_UP = -1;
+  static const uint8_t BUTTON_DOWN = -1;
+  static const uint8_t BUTTON_LEFT = -1;
+  static const uint8_t BUTTON_RIGHT = -1;
+  static const uint8_t BUTTON_A = -1;
+  static const uint8_t BUTTON_B = -1;
 
 public:
   Dilbert(size_t numNeoPixels = 8);
@@ -69,11 +78,18 @@ public:
     return *m_io;
   }
 
+  inline UniversalInputManager &buttons()
+  {
+    return *m_buttons;
+  }
+
 private:
   Adafruit_MCP23017 *m_io;
 
   Adafruit_ILI9341 *m_tftDisplay;
   uint16_t m_backlightIntensity;
+
+  UniversalInputManager *m_buttons;
 
   Adafruit_NeoPixel *m_neopixels;
 };
