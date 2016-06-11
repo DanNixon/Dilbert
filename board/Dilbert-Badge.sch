@@ -7151,101 +7151,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </deviceset>
 </devicesets>
 </library>
-<library name="displays">
-<description>Various display modules</description>
-<packages>
-<package name="2.2IN_ILI9341">
-<pad name="DC" x="-31.75" y="0" drill="0.8"/>
-<pad name="SD_MISO" x="31.75" y="0" drill="0.8"/>
-<pad name="MOSI" x="-31.75" y="-2.54" drill="0.8"/>
-<pad name="RESET" x="-31.75" y="2.54" drill="0.8"/>
-<pad name="SCK" x="-31.75" y="-5.08" drill="0.8"/>
-<pad name="CS" x="-31.75" y="5.08" drill="0.8"/>
-<pad name="SD_MOSI" x="31.75" y="2.54" drill="0.8"/>
-<pad name="SD_CS" x="31.75" y="5.08" drill="0.8" shape="square"/>
-<pad name="SD_SCK" x="31.75" y="-2.54" drill="0.8"/>
-<pad name="F_CS" x="31.75" y="-5.08" drill="0.8"/>
-<pad name="LED" x="-31.75" y="-7.62" drill="0.8"/>
-<pad name="MISO" x="-31.75" y="-10.16" drill="0.8"/>
-<pad name="GND" x="-31.75" y="7.62" drill="0.8"/>
-<pad name="VCC" x="-31.75" y="10.16" drill="0.8" shape="square"/>
-<wire x1="-33.528" y1="20.066" x2="-33.528" y2="-20.066" width="0.127" layer="21"/>
-<wire x1="-33.528" y1="-20.066" x2="33.528" y2="-20.066" width="0.127" layer="21"/>
-<wire x1="33.528" y1="-20.066" x2="33.528" y2="20.066" width="0.127" layer="21"/>
-<wire x1="33.528" y1="20.066" x2="-33.528" y2="20.066" width="0.127" layer="21"/>
-<text x="-33.528" y="21.59" size="1.778" layer="21">&gt;NAME</text>
-<text x="33.528" y="-21.59" size="1.778" layer="21" align="top-right">&gt;VALUE</text>
-<wire x1="-33.02" y1="11.43" x2="-33.02" y2="8.89" width="0.127" layer="21"/>
-<wire x1="-33.02" y1="8.89" x2="-33.02" y2="-11.43" width="0.127" layer="21"/>
-<wire x1="-33.02" y1="-11.43" x2="-30.48" y2="-11.43" width="0.127" layer="21"/>
-<wire x1="-30.48" y1="-11.43" x2="-30.48" y2="8.89" width="0.127" layer="21"/>
-<wire x1="-30.48" y1="8.89" x2="-30.48" y2="11.43" width="0.127" layer="21"/>
-<wire x1="-30.48" y1="11.43" x2="-33.02" y2="11.43" width="0.127" layer="21"/>
-<wire x1="-33.02" y1="8.89" x2="-30.48" y2="8.89" width="0.127" layer="21"/>
-<wire x1="33.02" y1="6.35" x2="33.02" y2="3.81" width="0.127" layer="21"/>
-<wire x1="33.02" y1="3.81" x2="33.02" y2="-6.35" width="0.127" layer="21"/>
-<wire x1="33.02" y1="-6.35" x2="30.48" y2="-6.35" width="0.127" layer="21"/>
-<wire x1="30.48" y1="-6.35" x2="30.48" y2="3.81" width="0.127" layer="21"/>
-<wire x1="30.48" y1="3.81" x2="30.48" y2="6.35" width="0.127" layer="21"/>
-<wire x1="30.48" y1="6.35" x2="33.02" y2="6.35" width="0.127" layer="21"/>
-<wire x1="30.48" y1="3.81" x2="33.02" y2="3.81" width="0.127" layer="21"/>
-</package>
-</packages>
-<symbols>
-<symbol name="2.2IN_ILI9341">
-<pin name="VCC" x="-30.48" y="-10.16" visible="pin" length="middle" direction="pwr"/>
-<pin name="GND" x="-30.48" y="-7.62" visible="pin" length="middle" direction="pwr"/>
-<pin name="CS" x="-30.48" y="-5.08" visible="pin" length="middle" direction="in"/>
-<pin name="RESET" x="-30.48" y="-2.54" visible="pin" length="middle" direction="in"/>
-<pin name="DC" x="-30.48" y="0" visible="pin" length="middle" direction="in"/>
-<pin name="MOSI" x="-30.48" y="2.54" visible="pin" length="middle" direction="in"/>
-<pin name="SCK" x="-30.48" y="5.08" visible="pin" length="middle" direction="in"/>
-<pin name="LED" x="-30.48" y="7.62" visible="pin" length="middle" direction="in"/>
-<pin name="MISO" x="-30.48" y="10.16" visible="pin" length="middle" direction="out"/>
-<pin name="SD_CS" x="30.48" y="-5.08" visible="pin" length="middle" direction="in" rot="R180"/>
-<pin name="SD_MOSI" x="30.48" y="-2.54" visible="pin" length="middle" direction="in" rot="R180"/>
-<pin name="SD_MISO" x="30.48" y="0" visible="pin" length="middle" direction="out" rot="R180"/>
-<pin name="SD_SCK" x="30.48" y="2.54" visible="pin" length="middle" direction="in" rot="R180"/>
-<pin name="F_CS" x="30.48" y="5.08" visible="pin" length="middle" rot="R180"/>
-<wire x1="-25.4" y1="15.24" x2="25.4" y2="15.24" width="0.254" layer="94"/>
-<wire x1="25.4" y1="15.24" x2="25.4" y2="-15.24" width="0.254" layer="94"/>
-<wire x1="25.4" y1="-15.24" x2="-25.4" y2="-15.24" width="0.254" layer="94"/>
-<wire x1="-25.4" y1="-15.24" x2="-25.4" y2="15.24" width="0.254" layer="94"/>
-<text x="-25.4" y="16.51" size="1.778" layer="94">&gt;PART</text>
-<text x="25.4" y="-16.51" size="1.778" layer="94" rot="R180">&gt;VALUE</text>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="2.2IN_ILI9341">
-<gates>
-<gate name="G$1" symbol="2.2IN_ILI9341" x="-33.02" y="-7.62"/>
-</gates>
-<devices>
-<device name="" package="2.2IN_ILI9341">
-<connects>
-<connect gate="G$1" pin="CS" pad="CS"/>
-<connect gate="G$1" pin="DC" pad="DC"/>
-<connect gate="G$1" pin="F_CS" pad="F_CS"/>
-<connect gate="G$1" pin="GND" pad="GND"/>
-<connect gate="G$1" pin="LED" pad="LED"/>
-<connect gate="G$1" pin="MISO" pad="MISO"/>
-<connect gate="G$1" pin="MOSI" pad="MOSI"/>
-<connect gate="G$1" pin="RESET" pad="RESET"/>
-<connect gate="G$1" pin="SCK" pad="SCK"/>
-<connect gate="G$1" pin="SD_CS" pad="SD_CS"/>
-<connect gate="G$1" pin="SD_MISO" pad="SD_MISO"/>
-<connect gate="G$1" pin="SD_MOSI" pad="SD_MOSI"/>
-<connect gate="G$1" pin="SD_SCK" pad="SD_SCK"/>
-<connect gate="G$1" pin="VCC" pad="VCC"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="SparkFun-Connectors">
 <description>&lt;h3&gt;SparkFun Electronics' preferred foot prints&lt;/h3&gt;
 In this library you'll find connectors and sockets- basically anything that can be plugged into or onto.&lt;br&gt;&lt;br&gt;
@@ -10264,6 +10169,101 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </deviceset>
 </devicesets>
 </library>
+<library name="displays">
+<description>Various display modules</description>
+<packages>
+<package name="2.2IN_ILI9341">
+<pad name="DC" x="-31.75" y="0" drill="0.9" diameter="1.6764"/>
+<pad name="SD_MISO" x="31.75" y="0" drill="0.9" diameter="1.6764"/>
+<pad name="MOSI" x="-31.75" y="-2.54" drill="0.9" diameter="1.6764"/>
+<pad name="RESET" x="-31.75" y="2.54" drill="0.9" diameter="1.6764"/>
+<pad name="SCK" x="-31.75" y="-5.08" drill="0.9" diameter="1.6764"/>
+<pad name="CS" x="-31.75" y="5.08" drill="0.9" diameter="1.6764"/>
+<pad name="SD_MOSI" x="31.75" y="2.54" drill="0.9" diameter="1.6764"/>
+<pad name="SD_CS" x="31.75" y="5.08" drill="0.9" diameter="1.6764" shape="square"/>
+<pad name="SD_SCK" x="31.75" y="-2.54" drill="0.9" diameter="1.6764"/>
+<pad name="F_CS" x="31.75" y="-5.08" drill="0.9" diameter="1.6764"/>
+<pad name="LED" x="-31.75" y="-7.62" drill="0.9" diameter="1.6764"/>
+<pad name="MISO" x="-31.75" y="-10.16" drill="0.9" diameter="1.6764"/>
+<pad name="GND" x="-31.75" y="7.62" drill="0.9" diameter="1.6764"/>
+<pad name="VCC" x="-31.75" y="10.16" drill="0.9" diameter="1.6764" shape="square"/>
+<wire x1="-33.528" y1="20.066" x2="-33.528" y2="-20.066" width="0.127" layer="21"/>
+<wire x1="-33.528" y1="-20.066" x2="33.528" y2="-20.066" width="0.127" layer="21"/>
+<wire x1="33.528" y1="-20.066" x2="33.528" y2="20.066" width="0.127" layer="21"/>
+<wire x1="33.528" y1="20.066" x2="-33.528" y2="20.066" width="0.127" layer="21"/>
+<text x="-33.528" y="21.59" size="1.778" layer="21">&gt;NAME</text>
+<text x="33.528" y="-21.59" size="1.778" layer="21" align="top-right">&gt;VALUE</text>
+<wire x1="-33.02" y1="11.43" x2="-33.02" y2="8.89" width="0.127" layer="21"/>
+<wire x1="-33.02" y1="8.89" x2="-33.02" y2="-11.43" width="0.127" layer="21"/>
+<wire x1="-33.02" y1="-11.43" x2="-30.48" y2="-11.43" width="0.127" layer="21"/>
+<wire x1="-30.48" y1="-11.43" x2="-30.48" y2="8.89" width="0.127" layer="21"/>
+<wire x1="-30.48" y1="8.89" x2="-30.48" y2="11.43" width="0.127" layer="21"/>
+<wire x1="-30.48" y1="11.43" x2="-33.02" y2="11.43" width="0.127" layer="21"/>
+<wire x1="-33.02" y1="8.89" x2="-30.48" y2="8.89" width="0.127" layer="21"/>
+<wire x1="33.02" y1="6.35" x2="33.02" y2="3.81" width="0.127" layer="21"/>
+<wire x1="33.02" y1="3.81" x2="33.02" y2="-6.35" width="0.127" layer="21"/>
+<wire x1="33.02" y1="-6.35" x2="30.48" y2="-6.35" width="0.127" layer="21"/>
+<wire x1="30.48" y1="-6.35" x2="30.48" y2="3.81" width="0.127" layer="21"/>
+<wire x1="30.48" y1="3.81" x2="30.48" y2="6.35" width="0.127" layer="21"/>
+<wire x1="30.48" y1="6.35" x2="33.02" y2="6.35" width="0.127" layer="21"/>
+<wire x1="30.48" y1="3.81" x2="33.02" y2="3.81" width="0.127" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="2.2IN_ILI9341">
+<pin name="VCC" x="-30.48" y="-10.16" visible="pin" length="middle" direction="pwr"/>
+<pin name="GND" x="-30.48" y="-7.62" visible="pin" length="middle" direction="pwr"/>
+<pin name="CS" x="-30.48" y="-5.08" visible="pin" length="middle" direction="in"/>
+<pin name="RESET" x="-30.48" y="-2.54" visible="pin" length="middle" direction="in"/>
+<pin name="DC" x="-30.48" y="0" visible="pin" length="middle" direction="in"/>
+<pin name="MOSI" x="-30.48" y="2.54" visible="pin" length="middle" direction="in"/>
+<pin name="SCK" x="-30.48" y="5.08" visible="pin" length="middle" direction="in"/>
+<pin name="LED" x="-30.48" y="7.62" visible="pin" length="middle" direction="in"/>
+<pin name="MISO" x="-30.48" y="10.16" visible="pin" length="middle" direction="out"/>
+<pin name="SD_CS" x="30.48" y="-5.08" visible="pin" length="middle" direction="in" rot="R180"/>
+<pin name="SD_MOSI" x="30.48" y="-2.54" visible="pin" length="middle" direction="in" rot="R180"/>
+<pin name="SD_MISO" x="30.48" y="0" visible="pin" length="middle" direction="out" rot="R180"/>
+<pin name="SD_SCK" x="30.48" y="2.54" visible="pin" length="middle" direction="in" rot="R180"/>
+<pin name="F_CS" x="30.48" y="5.08" visible="pin" length="middle" rot="R180"/>
+<wire x1="-25.4" y1="15.24" x2="25.4" y2="15.24" width="0.254" layer="94"/>
+<wire x1="25.4" y1="15.24" x2="25.4" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="25.4" y1="-15.24" x2="-25.4" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="-25.4" y1="-15.24" x2="-25.4" y2="15.24" width="0.254" layer="94"/>
+<text x="-25.4" y="16.51" size="1.778" layer="94">&gt;PART</text>
+<text x="25.4" y="-16.51" size="1.778" layer="94" rot="R180">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="2.2IN_ILI9341">
+<gates>
+<gate name="G$1" symbol="2.2IN_ILI9341" x="-33.02" y="-7.62"/>
+</gates>
+<devices>
+<device name="" package="2.2IN_ILI9341">
+<connects>
+<connect gate="G$1" pin="CS" pad="CS"/>
+<connect gate="G$1" pin="DC" pad="DC"/>
+<connect gate="G$1" pin="F_CS" pad="F_CS"/>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="LED" pad="LED"/>
+<connect gate="G$1" pin="MISO" pad="MISO"/>
+<connect gate="G$1" pin="MOSI" pad="MOSI"/>
+<connect gate="G$1" pin="RESET" pad="RESET"/>
+<connect gate="G$1" pin="SCK" pad="SCK"/>
+<connect gate="G$1" pin="SD_CS" pad="SD_CS"/>
+<connect gate="G$1" pin="SD_MISO" pad="SD_MISO"/>
+<connect gate="G$1" pin="SD_MOSI" pad="SD_MOSI"/>
+<connect gate="G$1" pin="SD_SCK" pad="SD_SCK"/>
+<connect gate="G$1" pin="VCC" pad="VCC"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -10297,7 +10297,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="R3" library="adafruit" deviceset="R-US_" device="R0805" value="10K"/>
 <part name="R5" library="adafruit" deviceset="R-US_" device="R0805" value="10K"/>
 <part name="R6" library="adafruit" deviceset="R-US_" device="R0805" value="10K"/>
-<part name="U$1" library="displays" deviceset="2.2IN_ILI9341" device=""/>
 <part name="R7" library="adafruit" deviceset="R-US_" device="R0805" value="10K"/>
 <part name="J5" library="SparkFun-Connectors" deviceset="M04" device="PTH" value="I2C"/>
 <part name="LED5" library="adafruit" deviceset="WS2812B" device="5050"/>
@@ -10325,6 +10324,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="C5" library="SparkFun-Capacitors" deviceset="1.0UF-25V-+80/-20(0805)" device="&quot;" value="1.0uF"/>
 <part name="U$4" library="mechanical" deviceset="5MM_MOUNTING_HOLE" device=""/>
 <part name="U$5" library="mechanical" deviceset="5MM_MOUNTING_HOLE" device=""/>
+<part name="U$1" library="displays" deviceset="2.2IN_ILI9341" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -10351,7 +10351,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="R3" gate="G$1" x="175.26" y="144.78" rot="R90"/>
 <instance part="R5" gate="G$1" x="132.08" y="160.02" rot="R90"/>
 <instance part="R6" gate="G$1" x="190.5" y="144.78" rot="R90"/>
-<instance part="U$1" gate="G$1" x="193.04" y="86.36"/>
 <instance part="R7" gate="G$1" x="210.82" y="144.78" rot="R90"/>
 <instance part="J5" gate="G$1" x="76.2" y="109.22"/>
 <instance part="LED5" gate="G$1" x="165.1" y="38.1"/>
@@ -10379,6 +10378,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="C5" gate="G$1" x="256.54" y="266.7"/>
 <instance part="U$4" gate="G$1" x="76.2" y="10.16"/>
 <instance part="U$5" gate="G$1" x="93.98" y="10.16"/>
+<instance part="U$1" gate="G$1" x="193.04" y="86.36"/>
 </instances>
 <busses>
 </busses>
@@ -10447,9 +10447,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="190.5" y="134.62" size="1.778" layer="95" rot="MR180"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="GND"/>
 <wire x1="157.48" y1="78.74" x2="162.56" y2="78.74" width="0.1524" layer="91"/>
 <label x="157.48" y="78.74" size="1.778" layer="95" rot="MR0"/>
+<pinref part="U$1" gate="G$1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="LED8" gate="G$1" pin="GND"/>
@@ -10753,14 +10753,14 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="63.5" y="71.12" size="1.778" layer="95" rot="MR0"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="SCK"/>
 <wire x1="162.56" y1="91.44" x2="157.48" y2="91.44" width="0.1524" layer="91"/>
 <label x="157.48" y="91.44" size="1.778" layer="95" rot="MR0"/>
+<pinref part="U$1" gate="G$1" pin="SCK"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="SD_SCK"/>
 <wire x1="223.52" y1="88.9" x2="228.6" y2="88.9" width="0.1524" layer="91"/>
 <label x="228.6" y="88.9" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="SD_SCK"/>
 </segment>
 </net>
 <net name="MOSI" class="0">
@@ -10770,14 +10770,14 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="63.5" y="66.04" size="1.778" layer="95" rot="MR0"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="MOSI"/>
 <wire x1="157.48" y1="88.9" x2="162.56" y2="88.9" width="0.1524" layer="91"/>
 <label x="157.48" y="88.9" size="1.778" layer="95" rot="MR0"/>
+<pinref part="U$1" gate="G$1" pin="MOSI"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="SD_MOSI"/>
 <wire x1="223.52" y1="83.82" x2="228.6" y2="83.82" width="0.1524" layer="91"/>
 <label x="228.6" y="83.82" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="SD_MOSI"/>
 </segment>
 </net>
 <net name="MISO" class="0">
@@ -10787,14 +10787,14 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="63.5" y="68.58" size="1.778" layer="95" rot="MR0"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="MISO"/>
 <wire x1="157.48" y1="96.52" x2="162.56" y2="96.52" width="0.1524" layer="91"/>
 <label x="157.48" y="96.52" size="1.778" layer="95" rot="MR0"/>
+<pinref part="U$1" gate="G$1" pin="MISO"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="SD_MISO"/>
 <wire x1="223.52" y1="86.36" x2="228.6" y2="86.36" width="0.1524" layer="91"/>
 <label x="228.6" y="86.36" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="SD_MISO"/>
 </segment>
 </net>
 <net name="3V3" class="1">
@@ -10844,9 +10844,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="132.08" y="170.18" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="VCC"/>
 <wire x1="157.48" y1="76.2" x2="162.56" y2="76.2" width="0.1524" layer="91"/>
 <label x="157.48" y="76.2" size="1.778" layer="95" rot="MR0"/>
+<pinref part="U$1" gate="G$1" pin="VCC"/>
 </segment>
 <segment>
 <pinref part="R7" gate="G$1" pin="2"/>
@@ -10927,9 +10927,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </net>
 <net name="TFT_BL" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="LED"/>
 <wire x1="157.48" y1="93.98" x2="162.56" y2="93.98" width="0.1524" layer="91"/>
 <label x="157.48" y="93.98" size="1.778" layer="95" rot="MR0"/>
+<pinref part="U$1" gate="G$1" pin="LED"/>
 </segment>
 <segment>
 <pinref part="X1" gate="G$1" pin="GPIO16"/>
@@ -10939,9 +10939,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </net>
 <net name="TFT_DC" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="DC"/>
 <wire x1="157.48" y1="86.36" x2="162.56" y2="86.36" width="0.1524" layer="91"/>
 <label x="157.48" y="86.36" size="1.778" layer="95" rot="MR0"/>
+<pinref part="U$1" gate="G$1" pin="DC"/>
 </segment>
 <segment>
 <pinref part="R3" gate="G$1" pin="1"/>
@@ -10956,9 +10956,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </net>
 <net name="TFT_RESET" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="RESET"/>
 <wire x1="157.48" y1="83.82" x2="162.56" y2="83.82" width="0.1524" layer="91"/>
 <label x="157.48" y="83.82" size="1.778" layer="95" rot="MR0"/>
+<pinref part="U$1" gate="G$1" pin="RESET"/>
 </segment>
 <segment>
 <pinref part="R7" gate="G$1" pin="1"/>
@@ -10968,9 +10968,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </net>
 <net name="TFT_CS" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="CS"/>
 <wire x1="157.48" y1="81.28" x2="162.56" y2="81.28" width="0.1524" layer="91"/>
 <label x="157.48" y="81.28" size="1.778" layer="95" rot="MR0"/>
+<pinref part="U$1" gate="G$1" pin="CS"/>
 </segment>
 <segment>
 <pinref part="X1" gate="G$1" pin="GPIO0"/>
@@ -10989,9 +10989,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </net>
 <net name="SD_CS" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="SD_CS"/>
 <wire x1="223.52" y1="81.28" x2="228.6" y2="81.28" width="0.1524" layer="91"/>
 <label x="228.6" y="81.28" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="SD_CS"/>
 </segment>
 <segment>
 <pinref part="JP5" gate="G$1" pin="2"/>
