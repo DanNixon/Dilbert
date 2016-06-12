@@ -12,7 +12,9 @@ An interactive badge based on the ESP8266.
 
 ## Contributing code
 
-See `CONTRIBUTING.md`.
+Cool stuff to run on the badge is very welcome.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Requirements
 
