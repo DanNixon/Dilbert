@@ -15,19 +15,18 @@ class Dilbert
 {
 public:
   static const uint8_t MCP23017_INT_GPIO = 1; // UART0 Tx
-  static const uint8_t SD_CS_GPIO = 3; // UART0 Rx
+  static const uint8_t SD_CS_GPIO = 3;        // UART0 Rx
   static const uint8_t TFT_CS_GPIO = 0;
   static const uint8_t TFT_DC_GPIO = 2;
   static const uint8_t TFT_BACKLIGHT_GPIO = 16;
   static const uint8_t NEOPIXEL_GPIO = 15;
 
-  // TODO
-  static const uint8_t BUTTON_UP = -1;
-  static const uint8_t BUTTON_DOWN = -1;
-  static const uint8_t BUTTON_LEFT = -1;
-  static const uint8_t BUTTON_RIGHT = -1;
-  static const uint8_t BUTTON_A = -1;
-  static const uint8_t BUTTON_B = -1;
+  static const uint8_t BUTTON_UP = 1;
+  static const uint8_t BUTTON_DOWN = 2;
+  static const uint8_t BUTTON_LEFT = 0;
+  static const uint8_t BUTTON_RIGHT = 3;
+  static const uint8_t BUTTON_A = 4;
+  static const uint8_t BUTTON_B = 5;
 
 public:
   Dilbert(size_t numNeoPixels = 8);

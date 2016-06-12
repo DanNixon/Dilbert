@@ -1,5 +1,7 @@
 #include "Dilbert.h"
 
+#include "MCP23017Button.h"
+
 /**
  * @brief Create a new driver.
  * @param numNeoPixels NUmber of neo pixels (defaults to 8)
@@ -27,7 +29,12 @@ Dilbert::Dilbert(size_t numNeoPixels)
   setBacklightOn(true);
 
   // Init buttons and add to manager
-  // TODO
+  m_buttons->addDevice(new MCP23017Button(m_io, BUTTON_UP, BUTTON_UP));
+  m_buttons->addDevice(new MCP23017Button(m_io, BUTTON_DOWN, BUTTON_DOWN));
+  m_buttons->addDevice(new MCP23017Button(m_io, BUTTON_LEFT, BUTTON_LEFT));
+  m_buttons->addDevice(new MCP23017Button(m_io, BUTTON_RIGHT, BUTTON_RIGHT));
+  m_buttons->addDevice(new MCP23017Button(m_io, BUTTON_A, BUTTON_A));
+  m_buttons->addDevice(new MCP23017Button(m_io, BUTTON_B, BUTTON_B));
 
   // Init NeoPixels
   m_neopixels->begin();

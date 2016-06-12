@@ -6,10 +6,9 @@
 #include <Adafruit_NeoPixel.h>
 #include <Adafruit_MCP23017.h>
 #include <Adafruit_ILI9341.h>
+#include <IButton.h>
 
 #include <Dilbert.h>
-
-/* #define TFT_DEBUG */
 
 Dilbert *badge;
 
@@ -17,34 +16,7 @@ volatile bool gpio_interrupt;
 
 void setup()
 {
-  /* Serial.begin(115200); */
-  /* Serial.println("Hardware demo"); */
-
   badge = new Dilbert();
-
-#ifdef TFT_DEBUG
-  uint8_t x;
-
-  x = badge->display().readcommand8(ILI9341_RDMODE);
-  Serial.print("Display Power Mode: 0x");
-  Serial.println(x, HEX);
-
-  x = badge->display().readcommand8(ILI9341_RDMADCTL);
-  Serial.print("MADCTL Mode: 0x");
-  Serial.println(x, HEX);
-
-  x = badge->display().readcommand8(ILI9341_RDPIXFMT);
-  Serial.print("Pixel Format: 0x");
-  Serial.println(x, HEX);
-
-  x = badge->display().readcommand8(ILI9341_RDIMGFMT);
-  Serial.print("Image Format: 0x");
-  Serial.println(x, HEX);
-
-  x = badge->display().readcommand8(ILI9341_RDSELFDIAG);
-  Serial.print("Self Diagnostic: 0x");
-  Serial.println(x, HEX);
-#endif
 
   badge->setBacklight(100);
 
@@ -68,17 +40,9 @@ void setup()
   badge->neoPixels().setPixelColor(7, Adafruit_NeoPixel::Color(120, 120, 120));
   badge->neoPixels().show();
 
-  // Setup GPIO
-  for (size_t i = 0; i < 15; i++)
-  {
-    badge->io().pinMode(i, INPUT);
-    badge->io().pullUp(i, HIGH);
-    badge->io().setupInterruptPin(i, CHANGE);
-  }
-
   gpio_interrupt = false;
-
   attachInterrupt(Dilbert::MCP23017_INT_GPIO, handle_int, FALLING);
+  badge->buttons().setCallback(handle_buttons);
 }
 
 void loop()
@@ -98,7 +62,7 @@ void loop()
 
   badge->display().setCursor(0, 150);
 
-  badge->display().fillRect(0, 150, 240, 50, ILI9341_BLACK);
+  badge->display().fillRect(0, 150, 240, 80, ILI9341_BLACK);
 
   badge->display().setTextColor(ILI9341_YELLOW);
   badge->display().setTextSize(2);
@@ -111,7 +75,7 @@ void loop()
   if (gpio_interrupt)
   {
     badge->display().println(badge->io().readGPIOAB(), BIN);
-    /* Serial.println(badge->io().readGPIOAB(), BIN); */
+    badge->buttons().poll();
     gpio_interrupt = false;
   }
 
@@ -123,4 +87,27 @@ void handle_int()
 {
   gpio_interrupt = true;
   badge->setBacklight(500);
+}
+
+void handle_buttons(inputtype_t type, IInputDevice *device)
+{
+  if (type == UIT_BUTTON)
+  {
+    IButton *button = (IButton *)device;
+
+    if (button->isActive())
+    {
+      badge->display().print("Button ");
+      badge->display().print(button->getID());
+      badge->display().println(" pressed");
+    }
+    else
+    {
+      badge->display().print("Button ");
+      badge->display().print(button->getID());
+      badge->display().print(" released\nafter ");
+      badge->display().print(button->lastActiveDuration());
+      badge->display().println("ms.");
+    }
+  }
 }
