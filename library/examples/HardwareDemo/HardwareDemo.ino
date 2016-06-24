@@ -72,9 +72,9 @@ void loop()
   badge->setBacklight(100);
 
   // Output GPIO expander ports
+  badge->display().println(badge->io().readGPIOAB(), BIN);
   if (gpio_interrupt)
   {
-    badge->display().println(badge->io().readGPIOAB(), BIN);
     badge->buttons().poll();
     gpio_interrupt = false;
   }

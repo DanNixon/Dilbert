@@ -4,7 +4,7 @@
 
 /**
  * @brief Create a new driver.
- * @param numNeoPixels NUmber of neo pixels (defaults to 8)
+ * @param numNeoPixels Number of neo pixels (defaults to 8)
  */
 Dilbert::Dilbert(size_t numNeoPixels)
     : m_io(new Adafruit_MCP23017())
