@@ -1069,10 +1069,10 @@ Your Eurocircuits Team
 <vertex x="-7.62" y="5.08"/>
 </polygon>
 <polygon width="0.4064" layer="1">
-<vertex x="76.2" y="55.88"/>
+<vertex x="75.565" y="55.88"/>
 <vertex x="78.74" y="55.88"/>
 <vertex x="78.74" y="6.35"/>
-<vertex x="76.2" y="6.35"/>
+<vertex x="75.565" y="6.35"/>
 </polygon>
 <contactref element="J3" pad="1"/>
 <via x="77.47" y="53.34" extent="1-16" drill="0.6"/>
@@ -1101,7 +1101,6 @@ Your Eurocircuits Team
 <via x="67.945" y="23.495" extent="1-16" drill="0.6"/>
 <contactref element="U$1" pad="GND"/>
 <contactref element="U$1" pad="GND"/>
-<wire x1="77.38" y1="7.24" x2="77.38" y2="13.59" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="BTN_U">
 <contactref element="SW1" pad="P$2"/>
@@ -1374,8 +1373,8 @@ Your Eurocircuits Team
 <contactref element="R4" pad="2"/>
 <polygon width="0.4064" layer="1">
 <vertex x="71.12" y="55.88"/>
-<vertex x="73.66" y="55.88"/>
-<vertex x="73.66" y="6.35"/>
+<vertex x="74.295" y="55.88"/>
+<vertex x="74.295" y="6.35"/>
 <vertex x="71.12" y="6.35"/>
 </polygon>
 <contactref element="J3" pad="2"/>
@@ -1457,7 +1456,6 @@ Your Eurocircuits Team
 <wire x1="69.215" y1="20.955" x2="66.04" y2="20.955" width="0.8128" layer="1"/>
 <wire x1="66.04" y1="17.78" x2="66.04" y2="20.955" width="0.8128" layer="1"/>
 <wire x1="65.405" y1="20.955" x2="66.04" y2="20.955" width="0.4064" layer="1"/>
-<wire x1="72.48" y1="54.99" x2="72.48" y2="48.64" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="TFT_BL">
 <contactref element="X1" pad="4"/>
