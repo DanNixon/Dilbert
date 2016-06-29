@@ -18,10 +18,10 @@ void setup()
 {
   badge = new Dilbert();
 
-  badge->setBacklight(100);
+  badge->setBacklightOn(true);
 
   // Set NeoPixels
-  badge->neoPixels().setBrightness(4);
+  badge->neoPixels().setBrightness(10);
 
   badge->neoPixels().setPixelColor(0, Adafruit_NeoPixel::Color(255, 0, 0));
   badge->neoPixels().show();
@@ -40,6 +40,7 @@ void setup()
   badge->neoPixels().setPixelColor(7, Adafruit_NeoPixel::Color(120, 120, 120));
   badge->neoPixels().show();
 
+  /* Button interrupt setup */
   gpio_interrupt = false;
   attachInterrupt(Dilbert::MCP23017_INT_GPIO, handle_int, FALLING);
   badge->buttons().setCallback(handle_buttons);
@@ -69,24 +70,21 @@ void loop()
   badge->display().println(millis());
   badge->display().println();
 
-  badge->setBacklight(100);
-
-  // Output GPIO expander ports
-  badge->display().println(badge->io().readGPIOAB(), BIN);
-  if (gpio_interrupt)
+  for (uint16_t ms = 100; ms > 0; ms--)
   {
-    badge->buttons().poll();
-    gpio_interrupt = false;
-  }
+    delay(5);
 
-  // Wait a bit
-  delay(1000);
+    if (gpio_interrupt)
+    {
+      badge->buttons().poll();
+      gpio_interrupt = false;
+    }
+  }
 }
 
 void handle_int()
 {
   gpio_interrupt = true;
-  badge->setBacklight(500);
 }
 
 void handle_buttons(inputtype_t type, IInputDevice *device)

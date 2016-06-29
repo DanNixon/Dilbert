@@ -110,7 +110,7 @@ void Adafruit_MCP23017::begin(uint8_t addr) {
 	i2caddr = addr;
 
   /* Dilbert mod here */
-	Wire.begin(SCL, SDA);
+	Wire.begin(5, 4);
 
 	// set defaults!
 	// all inputs on port A and B
