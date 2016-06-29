@@ -3,8 +3,9 @@
 #ifndef _ARDUINOUNIVERSALINPUTS_MCP23017BUTTON_H
 #define _ARDUINOUNIVERSALINPUTS_MCP23017BUTTON_H
 
-#include "IButton.h"
-#include <Adafruit_MCP23017.h>
+#include <IButton.h>
+
+#include "Adafruit_MCP23017.h"
 
 /*!
  * \class MCP23017Button

@@ -24,6 +24,7 @@ Uses the following Arduino libraries:
 - [Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library)
 - [Adafruit NeoPixel](https://github.com/adafruit/Adafruit_NeoPixel)
 - [Adafruit MCP23017](https://github.com/adafruit/Adafruit-MCP23017-Arduino-Library)
+  (modified version included in this repository)
 - [Universal Inputs](https://github.com/DanNixon/ArduinoUniversalInput)
 
 ## Parts

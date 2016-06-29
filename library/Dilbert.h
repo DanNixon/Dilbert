@@ -2,9 +2,10 @@
 #define _DILBERT_H_
 
 #include <Adafruit_NeoPixel.h>
-#include <Adafruit_MCP23017.h>
 #include <Adafruit_ILI9341.h>
 #include <UniversalInputManager.h>
+
+#include "Adafruit_MCP23017.h"
 
 /**
  * @class Dilbert
