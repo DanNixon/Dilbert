@@ -105,3 +105,12 @@ connected to a button.
 - Press upload in Arduino IDE
 - ???
 - Profit
+
+## SD card slot
+
+There is an SD card slot, it shares the SPI bus with the display.
+
+It's chip select pin is connected to the RXd pin of the ESP8266 UART.
+
+I have not tested it but it should probably work OK with the
+[SdFat](https://github.com/greiman/SdFat) library.

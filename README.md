@@ -2,6 +2,8 @@
 
 An interactive badge based on the ESP8266.
 
+For getting started and general information see [GUIDE.md](GUIDE.md).
+
 ## Features
 
 - ESP8266
