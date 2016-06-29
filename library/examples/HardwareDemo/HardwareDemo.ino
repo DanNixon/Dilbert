@@ -10,9 +10,13 @@
 #include <Adafruit_MCP23017.h>
 #include <Dilbert.h>
 
+/* #define USE_BUTTON_INTERRUPTS */
+
 Dilbert *badge;
 
+#ifdef USE_BUTTON_INTERRUPTS
 volatile bool gpio_interrupt;
+#endif
 
 void setup()
 {
@@ -40,9 +44,12 @@ void setup()
   badge->neoPixels().setPixelColor(7, Adafruit_NeoPixel::Color(120, 120, 120));
   badge->neoPixels().show();
 
+#ifdef USE_BUTTON_INTERRUPTS
   /* Button interrupt setup */
   gpio_interrupt = false;
   attachInterrupt(Dilbert::MCP23017_INT_GPIO, handle_int, FALLING);
+#endif
+
   badge->buttons().setCallback(handle_buttons);
 }
 
@@ -74,18 +81,24 @@ void loop()
   {
     delay(5);
 
+#ifdef USE_BUTTON_INTERRUPTS
     if (gpio_interrupt)
     {
       badge->buttons().poll();
       gpio_interrupt = false;
     }
+#else
+    badge->buttons().poll();
+#endif
   }
 }
 
+#ifdef USE_BUTTON_INTERRUPTS
 void handle_int()
 {
   gpio_interrupt = true;
 }
+#endif
 
 void handle_buttons(inputtype_t type, IInputDevice *device)
 {
