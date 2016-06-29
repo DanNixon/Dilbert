@@ -5,11 +5,14 @@ troubleshooting and building/flashing.
 
 ## Power
 
-The *PWR IN* header accepts up to 6v only, this is good for either a USB power
-bank or a single cell litium battery.
+**The *PWR IN* header accepts up to 6v only**, this is good for either a USB
+power bank or a single cell lithium battery.
 
-If using a bare battery keep in mind that there is no voltage detection or
-protection on the board (other than the internal supply voltage measurement on
+**There is no reverse polarity protection!** I don't know exactly what would
+happen if you connected the supply in reverse polarity, I haven't tried.
+
+If using a bare battery keep in mind that **there is no voltage detection or
+protection on the board** (other than the internal supply voltage measurement on
 the ESPs ADC) and that the regulator will operate as far down as 3.3V.
 
 Therefore it is your responsibility to make sure the cell voltage of a battery
@@ -27,7 +30,7 @@ first device to fail, which is noticeable by the buttons becoming unresponsive.
 Most of this is self explanatory, but just a few pointers:
 
 - Do not reflow solder the ESP12 (reflowing my bridge vias on the ESP and the
-  DIlbert board)
+  Dilbert board)
 - Reflow solder the NeoPixels (it is much more difficult to make an arse of
   reflowing them)
 - Mod wires must be added to connect the ground of the first NeoPixel and the
