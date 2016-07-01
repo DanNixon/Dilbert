@@ -10,16 +10,25 @@ StaticDisplayApp::~StaticDisplayApp()
 {
 }
 
+/**
+ * @copydoc App::onEntry
+ */
 void StaticDisplayApp::onEntry()
 {
   redraw(0);
 }
 
+/**
+ * @copydoc App::onExit
+ */
 void StaticDisplayApp::onExit()
 {
   m_badge->display().setRotation(0);
 }
 
+/**
+ * @copydoc App::handleButton
+ */
 bool StaticDisplayApp::handleButton(IButton *button)
 {
   if (App::handleButton(button))
@@ -51,6 +60,10 @@ bool StaticDisplayApp::handleButton(IButton *button)
   return false;
 }
 
+/**
+ * @brief Redraws the content at a given orientation.
+ * @param orientation Orientation to draw at
+ */
 void StaticDisplayApp::redraw(uint8_t orientation)
 {
   m_badge->display().fillScreen(m_backgroundColour);

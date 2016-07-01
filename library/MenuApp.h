@@ -3,6 +3,11 @@
 
 #include "App.h"
 
+/**
+ * @class MenuApp
+ * @author Dan Nixon
+ * @brief Provides a menu for launching applications.
+ */
 class MenuApp : public App
 {
 public:
@@ -20,12 +25,13 @@ protected:
   void redrawSelectonIcon();
 
 protected:
-  uint8_t m_itemSize;
-  uint16_t m_backgroundColour;
-  uint16_t m_textColour;
-  uint16_t m_iconColour;
+  uint8_t m_itemSize; //!< Text size (scaling) for menu item text
 
-  uint8_t m_selectedAppIndex;
+  uint16_t m_backgroundColour; //!< Background colour
+  uint16_t m_textColour;       //!< Text colour
+  uint16_t m_iconColour;       //!< Selection icon colour
+
+  uint8_t m_selectedAppIndex; //!< Index of currently selected item
 };
 
 #endif

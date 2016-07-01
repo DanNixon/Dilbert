@@ -21,12 +21,18 @@ MenuApp::~MenuApp()
 {
 }
 
+/**
+ * @copydoc App::create
+ */
 void MenuApp::create()
 {
   App::create();
   m_selectedAppIndex = 0;
 }
 
+/**
+ * @copydoc App::onEntry
+ */
 void MenuApp::onEntry()
 {
   App::onEntry();
@@ -55,6 +61,9 @@ void MenuApp::onEntry()
   redrawSelectonIcon();
 }
 
+/**
+ * @copydoc App::handleButton
+ */
 bool MenuApp::handleButton(IButton *button)
 {
   if (App::handleButton(button))
@@ -98,6 +107,9 @@ bool MenuApp::handleButton(IButton *button)
   return false;
 }
 
+/**
+ * @brief Redraws the selected application icon.
+ */
 void MenuApp::redrawSelectonIcon()
 {
   /* Clear display around selection arow position */
