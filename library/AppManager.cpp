@@ -1,3 +1,5 @@
+/*! @file */
+
 #include "AppManager.h"
 
 #include "App.h"

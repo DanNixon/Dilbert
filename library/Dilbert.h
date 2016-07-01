@@ -1,3 +1,5 @@
+/*! @file */
+
 #ifndef _DILBERT_H_
 #define _DILBERT_H_
 

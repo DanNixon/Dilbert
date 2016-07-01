@@ -1,3 +1,5 @@
+/*! @file */
+
 #ifndef _PROFILEAPP_H_
 #define _PROFILEAPP_H_
 

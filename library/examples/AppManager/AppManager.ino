@@ -1,3 +1,5 @@
+/*! @file */
+
 /* #include <GDBStub.h> */
 
 #include <SPI.h>

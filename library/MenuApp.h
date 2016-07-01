@@ -1,3 +1,5 @@
+/*! @file */
+
 #ifndef _MENUAPP_H_
 #define _MENUAPP_H_
 

@@ -1,3 +1,5 @@
+/*! @file */
+
 #include "MenuApp.h"
 
 #define OFFSET(a, d) (((m_itemSize + 1) * d) * a)

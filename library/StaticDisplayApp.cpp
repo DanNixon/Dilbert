@@ -1,3 +1,5 @@
+/*! @file */
+
 #include "StaticDisplayApp.h"
 
 StaticDisplayApp::StaticDisplayApp(char *name, uint16_t bgColour)

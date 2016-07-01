@@ -1,3 +1,5 @@
+/*! @file */
+
 #ifndef _STATICDISPLAYAPP_H_
 #define _STATICDISPLAYAPP_H_
 
