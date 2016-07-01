@@ -15,8 +15,8 @@
 class App;
 
 /**
- * @cass AppManager
- * @auhor Dan Nixon
+ * @class AppManager
+ * @author Dan Nixon
  * @brief Used to manage several applications on the badge.
  */
 class AppManager : public IUniversalInputCallback
