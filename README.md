@@ -1,5 +1,7 @@
 # Dilbert
 
+[![Build Status](https://travis-ci.org/DanNixon/Dilbert.svg?branch=master)](https://travis-ci.org/DanNixon/Dilbert)
+
 An interactive badge based on the ESP8266.
 
 For getting started and general information see [GUIDE.md](GUIDE.md).
@@ -11,6 +13,12 @@ For getting started and general information see [GUIDE.md](GUIDE.md).
 - D-pad + A/B buttons
 - 8 NeoPixels
 - UART, i2c, digital IO and NeoPixel expansion headers
+
+## Links
+
+- Repository: https://github.com/DanNixon/Dilbert
+- Travis CI: https://travis-ci.org/DanNixon/Dilbert
+- Documentation: http://dannixon.github.io/Dilbert
 
 ## Contributing code
 
