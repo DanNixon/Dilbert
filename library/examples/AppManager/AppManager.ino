@@ -12,7 +12,8 @@
 
 /* #define USE_BUTTON_INTERRUPTS */
 
-Dilbert *badge;
+Dilbert badge;
+DilbertAppManager appManager(&badge);
 
 #ifdef USE_BUTTON_INTERRUPTS
 volatile bool gpio_interrupt;
@@ -20,9 +21,10 @@ volatile bool gpio_interrupt;
 
 void setup()
 {
-  badge = new Dilbert();
+  badge.begin();
+  appManager.begin();
 
-  badge->setBacklightOn(true);
+  badge.setBacklightOn(true);
 
 #ifdef USE_BUTTON_INTERRUPTS
   /* Button interrupt setup */
@@ -33,20 +35,17 @@ void setup()
 
 void loop()
 {
-  for (uint16_t ms = 100; ms > 0; ms--)
-  {
-    delay(5);
+  appManager.run();
 
 #ifdef USE_BUTTON_INTERRUPTS
-    if (gpio_interrupt)
-    {
-      badge->buttons().poll();
-      gpio_interrupt = false;
-    }
-#else
-    badge->buttons().poll();
-#endif
+  if (gpio_interrupt)
+  {
+    badge.buttons().poll();
+    gpio_interrupt = false;
   }
+#else
+  badge.buttons().poll();
+#endif
 }
 
 #ifdef USE_BUTTON_INTERRUPTS

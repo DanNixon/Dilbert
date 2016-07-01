@@ -30,8 +30,10 @@ public:
   static const uint8_t BUTTON_B = 5;
 
 public:
-  Dilbert(size_t numNeoPixels = 8);
+  Dilbert();
   virtual ~Dilbert();
+
+  void begin(size_t numNeoPixels = 8);
 
   /**
    * @brief Gets the TFT display driver.
