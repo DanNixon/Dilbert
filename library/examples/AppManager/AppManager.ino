@@ -10,6 +10,8 @@
 #include <Dilbert.h>
 #include <DilbertAppManager.h>
 
+#include "DemoApp.h"
+
 /* #define USE_BUTTON_INTERRUPTS */
 
 Dilbert badge;
@@ -24,7 +26,9 @@ void setup()
   badge.begin();
   appManager.begin();
 
-  badge.setBacklightOn(true);
+  appManager.addApp(new DemoApp("ONE"));
+  appManager.addApp(new DemoApp("TWO"));
+  appManager.addApp(new DemoApp("THREE"));
 
 #ifdef USE_BUTTON_INTERRUPTS
   /* Button interrupt setup */

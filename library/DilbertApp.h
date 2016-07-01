@@ -24,7 +24,11 @@ public:
     strcpy(m_name, name);
   }
 
-  virtual ~DilbertApp();
+  virtual ~DilbertApp()
+  {
+    if (m_ready)
+      destroy();
+  }
 
   /**
    * @brief Gets the name of the application.
@@ -78,7 +82,6 @@ public:
    */
   virtual void onExit()
   {
-    /* destroy(); */
   }
 
   /**
@@ -98,7 +101,8 @@ protected:
    */
   virtual void handleButton(IButton *button)
   {
-    if (button->getID() == Dilbert::BUTTON_B)
+    /* If the B button was released after being held for 1 second */
+    if (button->getID() == Dilbert::BUTTON_B && !button->isActive() && button->lastActiveDuration() > 1000)
       exit();
   }
 
