@@ -34,6 +34,24 @@ public:
 
     delay(100);
   }
+
+  virtual void handleButton(IButton *button)
+  {
+    DilbertApp::handleButton(button);
+
+    if (!button->isActive())
+    {
+      switch(button->getID())
+      {
+        case Dilbert::BUTTON_UP:
+          m_parent->activateAppByIdx(1);
+          return;
+        case Dilbert::BUTTON_DOWN:
+          m_parent->activateAppByIdx(2);
+          return;
+      }
+    }
+  }
 };
 
 #endif

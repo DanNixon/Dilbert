@@ -44,6 +44,11 @@ uint8_t DilbertAppManager::addApp(DilbertApp *app)
       m_apps[i] = app;
       app->m_parent = this;
       app->m_badge = m_badge;
+
+      /* If this is the first app then enter it now */
+      if (i == 0)
+        app->onEntry();
+
       return i;
     }
   }
