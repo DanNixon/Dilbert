@@ -12,6 +12,7 @@
 #include <DilbertMenuApp.h>
 
 #include "DemoApp.h"
+#include "ProfileApp.h"
 
 /* #define USE_BUTTON_INTERRUPTS */
 
@@ -31,6 +32,7 @@ void setup()
   appManager.addApp(new DilbertMenuApp());
 
   /* Add other applications */
+  appManager.addApp(new ProfileApp());
   appManager.addApp(new DemoApp("ONE"));
   appManager.addApp(new DemoApp("TWO"));
   appManager.addApp(new DemoApp("THREE"));
