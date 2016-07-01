@@ -29,7 +29,8 @@ protected:
 
     m_badge->display().setTextColor(ILI9341_RED);
     m_badge->display().setTextSize(3);
-    m_badge->display().println("Code Monkey, Electronics\nEngineer, Mad\nScientist.");
+    m_badge->display().println(
+        "Code Monkey, Electronics\nEngineer, Mad\nScientist.");
   }
 
   virtual void drawLandscape()
@@ -48,7 +49,8 @@ protected:
 
     m_badge->display().setTextColor(ILI9341_RED);
     m_badge->display().setTextSize(3);
-    m_badge->display().println("Code Monkey,\nElectronics\nEngineer,\nMad Scientist.");
+    m_badge->display().println(
+        "Code Monkey,\nElectronics\nEngineer,\nMad Scientist.");
   }
 };
 

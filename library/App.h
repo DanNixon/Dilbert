@@ -119,10 +119,10 @@ protected:
 protected:
   friend class AppManager;
 
-  Dilbert *m_badge;             //!< Pointer to badge driver
+  Dilbert *m_badge;      //!< Pointer to badge driver
   AppManager *m_manager; //!<Pointer to application manager
-  char *m_name;                 //!< Name of application
-  bool m_ready;                 //!< If the application has been created
+  char *m_name;          //!< Name of application
+  bool m_ready;          //!< If the application has been created
 };
 
 #endif

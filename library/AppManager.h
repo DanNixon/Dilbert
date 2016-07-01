@@ -20,7 +20,7 @@ class App;
 class AppManager : public IUniversalInputCallback
 {
 public:
-  AppManager(Dilbert * badge);
+  AppManager(Dilbert *badge);
   virtual ~AppManager();
 
   void begin();
@@ -56,7 +56,7 @@ public:
 
   void run();
 
-  void handleUniversalInputEvent(inputtype_t type, IInputDevice * device);
+  void handleUniversalInputEvent(inputtype_t type, IInputDevice *device);
 
 private:
   Dilbert *m_badge;

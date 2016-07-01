@@ -4,8 +4,8 @@
 #define OFFSET_X(x) OFFSET(x, 6)
 #define OFFSET_Y(y) OFFSET(y, 8)
 
-MenuApp::MenuApp(uint8_t itemSize, uint16_t bgColour,
-                               uint16_t textColour, uint16_t iconColour)
+MenuApp::MenuApp(uint8_t itemSize, uint16_t bgColour, uint16_t textColour,
+                 uint16_t iconColour)
     : App("App Menu")
     , m_itemSize(itemSize)
     , m_backgroundColour(bgColour)

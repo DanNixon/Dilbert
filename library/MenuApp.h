@@ -7,8 +7,8 @@ class MenuApp : public App
 {
 public:
   MenuApp(uint8_t itemSize = 3, uint16_t bgColour = ILI9341_BLACK,
-                 uint16_t textColour = ILI9341_WHITE,
-                 uint16_t iconColour = ILI9341_YELLOW);
+          uint16_t textColour = ILI9341_WHITE,
+          uint16_t iconColour = ILI9341_YELLOW);
   virtual ~MenuApp();
 
   virtual void create();

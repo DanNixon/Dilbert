@@ -6,7 +6,7 @@
 class StaticDisplayApp : public App
 {
 public:
-  StaticDisplayApp(char * name, uint16_t bgColour = ILI9341_BLACK);
+  StaticDisplayApp(char *name, uint16_t bgColour = ILI9341_BLACK);
   virtual ~StaticDisplayApp();
 
   virtual void onEntry();
