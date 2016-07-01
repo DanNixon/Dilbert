@@ -28,7 +28,7 @@ public:
     m_badge->display().setTextColor(ILI9341_PINK);
     m_badge->display().setTextSize(2);
 
-    m_badge->display().print("Entered demo app ");
+    m_badge->display().println("Entered demo app");
     m_badge->display().println(m_name);
     m_badge->display().println();
 

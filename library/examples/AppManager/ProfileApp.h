@@ -22,9 +22,10 @@ protected:
     m_badge->display().setTextSize(6);
     m_badge->display().println("Dan\nNixon\n");
 
-    m_badge->display().setTextColor(ILI9341_CYAN);
     m_badge->display().setTextSize(3);
+    m_badge->display().setTextColor(ILI9341_CYAN);
     m_badge->display().println("@technoducky");
+    m_badge->display().setTextColor(ILI9341_BLUE);
     m_badge->display().println("dan-nixon.com\n");
 
     m_badge->display().setTextColor(ILI9341_RED);
@@ -42,9 +43,10 @@ protected:
     m_badge->display().setTextSize(3);
     m_badge->display().println();
 
-    m_badge->display().setTextColor(ILI9341_CYAN);
     m_badge->display().setTextSize(3);
+    m_badge->display().setTextColor(ILI9341_CYAN);
     m_badge->display().println("@technoducky");
+    m_badge->display().setTextColor(ILI9341_BLUE);
     m_badge->display().println("dan-nixon.com\n");
 
     m_badge->display().setTextColor(ILI9341_RED);

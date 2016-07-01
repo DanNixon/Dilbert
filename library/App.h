@@ -105,9 +105,9 @@ protected:
    */
   virtual bool handleButton(IButton *button)
   {
-    /* If the B button was released after being held for 1 second */
+    /* If the B button was released after being held for 0.8 second */
     if (button->getID() == Dilbert::BUTTON_B && !button->isActive() &&
-        button->lastActiveDuration() > 1000)
+        button->lastActiveDuration() > 800)
     {
       exit();
       return true;

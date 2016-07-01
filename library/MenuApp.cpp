@@ -4,6 +4,8 @@
 #define OFFSET_X(x) OFFSET(x, 6)
 #define OFFSET_Y(y) OFFSET(y, 8)
 
+#define MENU_START_Y 50
+
 MenuApp::MenuApp(uint8_t itemSize, uint16_t bgColour, uint16_t textColour,
                  uint16_t iconColour)
     : App("App Menu")
@@ -33,12 +35,20 @@ void MenuApp::onEntry()
 
   display.fillScreen(m_backgroundColour);
   display.setTextColor(m_textColour);
+
+  /* Print title */
+  display.setCursor(0, 0);
+  display.setTextSize(4);
+  display.print("Dilbert");
+  display.setTextSize(2);
+  display.println(" Apps");
+
   display.setTextSize(m_itemSize);
 
   /* Print application names */
   for (uint8_t i = 0; i < m_manager->numApps(); i++)
   {
-    display.setCursor(OFFSET_X(1), 10 + OFFSET_Y(i));
+    display.setCursor(OFFSET_X(1), MENU_START_Y + OFFSET_Y(i));
     display.print(m_manager->app(i)->name());
   }
 
@@ -91,10 +101,11 @@ bool MenuApp::handleButton(IButton *button)
 void MenuApp::redrawSelectonIcon()
 {
   /* Clear display around selection arow position */
-  m_badge->display().fillRect(0, 0, OFFSET_X(1) - 1, 319, ILI9341_BLACK);
+  m_badge->display().fillRect(0, MENU_START_Y, OFFSET_X(1) - 1, 319,
+                              ILI9341_BLACK);
 
   /* Draw selection arrow */
   m_badge->display().setTextColor(m_iconColour);
-  m_badge->display().setCursor(1, 10 + OFFSET_Y(m_selectedAppIndex));
+  m_badge->display().setCursor(1, MENU_START_Y + OFFSET_Y(m_selectedAppIndex));
   m_badge->display().print(">");
 }
