@@ -52,7 +52,7 @@ public:
   /**
    * @brief Called when the application is entered.
    *
-   * Initial state should be set here.
+   * Initial state should be set here, particularly for the display.
    */
   virtual void onEntry()
   {
@@ -65,14 +65,17 @@ public:
    *
    * Equivalent to `loop()` in Arduino.
    */
-  virtual void run() = 0;
+  virtual void run()
+  {
+    delay(50);
+  }
 
   /**
    * @brief Exits the application.
    */
   virtual void exit()
   {
-    m_parent->activateAppByIdx(0);
+    m_manager->activateAppByIdx(0);
   }
 
   /**
@@ -98,21 +101,28 @@ protected:
   /**
    * @brief Handle button presses.
    * @param button Button that has changed
+   * @return True if the button was handled in this function
    */
-  virtual void handleButton(IButton *button)
+  virtual bool handleButton(IButton *button)
   {
     /* If the B button was released after being held for 1 second */
-    if (button->getID() == Dilbert::BUTTON_B && !button->isActive() && button->lastActiveDuration() > 1000)
+    if (button->getID() == Dilbert::BUTTON_B && !button->isActive() &&
+        button->lastActiveDuration() > 1000)
+    {
       exit();
+      return true;
+    }
+
+    return false;
   }
 
 protected:
   friend class DilbertAppManager;
 
-  Dilbert *m_badge;            //!< Pointer to badge driver
-  DilbertAppManager *m_parent; //!<Pointer to application manager
-  char *m_name;                //!< Name of application
-  bool m_ready;                //!< If the application has been created
+  Dilbert *m_badge;             //!< Pointer to badge driver
+  DilbertAppManager *m_manager; //!<Pointer to application manager
+  char *m_name;                 //!< Name of application
+  bool m_ready;                 //!< If the application has been created
 };
 
 #endif

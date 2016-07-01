@@ -9,6 +9,7 @@
 #include <Adafruit_MCP23017.h>
 #include <Dilbert.h>
 #include <DilbertAppManager.h>
+#include <DilbertMenuApp.h>
 
 #include "DemoApp.h"
 
@@ -24,11 +25,18 @@ volatile bool gpio_interrupt;
 void setup()
 {
   badge.begin();
-  appManager.begin();
 
+  /* Add the app menu application
+   * Typically this shoud always be the first added */
+  appManager.addApp(new DilbertMenuApp());
+
+  /* Add other applications */
   appManager.addApp(new DemoApp("ONE"));
   appManager.addApp(new DemoApp("TWO"));
   appManager.addApp(new DemoApp("THREE"));
+
+  /* Must call this after adding all apps */
+  appManager.begin();
 
 #ifdef USE_BUTTON_INTERRUPTS
   /* Button interrupt setup */

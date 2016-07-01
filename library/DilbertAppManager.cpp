@@ -25,6 +25,9 @@ void DilbertAppManager::begin()
 {
   /* Register this as the button handler */
   m_badge->buttons().setCallback(this);
+
+  /* Enter frst application */
+  m_apps[0]->onEntry();
 }
 
 /**
@@ -42,13 +45,8 @@ uint8_t DilbertAppManager::addApp(DilbertApp *app)
     if (!m_apps[i])
     {
       m_apps[i] = app;
-      app->m_parent = this;
+      app->m_manager = this;
       app->m_badge = m_badge;
-
-      /* If this is the first app then enter it now */
-      if (i == 0)
-        app->onEntry();
-
       return i;
     }
   }
@@ -84,6 +82,8 @@ bool DilbertAppManager::activateAppByIdx(uint8_t idx)
   oldApp->onExit();
   m_activeAppIdx = idx;
   activeApp()->onEntry();
+
+  return true;
 }
 
 /**
@@ -124,15 +124,14 @@ uint8_t DilbertAppManager::appIdx(DilbertApp *app) const
  */
 size_t DilbertAppManager::numApps() const
 {
-  size_t n = 0;
-  for (uint8_t i = 0; i < MAX_NUM_APPS; i++)
+  uint8_t i = 0;
+  for (; i < MAX_NUM_APPS; i++)
   {
     if (!m_apps[i])
       break;
-    n++;
   }
 
-  return n;
+  return i;
 }
 
 /**
