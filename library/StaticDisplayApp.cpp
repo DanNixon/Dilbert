@@ -5,11 +5,9 @@
 /**
  * @brief Creates a new static content application.
  * @param name Name of the app
- * @param bgColour Background colour
  */
-StaticDisplayApp::StaticDisplayApp(char *name, uint16_t bgColour)
+StaticDisplayApp::StaticDisplayApp(char *name)
     : App(name)
-    , m_backgroundColour(bgColour)
 {
 }
 

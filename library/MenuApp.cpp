@@ -19,11 +19,11 @@ MenuApp::MenuApp(uint8_t itemSize, uint16_t bgColour, uint16_t textColour,
                  uint16_t iconColour)
     : App("App Menu")
     , m_itemSize(itemSize)
-    , m_backgroundColour(bgColour)
     , m_textColour(textColour)
     , m_iconColour(iconColour)
     , m_selectedAppIndex(0)
 {
+  setBackgroundColour(bgColour);
 }
 
 MenuApp::~MenuApp()
@@ -48,7 +48,6 @@ void MenuApp::onEntry()
 
   Adafruit_ILI9341 &display = m_badge->display();
 
-  display.fillScreen(m_backgroundColour);
   display.setTextColor(m_textColour);
 
   /* Print title */

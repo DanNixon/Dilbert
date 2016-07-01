@@ -21,6 +21,7 @@ public:
    */
   App(char *name)
       : m_ready(false)
+      , m_backgroundColour(ILI9341_BLACK)
   {
     m_name = new char[strlen(name)]();
     strcpy(m_name, name);
@@ -36,9 +37,19 @@ public:
    * @brief Gets the name of the application.
    * @return Pointer to name
    */
-  char *name()
+  inline char *name()
   {
     return m_name;
+  }
+
+  /**
+   * @brief Sets the background fill colour of the display for this
+   *        application.
+   * @param colour Background colour
+   */
+  inline void setBackgroundColour(uint16_t colour)
+  {
+    m_backgroundColour = colour;
   }
 
   /**
@@ -60,6 +71,8 @@ public:
   {
     if (!m_ready)
       create();
+
+    m_badge->display().fillScreen(m_backgroundColour);
   }
 
   /**
@@ -122,9 +135,12 @@ protected:
   friend class AppManager;
 
   Dilbert *m_badge;      //!< Pointer to badge driver
-  AppManager *m_manager; //!<Pointer to application manager
-  char *m_name;          //!< Name of application
-  bool m_ready;          //!< If the application has been created
+  AppManager *m_manager; //!< Pointer to application manager
+
+  char *m_name; //!< Name of application
+  bool m_ready; //!< If the application has been created
+
+  uint16_t m_backgroundColour; //!< Background colour
 };
 
 #endif

@@ -13,7 +13,7 @@
 class StaticDisplayApp : public App
 {
 public:
-  StaticDisplayApp(char *name, uint16_t bgColour = ILI9341_BLACK);
+  StaticDisplayApp(char *name);
   virtual ~StaticDisplayApp();
 
   virtual void onEntry();
@@ -37,9 +37,6 @@ protected:
   virtual void drawLandscape()
   {
   }
-
-protected:
-  uint16_t m_backgroundColour; //!< Background colour
 };
 
 #endif
