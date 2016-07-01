@@ -5,6 +5,11 @@
 
 #include "App.h"
 
+/**
+ * @class StaticDisplayApp
+ * @author Dan Nixon
+ * @brief Used for displaying static content at any screen orientation.
+ */
 class StaticDisplayApp : public App
 {
 public:
@@ -19,16 +24,22 @@ public:
 protected:
   void redraw(uint8_t orientation);
 
+  /**
+   * @brief Draws the portrait version of the content.
+   */
   virtual void drawPortrait()
   {
   }
 
+  /**
+   * @brief Draws the landscape version of the content.
+   */
   virtual void drawLandscape()
   {
   }
 
 protected:
-  uint16_t m_backgroundColour;
+  uint16_t m_backgroundColour; //!< Background colour
 };
 
 #endif

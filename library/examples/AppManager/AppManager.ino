@@ -1,4 +1,9 @@
-/*! @file */
+/*!
+ * @file
+ * @author Dan Nixon
+ * @brief Example with application manager. Intended to be used as the badge
+ *        firmware.
+ */
 
 /* #include <GDBStub.h> */
 

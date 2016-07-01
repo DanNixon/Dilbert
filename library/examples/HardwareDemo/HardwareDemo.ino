@@ -1,4 +1,10 @@
-/*! @file */
+/*!
+ * @file
+ * @author Dan Nixon
+ * @brief Kitchen sink hardware demo.
+ *
+ * Good for testing if a badge is fully working.
+ */
 
 /* #include <GDBStub.h> */
 

@@ -1,3 +1,5 @@
+/*! @file */
+
 /*************************************************** 
   This is a library for the MCP23017 i2c port expander
 

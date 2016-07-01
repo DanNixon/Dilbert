@@ -1,4 +1,8 @@
-/*! @file */
+/*!
+ * @file
+ * @author Dan Nixon
+ * @brief Testing button integration using Universal Inputs.
+ */
 
 #include <UniversalInputManager.h>
 #include <MCP23017Button.h>

@@ -5,6 +5,11 @@
 
 #include <StaticDisplayApp.h>
 
+/**
+ * @class ProfileApp
+ * @author Dan Nixon
+ * @brief Displays profile/contact information on the display.
+ */
 class ProfileApp : public StaticDisplayApp
 {
 public:
@@ -18,6 +23,9 @@ public:
   }
 
 protected:
+  /**
+   * @copydoc StaticDisplayApp::drawPortrait
+   */
   virtual void drawPortrait()
   {
     m_badge->display().setTextColor(ILI9341_YELLOW);
@@ -36,6 +44,9 @@ protected:
         "Code Monkey, Electronics\nEngineer, Mad\nScientist.");
   }
 
+  /**
+   * @copydoc StaticDisplayApp::drawLandscape
+   */
   virtual void drawLandscape()
   {
     m_badge->display().setTextColor(ILI9341_YELLOW);

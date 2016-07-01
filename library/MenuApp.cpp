@@ -8,6 +8,13 @@
 
 #define MENU_START_Y 50
 
+/**
+ * @brief Creates a new menu application.
+ * @param itemSize Size of text for menu items (multiples of 8 pixels)
+ * @param bgColour Background colour
+ * @param textColour Text colour
+ * @param iconColour CUrrent app selection colour
+ */
 MenuApp::MenuApp(uint8_t itemSize, uint16_t bgColour, uint16_t textColour,
                  uint16_t iconColour)
     : App("App Menu")

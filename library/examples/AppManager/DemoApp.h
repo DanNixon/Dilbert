@@ -5,9 +5,18 @@
 
 #include <App.h>
 
+/**
+ * @class DemoApp
+ * @author Dan Nixon
+ * @brief Demo app that reports button presses/releases.
+ */
 class DemoApp : public App
 {
 public:
+  /**
+   * @brief Creates a demo application.
+   * @param name Name of the app
+   */
   DemoApp(char *name)
       : App(name)
   {
@@ -17,6 +26,9 @@ public:
   {
   }
 
+  /**
+   * @copydoc App::onEntry
+   */
   virtual void onEntry()
   {
     App::onEntry();
@@ -40,6 +52,9 @@ public:
     m_badge->display().println();
   }
 
+  /**
+   * @copydoc App::handleButton
+   */
   virtual bool handleButton(IButton *button)
   {
     if (App::handleButton(button))
