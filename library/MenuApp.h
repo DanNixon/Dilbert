@@ -1,15 +1,15 @@
-#ifndef _DILBERTMENUAPP_H_
-#define _DILBERTMENUAPP_H_
+#ifndef _MENUAPP_H_
+#define _MENUAPP_H_
 
-#include "DilbertApp.h"
+#include "App.h"
 
-class DilbertMenuApp : public DilbertApp
+class MenuApp : public App
 {
 public:
-  DilbertMenuApp(uint8_t itemSize = 3, uint16_t bgColour = ILI9341_BLACK,
+  MenuApp(uint8_t itemSize = 3, uint16_t bgColour = ILI9341_BLACK,
                  uint16_t textColour = ILI9341_WHITE,
                  uint16_t iconColour = ILI9341_YELLOW);
-  virtual ~DilbertMenuApp();
+  virtual ~MenuApp();
 
   virtual void create();
   virtual void onEntry();

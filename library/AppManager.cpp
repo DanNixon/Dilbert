@@ -1,12 +1,12 @@
-#include "DilbertAppManager.h"
+#include "AppManager.h"
 
-#include "DilbertApp.h"
+#include "App.h"
 
 /**
  * @brief Creates a new application manager.
  * @param badge Pointer to badge driver
  */
-DilbertAppManager::DilbertAppManager(Dilbert *badge)
+AppManager::AppManager(Dilbert *badge)
     : m_badge(badge)
     , m_activeAppIdx(0)
 {
@@ -14,14 +14,14 @@ DilbertAppManager::DilbertAppManager(Dilbert *badge)
     m_apps[i] = NULL;
 }
 
-DilbertAppManager::~DilbertAppManager()
+AppManager::~AppManager()
 {
 }
 
 /**
  * @brief Initialises the application manager.
  */
-void DilbertAppManager::begin()
+void AppManager::begin()
 {
   /* Register this as the button handler */
   m_badge->buttons().setCallback(this);
@@ -38,7 +38,7 @@ void DilbertAppManager::begin()
  * Note that the first application added must be a home page/launcher
  * application. When an application exits application 0 will be launched.
  */
-uint8_t DilbertAppManager::addApp(DilbertApp *app)
+uint8_t AppManager::addApp(App *app)
 {
   for (uint8_t i = 0; i < MAX_NUM_APPS; i++)
   {
@@ -59,7 +59,7 @@ uint8_t DilbertAppManager::addApp(DilbertApp *app)
  * @param name Name of the app
  * @return True if the app was successfully activated
  */
-bool DilbertAppManager::activateAppByName(char *name)
+bool AppManager::activateAppByName(char *name)
 {
   uint8_t idx = appIdx(name);
   return activateAppByIdx(idx);
@@ -70,12 +70,12 @@ bool DilbertAppManager::activateAppByName(char *name)
  * @param idx Index of the app
  * @return True if the app was successfully activated
  */
-bool DilbertAppManager::activateAppByIdx(uint8_t idx)
+bool AppManager::activateAppByIdx(uint8_t idx)
 {
   if (idx > MAX_NUM_APPS)
     return false;
 
-  DilbertApp *oldApp = m_apps[m_activeAppIdx];
+  App *oldApp = m_apps[m_activeAppIdx];
   if (!oldApp)
     return false;
 
@@ -91,7 +91,7 @@ bool DilbertAppManager::activateAppByIdx(uint8_t idx)
  * @param name Name of the app
  * @return Index or 255 if not in manager
  */
-uint8_t DilbertAppManager::appIdx(char *name)
+uint8_t AppManager::appIdx(char *name)
 {
   for (uint8_t i = 0; i < MAX_NUM_APPS; i++)
   {
@@ -107,7 +107,7 @@ uint8_t DilbertAppManager::appIdx(char *name)
  * @param app Pointer to application
  * @return Index or 255 if not in manager
  */
-uint8_t DilbertAppManager::appIdx(DilbertApp *app) const
+uint8_t AppManager::appIdx(App *app) const
 {
   for (uint8_t i = 0; i < MAX_NUM_APPS; i++)
   {
@@ -122,7 +122,7 @@ uint8_t DilbertAppManager::appIdx(DilbertApp *app) const
  * @brief Gets the number of applications in the manager.
  * @return NUmber of apps
  */
-size_t DilbertAppManager::numApps() const
+size_t AppManager::numApps() const
 {
   uint8_t i = 0;
   for (; i < MAX_NUM_APPS; i++)
@@ -137,12 +137,12 @@ size_t DilbertAppManager::numApps() const
 /**
  * @brief Runs the loop of the active application.
  */
-void DilbertAppManager::run()
+void AppManager::run()
 {
   m_apps[m_activeAppIdx]->run();
 }
 
-void DilbertAppManager::handleUniversalInputEvent(inputtype_t type,
+void AppManager::handleUniversalInputEvent(inputtype_t type,
                                                   IInputDevice *device)
 {
   if (type == UIT_BUTTON)

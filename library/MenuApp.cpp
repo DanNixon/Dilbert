@@ -1,12 +1,12 @@
-#include "DilbertMenuApp.h"
+#include "MenuApp.h"
 
 #define OFFSET(a, d) (((m_itemSize + 1) * d) * a)
 #define OFFSET_X(x) OFFSET(x, 6)
 #define OFFSET_Y(y) OFFSET(y, 8)
 
-DilbertMenuApp::DilbertMenuApp(uint8_t itemSize, uint16_t bgColour,
+MenuApp::MenuApp(uint8_t itemSize, uint16_t bgColour,
                                uint16_t textColour, uint16_t iconColour)
-    : DilbertApp("App Menu")
+    : App("App Menu")
     , m_itemSize(itemSize)
     , m_backgroundColour(bgColour)
     , m_textColour(textColour)
@@ -15,19 +15,19 @@ DilbertMenuApp::DilbertMenuApp(uint8_t itemSize, uint16_t bgColour,
 {
 }
 
-DilbertMenuApp::~DilbertMenuApp()
+MenuApp::~MenuApp()
 {
 }
 
-void DilbertMenuApp::create()
+void MenuApp::create()
 {
-  DilbertApp::create();
+  App::create();
   m_selectedAppIndex = 0;
 }
 
-void DilbertMenuApp::onEntry()
+void MenuApp::onEntry()
 {
-  DilbertApp::onEntry();
+  App::onEntry();
 
   Adafruit_ILI9341 &display = m_badge->display();
 
@@ -45,9 +45,9 @@ void DilbertMenuApp::onEntry()
   redrawSelectonIcon();
 }
 
-bool DilbertMenuApp::handleButton(IButton *button)
+bool MenuApp::handleButton(IButton *button)
 {
-  if (DilbertApp::handleButton(button))
+  if (App::handleButton(button))
     return true;
 
   if (!button->isActive())
@@ -88,7 +88,7 @@ bool DilbertMenuApp::handleButton(IButton *button)
   return false;
 }
 
-void DilbertMenuApp::redrawSelectonIcon()
+void MenuApp::redrawSelectonIcon()
 {
   /* Clear display around selection arow position */
   m_badge->display().fillRect(0, 0, OFFSET_X(1) - 1, 319, ILI9341_BLACK);

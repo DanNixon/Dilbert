@@ -1,30 +1,30 @@
-#ifndef _DILBERTAPP_H_
-#define _DILBERTAPP_H_
+#ifndef _APP_H_
+#define _APP_H_
 
 #include <IButton.h>
 
-#include "DilbertAppManager.h"
+#include "AppManager.h"
 
 /**
- * @class DilbertApp
+ * @class App
  * @author Dan Nixon
  * @brief Used to encapsulate an individual application.
  */
-class DilbertApp
+class App
 {
 public:
   /**
    * @brief Creates a new instance of a badge application.
    * @param name Name of the application
    */
-  DilbertApp(char *name)
+  App(char *name)
       : m_ready(false)
   {
     m_name = new char[strlen(name)]();
     strcpy(m_name, name);
   }
 
-  virtual ~DilbertApp()
+  virtual ~App()
   {
     if (m_ready)
       destroy();
@@ -117,10 +117,10 @@ protected:
   }
 
 protected:
-  friend class DilbertAppManager;
+  friend class AppManager;
 
   Dilbert *m_badge;             //!< Pointer to badge driver
-  DilbertAppManager *m_manager; //!<Pointer to application manager
+  AppManager *m_manager; //!<Pointer to application manager
   char *m_name;                 //!< Name of application
   bool m_ready;                 //!< If the application has been created
 };

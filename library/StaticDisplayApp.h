@@ -1,9 +1,9 @@
 #ifndef _STATICDISPLAYAPP_H_
 #define _STATICDISPLAYAPP_H_
 
-#include "DilbertApp.h"
+#include "App.h"
 
-class StaticDisplayApp : public DilbertApp
+class StaticDisplayApp : public App
 {
 public:
   StaticDisplayApp(char * name, uint16_t bgColour = ILI9341_BLACK);

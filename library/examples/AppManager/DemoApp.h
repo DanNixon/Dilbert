@@ -1,13 +1,13 @@
 #ifndef _DEMOAPP_H_
 #define _DEMOAPP_H_
 
-#include <DilbertApp.h>
+#include <App.h>
 
-class DemoApp : public DilbertApp
+class DemoApp : public App
 {
 public:
   DemoApp(char *name)
-      : DilbertApp(name)
+      : App(name)
   {
   }
 
@@ -17,7 +17,7 @@ public:
 
   virtual void onEntry()
   {
-    DilbertApp::onEntry();
+    App::onEntry();
 
     /* Clear the screen */
     m_badge->display().fillScreen(ILI9341_BLACK);
@@ -40,7 +40,7 @@ public:
 
   virtual bool handleButton(IButton *button)
   {
-    if (DilbertApp::handleButton(button))
+    if (App::handleButton(button))
       return true;
 
     /* Output some details about the buttons */

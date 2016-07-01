@@ -1,7 +1,7 @@
 #include "StaticDisplayApp.h"
 
 StaticDisplayApp::StaticDisplayApp(char *name, uint16_t bgColour)
-    : DilbertApp(name)
+    : App(name)
     , m_backgroundColour(bgColour)
 {
 }
@@ -22,7 +22,7 @@ void StaticDisplayApp::onExit()
 
 bool StaticDisplayApp::handleButton(IButton *button)
 {
-  if (DilbertApp::handleButton(button))
+  if (App::handleButton(button))
     return true;
 
   if (!button->isActive())
