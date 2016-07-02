@@ -60,8 +60,7 @@ void Dilbert::begin(size_t numNeoPixels)
   m_buttons->addDevice(new MCP23017Button(m_io, BUTTON_B, BUTTON_B));
 
   // Init NeoPixels
-  m_neopixels =
-      new Adafruit_NeoPixel(numNeoPixels, NEOPIXEL_GPIO, NEO_GRB + NEO_KHZ800);
+  m_neopixels = new Adafruit_NeoPixel(numNeoPixels, NEOPIXEL_GPIO, NEO_GRB + NEO_KHZ800);
   m_neopixels->begin();
 
   ESP.wdtEnable(5000);

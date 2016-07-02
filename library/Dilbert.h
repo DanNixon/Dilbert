@@ -17,8 +17,8 @@
 class Dilbert
 {
 public:
-  static const uint8_t MCP23017_INT_GPIO = 1; // UART0 Tx
-  static const uint8_t SD_CS_GPIO = 3;        // UART0 Rx
+  static const uint8_t MCP23017_INT_GPIO = 1; //!< MCP23017 interrupt (on UART0 Tx)
+  static const uint8_t SD_CS_GPIO = 3;        //!< SD chip select (on UART0 Rx)
   static const uint8_t TFT_CS_GPIO = 0;
   static const uint8_t TFT_DC_GPIO = 2;
   static const uint8_t TFT_BACKLIGHT_GPIO = 16;
@@ -82,20 +82,24 @@ public:
     return *m_io;
   }
 
+  /**
+   * @brief Gets the buton manager.
+   * @return Reference to the button manager
+   */
   inline UniversalInputManager &buttons()
   {
     return *m_buttons;
   }
 
 private:
-  Adafruit_MCP23017 *m_io;
+  Adafruit_MCP23017 *m_io; //!< IO expander driver
 
-  Adafruit_ILI9341 *m_tftDisplay;
-  uint16_t m_backlightIntensity;
+  Adafruit_ILI9341 *m_tftDisplay; //<! Display driver
+  uint16_t m_backlightIntensity;  //!< Backlight intensity (0-1023)
 
-  UniversalInputManager *m_buttons;
+  UniversalInputManager *m_buttons; //!< Button manager
 
-  Adafruit_NeoPixel *m_neopixels;
+  Adafruit_NeoPixel *m_neopixels; //!< NeoPixel driver
 };
 
 #endif

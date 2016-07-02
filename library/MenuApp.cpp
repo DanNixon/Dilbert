@@ -15,8 +15,7 @@
  * @param textColour Text colour
  * @param iconColour CUrrent app selection colour
  */
-MenuApp::MenuApp(uint8_t itemSize, uint16_t bgColour, uint16_t textColour,
-                 uint16_t iconColour)
+MenuApp::MenuApp(uint8_t itemSize, uint16_t bgColour, uint16_t textColour, uint16_t iconColour)
     : App("App Menu")
     , m_itemSize(itemSize)
     , m_textColour(textColour)
@@ -121,8 +120,7 @@ bool MenuApp::handleButton(IButton *button)
 void MenuApp::redrawSelectonIcon()
 {
   /* Clear display around selection arow position */
-  m_badge->display().fillRect(0, MENU_START_Y, OFFSET_X(1) - 1, 319,
-                              ILI9341_BLACK);
+  m_badge->display().fillRect(0, MENU_START_Y, OFFSET_X(1) - 1, 319, ILI9341_BLACK);
 
   /* Draw selection arrow */
   m_badge->display().setTextColor(m_iconColour);

@@ -10,8 +10,8 @@
  * \param activeLow If the button logic is active low
  * \param pullUp If the pin should be pulled high
  */
-MCP23017Button::MCP23017Button(Adafruit_MCP23017 *io, inputid_t id,
-                               inputpin_t pin, bool activeLow, bool pullUp)
+MCP23017Button::MCP23017Button(Adafruit_MCP23017 *io, inputid_t id, inputpin_t pin, bool activeLow,
+                               bool pullUp)
     : IButton(id)
     , m_io(io)
     , m_pin(pin)

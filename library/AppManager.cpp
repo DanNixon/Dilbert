@@ -144,8 +144,7 @@ void AppManager::run()
   m_apps[m_activeAppIdx]->run();
 }
 
-void AppManager::handleUniversalInputEvent(inputtype_t type,
-                                           IInputDevice *device)
+void AppManager::handleUniversalInputEvent(inputtype_t type, IInputDevice *device)
 {
   if (type == UIT_BUTTON)
     m_apps[m_activeAppIdx]->handleButton((IButton *)device);

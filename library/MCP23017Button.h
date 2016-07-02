@@ -14,8 +14,8 @@
 class MCP23017Button : public IButton
 {
 public:
-  MCP23017Button(Adafruit_MCP23017 *io, inputid_t id, inputpin_t pin,
-                 bool activeLow = true, bool pullUp = true);
+  MCP23017Button(Adafruit_MCP23017 *io, inputid_t id, inputpin_t pin, bool activeLow = true,
+                 bool pullUp = true);
 
   virtual ~MCP23017Button()
   {
