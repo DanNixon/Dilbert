@@ -23,8 +23,8 @@
 
 /* #define USE_BUTTON_INTERRUPTS */
 
-Dilbert badge;
-AppManager appManager(&badge);
+Dilbert badge;                 //!< Badge driver
+AppManager appManager(&badge); //!< Badge application manager
 
 #ifdef USE_BUTTON_INTERRUPTS
 volatile bool gpio_interrupt;
@@ -74,6 +74,9 @@ void loop()
 }
 
 #ifdef USE_BUTTON_INTERRUPTS
+/**
+ * @brief Handle MCP23017 interrupt.
+ */
 void handle_int()
 {
   gpio_interrupt = true;

@@ -10,6 +10,9 @@
 
 #include "Dilbert.h"
 
+/**
+ * @brief Maximum number of apps that can be registered with the manager.
+ */
 #define MAX_NUM_APPS 16
 
 class App;

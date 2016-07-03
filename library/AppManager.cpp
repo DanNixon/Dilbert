@@ -144,6 +144,11 @@ void AppManager::run()
   m_apps[m_activeAppIdx]->run();
 }
 
+/**
+ * @brief Handles a state change of an input device.
+ * @param type Type of input device (should always be button)
+ * @param device Pointer to input device
+ */
 void AppManager::handleUniversalInputEvent(inputtype_t type, IInputDevice *device)
 {
   if (type == UIT_BUTTON)

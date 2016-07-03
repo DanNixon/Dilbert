@@ -17,8 +17,8 @@
 #define INTERRUPT_PIN 2
 #define INTERRUPT_NUM 0
 
-Adafruit_MCP23017 mcp;
-volatile bool interrupt_wake;
+Adafruit_MCP23017 mcp;        //!< MCP23017 driver
+volatile bool interrupt_wake; //!< Flag indicating if the MCP23017 triggered an interrupt
 
 void setup()
 {
@@ -67,6 +67,9 @@ void loop()
   }
 }
 
+/**
+ * @brief Handle MCP23017 interrupt.
+ */
 void interrupt_handle()
 {
   interrupt_wake = true;

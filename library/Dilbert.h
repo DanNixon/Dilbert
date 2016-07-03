@@ -17,19 +17,19 @@
 class Dilbert
 {
 public:
-  static const uint8_t MCP23017_INT_GPIO = 1; //!< MCP23017 interrupt (on UART0 Tx)
-  static const uint8_t SD_CS_GPIO = 3;        //!< SD chip select (on UART0 Rx)
-  static const uint8_t TFT_CS_GPIO = 0;
-  static const uint8_t TFT_DC_GPIO = 2;
-  static const uint8_t TFT_BACKLIGHT_GPIO = 16;
-  static const uint8_t NEOPIXEL_GPIO = 15;
+  static const uint8_t MCP23017_INT_GPIO = 1;   //!< MCP23017 interrupt GPIO (on UART0 Tx)
+  static const uint8_t SD_CS_GPIO = 3;          //!< SD chip select GPIO (on UART0 Rx)
+  static const uint8_t TFT_CS_GPIO = 0;         //!< TFT chip select GPIO
+  static const uint8_t TFT_DC_GPIO = 2;         //!< TFT DC GPIO
+  static const uint8_t TFT_BACKLIGHT_GPIO = 16; //!< TFT backlight GPIO
+  static const uint8_t NEOPIXEL_GPIO = 15;      //!< NeoPIxel GPIO
 
-  static const uint8_t BUTTON_UP = 1;
-  static const uint8_t BUTTON_DOWN = 2;
-  static const uint8_t BUTTON_LEFT = 0;
-  static const uint8_t BUTTON_RIGHT = 3;
-  static const uint8_t BUTTON_A = 4;
-  static const uint8_t BUTTON_B = 5;
+  static const uint8_t BUTTON_UP = 1;    //!< Up buppion GPIO (on MCP23017)
+  static const uint8_t BUTTON_DOWN = 2;  //!< Down button GPIO (on MCP23017)
+  static const uint8_t BUTTON_LEFT = 0;  //!< Left button GPIO (on MCP23017)
+  static const uint8_t BUTTON_RIGHT = 3; //!< Right button GPIO (on MCP23017)
+  static const uint8_t BUTTON_A = 4;     //!< A button GPIO (on MCP23017)
+  static const uint8_t BUTTON_B = 5;     //!< B button GPIO (on MCP23017)
 
 public:
   Dilbert();

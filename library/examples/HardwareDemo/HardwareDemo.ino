@@ -20,7 +20,7 @@
 
 /* #define USE_BUTTON_INTERRUPTS */
 
-Dilbert badge;
+Dilbert badge; //!< Badge driver
 
 #ifdef USE_BUTTON_INTERRUPTS
 volatile bool gpio_interrupt;
@@ -102,12 +102,20 @@ void loop()
 }
 
 #ifdef USE_BUTTON_INTERRUPTS
+/**
+ * @brief Handle MCP23017 interrupt.
+ */
 void handle_int()
 {
   gpio_interrupt = true;
 }
 #endif
 
+/**
+ * @brief Handles a state change of an input device.
+ * @param type Type of input device (should always be button)
+ * @param device Pointer to input device
+ */
 void handle_buttons(inputtype_t type, IInputDevice *device)
 {
   if (type == UIT_BUTTON)
