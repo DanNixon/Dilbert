@@ -23,7 +23,7 @@ public:
       : m_ready(false)
       , m_backgroundColour(ILI9341_BLACK)
   {
-    m_name = new char[strlen(name)]();
+    m_name = new char[strlen(name) + 1]();
     strcpy(m_name, name);
   }
 

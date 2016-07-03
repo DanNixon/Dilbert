@@ -36,13 +36,17 @@ void setup()
 
   /* Add the app menu application
    * Typically this shoud always be the first added */
-  appManager.addApp(new MenuApp());
+  appManager.addApp(new MenuApp(2));
 
   /* Add other applications */
   appManager.addApp(new ProfileApp());
   appManager.addApp(new DemoApp("ONE"));
   appManager.addApp(new DemoApp("TWO"));
   appManager.addApp(new DemoApp("THREE"));
+  appManager.addApp(new DemoApp("FOUR"));
+  appManager.addApp(new DemoApp("FIVE"));
+  appManager.addApp(new DemoApp("SIX"));
+  appManager.addApp(new DemoApp("SEVEN"));
 
   /* Must call this after adding all apps */
   appManager.begin();
