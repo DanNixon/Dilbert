@@ -83,7 +83,7 @@ public:
   }
 
   /**
-   * @brief Gets the buton manager.
+   * @brief Gets the button manager.
    * @return Reference to the button manager
    */
   inline UniversalInputManager &buttons()
