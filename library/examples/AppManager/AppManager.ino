@@ -40,13 +40,8 @@ void setup()
 
   /* Add other applications */
   appManager.addApp(new ProfileApp());
-  appManager.addApp(new DemoApp("ONE"));
-  appManager.addApp(new DemoApp("TWO"));
-  appManager.addApp(new DemoApp("THREE"));
-  appManager.addApp(new DemoApp("FOUR"));
-  appManager.addApp(new DemoApp("FIVE"));
-  appManager.addApp(new DemoApp("SIX"));
-  appManager.addApp(new DemoApp("SEVEN"));
+  appManager.addApp(new DemoApp("Demo ONE"));
+  appManager.addApp(new DemoApp("Demo TWO"));
 
   /* Must call this after adding all apps */
   appManager.begin();
