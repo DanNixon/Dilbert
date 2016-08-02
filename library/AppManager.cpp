@@ -12,6 +12,8 @@
 AppManager::AppManager(Dilbert *badge)
     : m_badge(badge)
     , m_activeAppIdx(0)
+    , m_bButton(nullptr)
+    , m_appExitFlag(false)
 {
   for (uint8_t i = 0; i < MAX_NUM_APPS; i++)
     m_apps[i] = NULL;
@@ -31,6 +33,9 @@ void AppManager::begin()
 
   /* Enter frst application */
   m_apps[0]->onEntry();
+
+  /* Cache the B button driver */
+  m_bButton = (IButton *)m_badge->buttons().getDevice(Dilbert::BUTTON_B);
 }
 
 /**
@@ -160,6 +165,15 @@ void AppManager::run()
 {
   m_apps[m_activeAppIdx]->run();
 
+  /* Check if the B button has been held long enough to exit the app */
+  if (m_bButton->isActive() && !m_appExitFlag &&
+      millis() - m_bButton->lastStateChange() >=
+          ConfigService::Instance().getConfig().backButtonExitDelay)
+  {
+    m_apps[m_activeAppIdx]->exit();
+    m_appExitFlag = true;
+  }
+
   /* Update backlight timeout */
   if (m_backlightStatus > BACKLIGHT_STATE_OFF)
   {
@@ -195,7 +209,17 @@ void AppManager::handleUniversalInputEvent(inputtype_t type, IInputDevice *devic
 {
   if (type == UIT_BUTTON)
   {
-    if (m_apps[m_activeAppIdx]->handleButton((IButton *)device))
+    IButton *button = (IButton *)device;
+
+    /* If the B button is released after exiting an app then ignore the press */
+    if (button == m_bButton && !button->isActive() && m_appExitFlag)
+    {
+      m_appExitFlag = false;
+      return;
+    }
+
+    /* Pass button press to active application */
+    if (m_apps[m_activeAppIdx]->handleButton(button))
       feedBacklight();
   }
 }

@@ -7,6 +7,7 @@
 #include <UniversalInputTypes.h>
 #include <IInputDevice.h>
 #include <IUniversalInputCallback.h>
+#include <IButton.h>
 
 #include "Dilbert.h"
 
@@ -77,6 +78,9 @@ private:
   App *m_apps[MAX_NUM_APPS];
   char *m_appNames[MAX_NUM_APPS];
   uint8_t m_activeAppIdx;
+
+  IButton * m_bButton;
+  bool m_appExitFlag;
 
   uint8_t m_backlightStatus;
   uint32_t m_lastBacklightFeedTime;
