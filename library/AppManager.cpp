@@ -36,6 +36,9 @@ void AppManager::begin()
 
   /* Cache the B button driver */
   m_bButton = (IButton *)m_badge->buttons().getDevice(Dilbert::BUTTON_B);
+
+  /* Ensure backlight is on by default */
+  feedBacklight();
 }
 
 /**
