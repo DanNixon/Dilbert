@@ -2,7 +2,6 @@
 
 #include "SystemSettingsApp.h"
 
-
 /**
  * @brief Creates a new system settings application.
  */

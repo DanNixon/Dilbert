@@ -1,28 +1,27 @@
 /*! @file */
 
-#ifndef _DEMOAPP_H_
-#define _DEMOAPP_H_
+#ifndef _BUTTONTESTAPP_H_
+#define _BUTTONTESTAPP_H_
 
 #include <App.h>
 
 /**
- * @class DemoApp
+ * @class ButtonTestApp
  * @author Dan Nixon
- * @brief Demo app that reports button presses/releases.
+ * @brief Simple demo/test of the buttons.
  */
-class DemoApp : public App
+class ButtonTestApp : public App
 {
 public:
   /**
-   * @brief Creates a demo application.
-   * @param name Name of the app
+   * @brief Creates a buton test application.
    */
-  DemoApp(char *name)
-      : App(name)
+  ButtonTestApp()
+      : App("Button Test")
   {
   }
 
-  virtual ~DemoApp()
+  virtual ~ButtonTestApp()
   {
   }
 
@@ -42,9 +41,7 @@ public:
     m_badge->display().setTextColor(ILI9341_PINK);
     m_badge->display().setTextSize(2);
 
-    m_badge->display().println("Entered demo app");
-    m_badge->display().println(m_name);
-    m_badge->display().println();
+    m_badge->display().println("Button test");
 
     m_badge->display().setTextSize(1);
 

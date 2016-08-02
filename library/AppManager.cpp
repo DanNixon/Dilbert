@@ -3,6 +3,7 @@
 #include "AppManager.h"
 
 #include "App.h"
+#include "ConfigService.h"
 
 /**
  * @brief Creates a new application manager.
@@ -137,11 +138,52 @@ size_t AppManager::numApps() const
 }
 
 /**
+ * @brief Ensures that the backlight stays on, otherwise it is susceptible to
+ *        the timeouts set in SystemConfigData.
+ */
+void AppManager::feedBacklight()
+{
+  /* Turn the backlight back on to main brightness */
+  if (m_backlightStatus < BACKLIGHT_STATE_FULL)
+  {
+    m_backlightStatus = BACKLIGHT_STATE_FULL;
+    updateBacklightOutput();
+  }
+
+  m_lastBacklightFeedTime = millis();
+}
+
+/**
  * @brief Runs the loop of the active application.
  */
 void AppManager::run()
 {
   m_apps[m_activeAppIdx]->run();
+
+  /* Update backlight timeout */
+  if (m_backlightStatus > BACKLIGHT_STATE_OFF)
+  {
+    uint32_t backlightDeltaT = millis() - m_lastBacklightFeedTime;
+    bool backlightTimeout = false;
+
+    switch (m_backlightStatus)
+    {
+    case BACKLIGHT_STATE_FULL:
+      backlightTimeout =
+          backlightDeltaT >= ConfigService::Instance().getConfig().backlightTimeToPowerSaveMs;
+      break;
+    case BACKLIGHT_STATE_DIM:
+      backlightTimeout =
+          backlightDeltaT >= ConfigService::Instance().getConfig().backlightTimeToOffMs;
+      break;
+    }
+
+    if (backlightTimeout)
+    {
+      m_backlightStatus--;
+      updateBacklightOutput();
+    }
+  }
 }
 
 /**
@@ -152,5 +194,30 @@ void AppManager::run()
 void AppManager::handleUniversalInputEvent(inputtype_t type, IInputDevice *device)
 {
   if (type == UIT_BUTTON)
-    m_apps[m_activeAppIdx]->handleButton((IButton *)device);
+  {
+    if (m_apps[m_activeAppIdx]->handleButton((IButton *)device))
+      feedBacklight();
+  }
+}
+
+/**
+ * @brief Updates the backlight output to match the current state.
+ */
+void AppManager::updateBacklightOutput()
+{
+  uint16_t intensity;
+
+  switch (m_backlightStatus)
+  {
+  case BACKLIGHT_STATE_FULL:
+    intensity = ConfigService::Instance().getConfig().backlightFullBrightness;
+    break;
+  case BACKLIGHT_STATE_DIM:
+    intensity = ConfigService::Instance().getConfig().backlightPowerSaveBrightness;
+    break;
+  default:
+    intensity = 0;
+  }
+
+  m_badge->setBacklight(intensity);
 }

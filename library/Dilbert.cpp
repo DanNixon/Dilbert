@@ -48,7 +48,6 @@ void Dilbert::begin(size_t numNeoPixels)
 
   // Init backlight
   pinMode(TFT_BACKLIGHT_GPIO, OUTPUT);
-  setBacklightOn(true);
 
   // Init buttons and add to manager
   m_buttons = new UniversalInputManager();

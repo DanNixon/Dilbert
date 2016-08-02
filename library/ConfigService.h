@@ -3,6 +3,9 @@
 #ifndef _CONFIGSERVICE_H_
 #define _CONFIGSERVICE_H_
 
+#include "SystemConfigData.h"
+#include "IConfigStorage.h"
+
 /**
  * @class ConfigService
  * @author Dan Nixon
@@ -10,7 +13,37 @@
  */
 class ConfigService
 {
-  /* TODO */
+public:
+  /**
+   * @brief Gets the configuration service.
+   * @return Instance of the configuration service
+   */
+  static ConfigService &Instance()
+  {
+    static ConfigService instance;
+    return instance;
+  }
+
+  void setDefaultConfig();
+
+  bool loadFrom(IConfigStorage *storage);
+  bool saveTo(IConfigStorage *storage) const;
+
+  /**
+   * @brief Gets the system configuration.
+   * @return System configuration data
+   */
+  inline SystemConfigData getConfig() const
+  {
+    return m_configData;
+  }
+
+private:
+  ConfigService();
+  ConfigService(ConfigService const &);
+  void operator=(ConfigService const &);
+
+  SystemConfigData m_configData;
 };
 
 #endif

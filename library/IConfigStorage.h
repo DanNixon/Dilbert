@@ -3,6 +3,8 @@
 #ifndef _ICONFIGSTORAGE_H_
 #define _ICONFIGSTORAGE_H_
 
+#include "SystemConfigData.h"
+
 /**
  * @class IConfigStorage
  * @author Dan Nixon
@@ -10,7 +12,20 @@
  */
 class IConfigStorage
 {
-  /* TODO */
+public:
+  /**
+   * @brief Saves a system configuration.
+   * @param data Pointer to a system data to save
+   * @return True for successful saving
+   */
+  virtual bool save(const SystemConfigData *data) = 0;
+
+  /**
+   * @brief Loads a system configuration.
+   * @param data Pointer to a system data to store loaded values in
+   * @return True for successful loading
+   */
+  virtual bool load(SystemConfigData *data) = 0;
 };
 
 #endif

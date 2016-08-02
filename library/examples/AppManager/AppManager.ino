@@ -17,8 +17,9 @@
 #include <Dilbert.h>
 #include <AppManager.h>
 #include <MenuApp.h>
+#include <ButtonTestApp.h>
+#include <SystemSettingsApp.h>
 
-#include "DemoApp.h"
 #include "ProfileApp.h"
 
 /* #define USE_BUTTON_INTERRUPTS */
@@ -39,9 +40,9 @@ void setup()
   appManager.addApp(new MenuApp(2));
 
   /* Add other applications */
+  appManager.addApp(new SystemSettingsApp());
   appManager.addApp(new ProfileApp());
-  appManager.addApp(new DemoApp("Demo ONE"));
-  appManager.addApp(new DemoApp("Demo TWO"));
+  appManager.addApp(new ButtonTestApp());
 
   /* Must call this after adding all apps */
   appManager.begin();

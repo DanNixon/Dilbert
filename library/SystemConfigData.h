@@ -3,6 +3,8 @@
 #ifndef _SYSTEMCONFIGDATA_H_
 #define _SYSTEMCONFIGDATA_H_
 
+#include <Arduino.h>
+
 /**
  * @enum SystemConfigData
  * @author Dan Nixon

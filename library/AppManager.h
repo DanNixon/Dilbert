@@ -15,6 +15,10 @@
  */
 #define MAX_NUM_APPS 16
 
+#define BACKLIGHT_STATE_FULL 2
+#define BACKLIGHT_STATE_DIM 1
+#define BACKLIGHT_STATE_OFF 0
+
 class App;
 
 /**
@@ -59,15 +63,23 @@ public:
     return m_apps[m_activeAppIdx];
   }
 
+  void feedBacklight();
+
   void run();
 
   void handleUniversalInputEvent(inputtype_t type, IInputDevice *device);
+
+private:
+  void updateBacklightOutput();
 
 private:
   Dilbert *m_badge;
   App *m_apps[MAX_NUM_APPS];
   char *m_appNames[MAX_NUM_APPS];
   uint8_t m_activeAppIdx;
+
+  uint8_t m_backlightStatus;
+  uint32_t m_lastBacklightFeedTime;
 };
 
 #endif
