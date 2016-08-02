@@ -47,11 +47,7 @@ bool SystemSettingsApp::handleButton(IButton *button)
   {
     /* TODO */
 
-    default:
-      return false;
-    }
-
-    return true;
+    return false;
   }
 
   return false;
