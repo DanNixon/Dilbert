@@ -81,6 +81,7 @@ bool MenuApp::handleButton(IButton *button)
     switch (button->getID())
     {
     case Dilbert::BUTTON_DOWN:
+      /* Next item */
       m_selectedAppIndex++;
       if (m_selectedAppIndex >= m_manager->numApps())
         m_selectedAppIndex = 0;
@@ -88,6 +89,7 @@ bool MenuApp::handleButton(IButton *button)
       break;
 
     case Dilbert::BUTTON_UP:
+      /* Previous item */
       if (m_selectedAppIndex == 0)
         m_selectedAppIndex = m_manager->numApps();
       m_selectedAppIndex--;
@@ -95,6 +97,7 @@ bool MenuApp::handleButton(IButton *button)
       break;
 
     case Dilbert::BUTTON_B:
+      /* First item */
       m_selectedAppIndex = 0;
       redrawSelectonIcon();
       break;

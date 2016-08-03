@@ -13,6 +13,9 @@
 class SystemSettingsApp : public App
 {
 public:
+  static const size_t NUM_OPTIONS = 6;
+
+public:
   SystemSettingsApp();
   virtual ~SystemSettingsApp();
 
@@ -20,6 +23,12 @@ public:
   virtual void onEntry();
 
   virtual bool handleButton(IButton *button);
+
+private:
+  void redraw();
+
+private:
+  size_t m_selectedIndex; //!< Index of currently selected setting item
 };
 
 #endif
