@@ -174,6 +174,7 @@ void AppManager::run()
           ConfigService::Instance().getConfig().backButtonExitDelay)
   {
     m_apps[m_activeAppIdx]->exit();
+    feedBacklight();
     m_appExitFlag = true;
   }
 
