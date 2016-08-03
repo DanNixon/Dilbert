@@ -20,7 +20,7 @@ void ConfigService::setDefaultConfig()
   m_configData.backlightFullBrightness = PWMRANGE;
   m_configData.backlightPowerSaveBrightness = 150;
   m_configData.backlightTimeToPowerSaveMs = 10000;
-  m_configData.backlightTimeToOffMs = 60000;
+  m_configData.backlightTimeToOffMs = 0000;
 }
 
 /**

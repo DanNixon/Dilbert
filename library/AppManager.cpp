@@ -182,21 +182,21 @@ void AppManager::run()
   if (m_backlightStatus > BACKLIGHT_STATE_OFF)
   {
     uint32_t backlightDeltaT = millis() - m_lastBacklightFeedTime;
-    bool backlightTimeout = false;
 
+    /* Get threshold */
+    uint32_t backlightTimeout = 0;
     switch (m_backlightStatus)
     {
     case BACKLIGHT_STATE_FULL:
-      backlightTimeout =
-          backlightDeltaT >= ConfigService::Instance().getConfig().backlightTimeToPowerSaveMs;
+      backlightTimeout = ConfigService::Instance().getConfig().backlightTimeToPowerSaveMs;
       break;
     case BACKLIGHT_STATE_DIM:
-      backlightTimeout =
-          backlightDeltaT >= ConfigService::Instance().getConfig().backlightTimeToOffMs;
+      backlightTimeout = ConfigService::Instance().getConfig().backlightTimeToOffMs;
       break;
     }
 
-    if (backlightTimeout)
+    /* Ignore a timeout value of 0 */
+    if (backlightTimeout > 0 && backlightDeltaT >= backlightTimeout)
     {
       m_backlightStatus--;
       updateBacklightOutput();
