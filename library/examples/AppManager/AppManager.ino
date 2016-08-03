@@ -17,10 +17,10 @@
 #include <Dilbert.h>
 #include <AppManager.h>
 #include <MenuApp.h>
+#include <ButtonTestApp.h>
+#include <SystemSettingsApp.h>
 
-#include "DemoApp.h"
 #include "ProfileApp.h"
-#include "StarsApp.h"
 
 /* #define USE_BUTTON_INTERRUPTS */
 
@@ -40,14 +40,12 @@ void setup()
   appManager.addApp(new MenuApp(2));
 
   /* Add other applications */
+  appManager.addApp(new SystemSettingsApp());
   appManager.addApp(new ProfileApp());
-  appManager.addApp(new StarsApp());
-  appManager.addApp(new DemoApp("TWO"));
-  appManager.addApp(new DemoApp("THREE"));
-  appManager.addApp(new DemoApp("FOUR"));
-  appManager.addApp(new DemoApp("FIVE"));
-  appManager.addApp(new DemoApp("SIX"));
-  appManager.addApp(new DemoApp("SEVEN"));
+  appManager.addApp(new ButtonTestApp());
+
+  /* Small delay before app manager start (which turns on backlight) */
+  delay(100);
 
   /* Must call this after adding all apps */
   appManager.begin();
