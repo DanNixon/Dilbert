@@ -6,7 +6,6 @@
 #include <Arduino.h>
 
 /**
- * @enum SystemConfigData
  * @author Dan Nixon
  * @brief Used to store system configuration data
  */
