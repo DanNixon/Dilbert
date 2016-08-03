@@ -30,7 +30,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Uses the following Arduino libraries:
 
-- [Adafruit ILI9341](https://github.com/adafruit/Adafruit_ILI9341)
+- [Adafruit ILI9341](https://github.com/Links2004/Adafruit_ILI9341) (the
+  Links2004 fork can provide much faster display updates than the [Adafruit
+  library](https://github.com/adafruit/Adafruit_ILI9341))
 - [Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library)
 - [Adafruit NeoPixel](https://github.com/adafruit/Adafruit_NeoPixel)
 - [Adafruit MCP23017](https://github.com/adafruit/Adafruit-MCP23017-Arduino-Library)
