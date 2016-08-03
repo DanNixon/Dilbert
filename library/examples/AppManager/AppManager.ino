@@ -44,6 +44,9 @@ void setup()
   appManager.addApp(new ProfileApp());
   appManager.addApp(new ButtonTestApp());
 
+  /* Small delay before app manager start (which turns on backlight) */
+  delay(100);
+
   /* Must call this after adding all apps */
   appManager.begin();
 

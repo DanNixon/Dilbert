@@ -35,21 +35,22 @@ void Dilbert::begin(size_t numNeoPixels)
 {
   ESP.wdtDisable();
 
-  // Init IO
+  /* Init IO */
   m_io = new Adafruit_MCP23017();
   m_io->begin();
   m_io->setupInterrupts(true, false, LOW);
   pinMode(MCP23017_INT_GPIO, INPUT_PULLUP);
 
-  // Init display
+  /* Init display */
   m_tftDisplay = new Adafruit_ILI9341(TFT_CS_GPIO, TFT_DC_GPIO);
   m_tftDisplay->begin();
   m_tftDisplay->fillScreen(ILI9341_BLACK);
 
-  // Init backlight
+  /* Init backlight */
   pinMode(TFT_BACKLIGHT_GPIO, OUTPUT);
+  setBacklightOn(false);
 
-  // Init buttons and add to manager
+  /* Init buttons and add to manager */
   m_buttons = new UniversalInputManager();
   m_buttons->addDevice(new MCP23017Button(m_io, BUTTON_UP, BUTTON_UP));
   m_buttons->addDevice(new MCP23017Button(m_io, BUTTON_DOWN, BUTTON_DOWN));
@@ -58,7 +59,7 @@ void Dilbert::begin(size_t numNeoPixels)
   m_buttons->addDevice(new MCP23017Button(m_io, BUTTON_A, BUTTON_A));
   m_buttons->addDevice(new MCP23017Button(m_io, BUTTON_B, BUTTON_B));
 
-  // Init NeoPixels
+  /* Init NeoPixels */
   m_neopixels = new Adafruit_NeoPixel(numNeoPixels, NEOPIXEL_GPIO, NEO_GRB + NEO_KHZ800);
   m_neopixels->begin();
 
