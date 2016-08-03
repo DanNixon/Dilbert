@@ -21,6 +21,7 @@
 #include <SystemSettingsApp.h>
 
 #include "ProfileApp.h"
+#include "StarsApp.h"
 
 /* #define USE_BUTTON_INTERRUPTS */
 
@@ -43,7 +44,7 @@ void setup()
   appManager.addApp(new SystemSettingsApp());
   appManager.addApp(new ProfileApp());
   appManager.addApp(new ButtonTestApp());
-
+  appManager.addApp(new StarsApp());
   /* Small delay before app manager start (which turns on backlight) */
   delay(100);
 
