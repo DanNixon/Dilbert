@@ -10,6 +10,7 @@
 		long col;
 		float x;
 		float y;
+		int size;
 	};
 
 
@@ -52,10 +53,8 @@ public:
 	
 	for(int a = 0; a < starCount; a++)
 	{
-		stars[a].col = random(16777215);
-		stars[a].x = random(240);
-		stars[a].y = random(320);
-		m_badge->display().drawPixel(int(stars[a].x), int(stars[a].y), stars[a].col);
+		newRandomStar(a);
+		drawStar(a);
 	}
 	
 
@@ -66,12 +65,12 @@ public:
 	{
 		App::run();
 		
-		if(millis() >= last_ran + framedelay)
+		if(millis() >= last_ran + framedelay and mode != 5)
 		{
 			last_ran = millis();
 			for(int a = 0; a < starCount; a++)
 			{
-				m_badge->display().drawPixel(int(stars[a].x), int(stars[a].y), 0);
+				hideStar(a);
 				if (mode == 0) /* LEFT */
 				{
 					stars[a].x += speed;
@@ -115,19 +114,13 @@ public:
 				else if (mode == 4) /* FORWARDS */
 				{
 					stars[a].x += (stars[a].x - 120) * zoom;
-					if(stars[a].x < 0 or stars[a].x >= 240)
-					{
-						stars[a].x = random(240);
-						stars[a].col = random(16777215);
-					}
 					stars[a].y += (stars[a].y - 160) * zoom;
-					if(stars[a].y < 0 or stars[a].y >= 320)
+					if(stars[a].x < 0 or stars[a].x >= 240 or stars[a].y < 0 or stars[a].y >= 320)
 					{
-						stars[a].y = random(320);
-						stars[a].col = random(16777215);
+						newRandomStar(a);
 					}
 				}
-				m_badge->display().drawPixel(int(stars[a].x), int(stars[a].y), stars[a].col);
+				drawStar(a);
 			}
 		}
 
@@ -150,6 +143,42 @@ public:
     }
 
     return true;
+  }
+  
+  void newRandomStar(int a)
+  {
+	stars[a].col = random(16777215);
+	stars[a].size = random(3);
+	stars[a].size = random(stars[a].size);
+	do
+	{
+		stars[a].x = random(240);
+		stars[a].y = random(320);
+	} while (stars[a].x == 120 and stars[a].y == 160);
+  }
+  
+  void hideStar(int a)
+  {
+	if(stars[a].size == 0)
+	{
+		m_badge->display().drawPixel(int(stars[a].x), int(stars[a].y), 0);
+	}
+	else
+	{
+		m_badge->display().fillCircle(int(stars[a].x), int(stars[a].y), stars[a].size, 0);
+	} 
+  }
+
+  void drawStar(int a)
+  {
+	if(stars[a].size == 0)
+	{
+		m_badge->display().drawPixel(int(stars[a].x), int(stars[a].y), stars[a].col);
+	}
+	else
+	{
+		m_badge->display().fillCircle(int(stars[a].x), int(stars[a].y), stars[a].size, stars[a].col);
+	} 
   }
   
 protected:
