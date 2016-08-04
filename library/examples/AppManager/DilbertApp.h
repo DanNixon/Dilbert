@@ -26,17 +26,13 @@ public:
   virtual void onEntry()
   {
     App::onEntry();
+    
 	/* Clear the screen */
 	m_badge->display().fillScreen(ILI9341_BLACK);
 	
 	drawHeader();
 	drawDilbert();
   }
-
-	virtual void run()
-	{
-		//App::run();
-	}
 	
    /**
    * @copydoc App::handleButton
@@ -45,17 +41,8 @@ public:
   {
     if (App::handleButton(button))
       return true;
-
-    /* Output some details about the buttons */
-    if (button->isActive())
-    {
-//			mode = button->getID();
-    }
-    else
-    {
-    }
-
-    return true;
+      
+    return false;
   }
   
   void drawHeader()
@@ -65,6 +52,7 @@ public:
 	m_badge->display().setTextSize(4);
 	m_badge->display().println("Dilbert");
   }
+  
   void drawDilbert()
   {
 
@@ -111,8 +99,6 @@ public:
 	m_badge->display().println("  _..--'      |   |      `--.._");
 	m_badge->display().println(" ;________.___|   |___.________;");
   }
-  
-protected:
  
 };
 
