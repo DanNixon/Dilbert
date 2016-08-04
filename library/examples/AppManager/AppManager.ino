@@ -22,6 +22,7 @@
 
 #include "ProfileApp.h"
 #include "StarsApp.h"
+#include "DilbertApp.h"
 
 /* #define USE_BUTTON_INTERRUPTS */
 
@@ -45,6 +46,7 @@ void setup()
   appManager.addApp(new ProfileApp());
   appManager.addApp(new ButtonTestApp());
   appManager.addApp(new StarsApp());
+  appManager.addApp(new DilbertApp());
 
   /* Small delay before app manager start (which turns on backlight) */
   delay(100);
