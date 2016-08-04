@@ -15,7 +15,7 @@ before_install:
 
 install:
   - git clone https://github.com/Links2004/Adafruit_ILI9341.git $HOME/arduino_ide/libraries/Adafruit_ILI9341
-  - git clone https://github.com/adafruit/Adafruit_GFX.git $HOME/arduino_ide/libraries/Adafruit_GFX
+  - git clone https://github.com/adafruit/Adafruit-GFX-Library.git $HOME/arduino_ide/libraries/Adafruit-GFX-Library
   - git clone https://github.com/adafruit/Adafruit_NeoPixel.git $HOME/arduino_ide/libraries/Adafruit_NeoPixel
   - git clone https://github.com/DanNixon/ArduinoUniversalInputs.git $HOME/arduino_ide/libraries/ArduinoUniversalInputs
 
