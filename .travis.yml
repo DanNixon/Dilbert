@@ -19,10 +19,10 @@ install:
   - git clone https://github.com/adafruit/Adafruit_NeoPixel.git $HOME/arduino_ide/libraries/Adafruit_NeoPixel
   - git clone https://github.com/DanNixon/ArduinoUniversalInput.git $HOME/arduino_ide/libraries/ArduinoUniversalInput
 
+  - ln -s $PWD/library $HOME/arduino_ide/libraries/Dilbert
+
 script:
-  - cd library
   - build_platform esp8266
-  - cd ..
   - doxygen
   - ./.travis_deploy_docs.sh
 
