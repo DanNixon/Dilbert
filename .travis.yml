@@ -11,10 +11,12 @@ env:
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y doxygen graphviz
-  # - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
+  - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
 
 script:
-  # - build_platform esp8266
+  - cd library
+  - build_platform esp8266
+  - cd ..
   - doxygen
   - ./.travis_deploy_docs.sh
 
