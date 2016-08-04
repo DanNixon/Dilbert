@@ -62,7 +62,7 @@ void loop()
     Serial.println(mcp.readGPIOAB(), BIN);
 
     /* Reset interrupt state */
-    EIFR = 0x01;
+    /* EIFR = 0x01; */
     interrupt_wake = false;
   }
 }

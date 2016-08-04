@@ -12,6 +12,8 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_NeoPixel.h>
 #include <Adafruit_ILI9341.h>
+#include <UniversalInputManager.h>
+#include <IButton.h>
 
 #include <Adafruit_MCP23017.h>
 #include <Dilbert.h>
