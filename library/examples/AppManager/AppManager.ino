@@ -45,6 +45,7 @@ void setup()
   appManager.addApp(new ProfileApp());
   appManager.addApp(new ButtonTestApp());
   appManager.addApp(new StarsApp());
+
   /* Small delay before app manager start (which turns on backlight) */
   delay(100);
 
