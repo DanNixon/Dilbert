@@ -18,9 +18,9 @@ void ConfigService::setDefaultConfig()
 {
   m_configData.backButtonExitDelay = 500;
   m_configData.backlightFullBrightness = PWMRANGE;
-  m_configData.backlightPowerSaveBrightness = 150;
-  m_configData.backlightTimeToPowerSaveMs = 10000;
-  m_configData.backlightTimeToOffMs = 0000;
+  m_configData.backlightPowerSaveBrightness = 750;
+  m_configData.backlightTimeToPowerSaveMs = 1000;
+  m_configData.backlightTimeToOffMs = 0;
 }
 
 /**
