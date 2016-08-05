@@ -11,7 +11,14 @@
  * 18 pullup to 5V (RST)
  */
 
+#include <SPI.h>
 #include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_NeoPixel.h>
+#include <Adafruit_ILI9341.h>
+#include <UniversalInputManager.h>
+#include <IButton.h>
+
 #include <Adafruit_MCP23017.h>
 
 #define INTERRUPT_PIN 2
