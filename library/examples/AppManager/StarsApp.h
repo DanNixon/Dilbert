@@ -45,7 +45,7 @@ public:
     for (int a = 0; a < STAR_COUNT; a++)
     {
       newRandomStar(a);
-	  drawStar(a);
+      drawStar(a);
     }
   }
 
@@ -73,7 +73,7 @@ public:
           m_stars[a].y -= m_speed;
           if (m_stars[a].y < 0)
           {
-			newRandomStar(a);
+            newRandomStar(a);
             m_stars[a].y = 319 - random(m_speed);
           }
         }
@@ -98,10 +98,10 @@ public:
         else if (m_mode == 4) /* FORWARDS */
         {
           m_stars[a].x += (m_stars[a].x - 120) * m_zoom;
-		  m_stars[a].y += (m_stars[a].y - 160) * m_zoom;
+          m_stars[a].y += (m_stars[a].y - 160) * m_zoom;
           if (m_stars[a].x < 0 or m_stars[a].x >= 240 or m_stars[a].y < 0 or m_stars[a].y >= 320)
           {
-			newRandomStar(a);
+            newRandomStar(a);
           }
         }
         drawStar(a);
@@ -125,8 +125,7 @@ public:
 
     return false;
   }
-  
-  
+
 private:
   struct Star m_stars[STAR_COUNT];
   long m_lastRan = millis();
@@ -138,41 +137,40 @@ private:
 
   void newRandomStar(int a)
   {
-	m_stars[a].col = random(16777215);
-	m_stars[a].size = random(3);
-	m_stars[a].size = random(m_stars[a].size);
-	do
-	{
-		m_stars[a].x = random(240);
-		m_stars[a].y = random(320);
-	} while (m_stars[a].x == 120 and m_stars[a].y == 160);
+    m_stars[a].col = random(16777215);
+    m_stars[a].size = random(3);
+    m_stars[a].size = random(m_stars[a].size);
+    do
+    {
+      m_stars[a].x = random(240);
+      m_stars[a].y = random(320);
+    } while (m_stars[a].x == 120 and m_stars[a].y == 160);
   }
-  
+
   void hideStar(int a)
   {
-	if(m_stars[a].size == 0)
-	{
-		m_badge->display().drawPixel(int(m_stars[a].x), int(m_stars[a].y), 0);
-	}
-	else
-	{
-		m_badge->display().fillCircle(int(m_stars[a].x), int(m_stars[a].y), m_stars[a].size, 0);
-	} 
+    if (m_stars[a].size == 0)
+    {
+      m_badge->display().drawPixel(int(m_stars[a].x), int(m_stars[a].y), 0);
+    }
+    else
+    {
+      m_badge->display().fillCircle(int(m_stars[a].x), int(m_stars[a].y), m_stars[a].size, 0);
+    }
   }
 
   void drawStar(int a)
   {
-	if(m_stars[a].size == 0)
-	{
-		m_badge->display().drawPixel(int(m_stars[a].x), int(m_stars[a].y), m_stars[a].col);
-	}
-	else
-	{
-		m_badge->display().fillCircle(int(m_stars[a].x), int(m_stars[a].y), m_stars[a].size, m_stars[a].col);
-	} 
+    if (m_stars[a].size == 0)
+    {
+      m_badge->display().drawPixel(int(m_stars[a].x), int(m_stars[a].y), m_stars[a].col);
+    }
+    else
+    {
+      m_badge->display().fillCircle(int(m_stars[a].x), int(m_stars[a].y), m_stars[a].size,
+                                    m_stars[a].col);
+    }
   }
-  
 };
 
-  
 #endif
