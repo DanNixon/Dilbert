@@ -3,8 +3,8 @@
 #ifndef _CONFIGSERVICE_H_
 #define _CONFIGSERVICE_H_
 
-#include "SystemConfigData.h"
 #include "IConfigStorage.h"
+#include "SystemConfigData.h"
 
 /**
  * @class ConfigService

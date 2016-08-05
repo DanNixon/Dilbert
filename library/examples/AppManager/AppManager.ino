@@ -12,6 +12,8 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_NeoPixel.h>
 #include <Adafruit_ILI9341.h>
+#include <UniversalInputManager.h>
+#include <IButton.h>
 
 #include <Adafruit_MCP23017.h>
 #include <Dilbert.h>
@@ -47,7 +49,7 @@ void setup()
   appManager.addApp(new ButtonTestApp());
   appManager.addApp(new StarsApp());
   appManager.addApp(new DilbertApp());
-  
+
   /* Small delay before app manager start (which turns on backlight) */
   delay(100);
 

@@ -4,7 +4,13 @@
  * @brief Testing button integration using Universal Inputs.
  */
 
+#include <SPI.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_NeoPixel.h>
+#include <Adafruit_ILI9341.h>
 #include <UniversalInputManager.h>
+#include <IButton.h>
 #include <MCP23017Button.h>
 
 #include <Adafruit_MCP23017.h>

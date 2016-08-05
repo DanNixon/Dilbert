@@ -11,10 +11,18 @@ env:
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y doxygen graphviz
-  # - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
+  - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
+
+install:
+  - git clone https://github.com/Links2004/Adafruit_ILI9341.git $HOME/arduino_ide/libraries/Adafruit_ILI9341
+  - git clone https://github.com/adafruit/Adafruit-GFX-Library.git $HOME/arduino_ide/libraries/Adafruit-GFX-Library
+  - git clone https://github.com/adafruit/Adafruit_NeoPixel.git $HOME/arduino_ide/libraries/Adafruit_NeoPixel
+  - git clone https://github.com/DanNixon/ArduinoUniversalInput.git $HOME/arduino_ide/libraries/ArduinoUniversalInput
+
+  - ln -s $PWD/library $HOME/arduino_ide/libraries/Dilbert
 
 script:
-  # - build_platform esp8266
+  - build_platform esp8266
   - doxygen
   - ./.travis_deploy_docs.sh
 

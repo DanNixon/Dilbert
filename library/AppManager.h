@@ -4,10 +4,10 @@
 #define _APPMANAGER_H_
 
 #include <Arduino.h>
-#include <UniversalInputTypes.h>
+#include <IButton.h>
 #include <IInputDevice.h>
 #include <IUniversalInputCallback.h>
-#include <IButton.h>
+#include <UniversalInputTypes.h>
 
 #include "Dilbert.h"
 
@@ -79,7 +79,7 @@ private:
   char *m_appNames[MAX_NUM_APPS];
   uint8_t m_activeAppIdx;
 
-  IButton * m_bButton;
+  IButton *m_bButton;
   bool m_appExitFlag;
 
   uint8_t m_backlightStatus;
