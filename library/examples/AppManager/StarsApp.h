@@ -10,6 +10,7 @@ struct Star
   long col;
   float x;
   float y;
+  int size;
 };
 
 /**
@@ -43,10 +44,8 @@ public:
 
     for (int a = 0; a < STAR_COUNT; a++)
     {
-      m_stars[a].col = random(16777215);
-      m_stars[a].x = random(240);
-      m_stars[a].y = random(320);
-      m_badge->display().drawPixel(int(m_stars[a].x), int(m_stars[a].y), m_stars[a].col);
+      newRandomStar(a);
+	  drawStar(a);
     }
   }
 
@@ -54,20 +53,19 @@ public:
   {
     App::run();
 
-    if (millis() >= m_lastRan + m_frameDelay)
+    if (millis() >= m_lastRan + m_frameDelay and m_mode != 5)
     {
       m_lastRan = millis();
       for (int a = 0; a < STAR_COUNT; a++)
       {
-        m_badge->display().drawPixel(int(m_stars[a].x), int(m_stars[a].y), 0);
+        hideStar(a);
         if (m_mode == 0) /* LEFT */
         {
           m_stars[a].x += m_speed;
           if (m_stars[a].x >= 240)
           {
+            newRandomStar(a);
             m_stars[a].x = random(m_speed);
-            m_stars[a].y = random(320);
-            m_stars[a].col = random(16777215);
           }
         }
         else if (m_mode == 1) /* UP */
@@ -75,9 +73,8 @@ public:
           m_stars[a].y -= m_speed;
           if (m_stars[a].y < 0)
           {
+			newRandomStar(a);
             m_stars[a].y = 319 - random(m_speed);
-            m_stars[a].x = random(240);
-            m_stars[a].col = random(16777215);
           }
         }
         else if (m_mode == 2) /* DOWN */
@@ -85,9 +82,8 @@ public:
           m_stars[a].y += m_speed;
           if (m_stars[a].y >= 320)
           {
+            newRandomStar(a);
             m_stars[a].y = random(m_speed);
-            m_stars[a].x = random(240);
-            m_stars[a].col = random(16777215);
           }
         }
         else if (m_mode == 3) /* RIGHT */
@@ -95,27 +91,20 @@ public:
           m_stars[a].x -= m_speed;
           if (m_stars[a].x < 0)
           {
+            newRandomStar(a);
             m_stars[a].x = 239 - random(m_speed);
-            m_stars[a].y = random(320);
-            m_stars[a].col = random(16777215);
           }
         }
         else if (m_mode == 4) /* FORWARDS */
         {
           m_stars[a].x += (m_stars[a].x - 120) * m_zoom;
-          if (m_stars[a].x < 0 or m_stars[a].x >= 240)
+		  m_stars[a].y += (m_stars[a].y - 160) * m_zoom;
+          if (m_stars[a].x < 0 or m_stars[a].x >= 240 or m_stars[a].y < 0 or m_stars[a].y >= 320)
           {
-            m_stars[a].x = random(240);
-            m_stars[a].col = random(16777215);
-          }
-          m_stars[a].y += (m_stars[a].y - 160) * m_zoom;
-          if (m_stars[a].y < 0 or m_stars[a].y >= 320)
-          {
-            m_stars[a].y = random(320);
-            m_stars[a].col = random(16777215);
+			newRandomStar(a);
           }
         }
-        m_badge->display().drawPixel(int(m_stars[a].x), int(m_stars[a].y), m_stars[a].col);
+        drawStar(a);
       }
     }
   }
@@ -136,7 +125,8 @@ public:
 
     return false;
   }
-
+  
+  
 private:
   struct Star m_stars[STAR_COUNT];
   long m_lastRan = millis();
@@ -145,6 +135,44 @@ private:
       .1; /* Speed of forward motion (% of distance from centre point to add each frame) */
   int m_speed = 10; /* No of pixels to travel for each frame in L/R/U/D modes */
   int m_mode = 5;   /* Direction of travel (relates to button IDs) */
+
+  void newRandomStar(int a)
+  {
+	m_stars[a].col = random(16777215);
+	m_stars[a].size = random(3);
+	m_stars[a].size = random(m_stars[a].size);
+	do
+	{
+		m_stars[a].x = random(240);
+		m_stars[a].y = random(320);
+	} while (m_stars[a].x == 120 and m_stars[a].y == 160);
+  }
+  
+  void hideStar(int a)
+  {
+	if(m_stars[a].size == 0)
+	{
+		m_badge->display().drawPixel(int(m_stars[a].x), int(m_stars[a].y), 0);
+	}
+	else
+	{
+		m_badge->display().fillCircle(int(m_stars[a].x), int(m_stars[a].y), m_stars[a].size, 0);
+	} 
+  }
+
+  void drawStar(int a)
+  {
+	if(m_stars[a].size == 0)
+	{
+		m_badge->display().drawPixel(int(m_stars[a].x), int(m_stars[a].y), m_stars[a].col);
+	}
+	else
+	{
+		m_badge->display().fillCircle(int(m_stars[a].x), int(m_stars[a].y), m_stars[a].size, m_stars[a].col);
+	} 
+  }
+  
 };
 
+  
 #endif
