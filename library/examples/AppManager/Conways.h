@@ -160,7 +160,7 @@
 		}
 		
 	public:
-		Conways(char *name):App(name),wait(500),next(millis()),currPattern(0),worldX(0),worldY(0),getDots(true){
+		Conways():App("Conways"),wait(500),next(millis()),currPattern(0),worldX(0),worldY(0),getDots(true){
 		}
 		
 		~Conways(){

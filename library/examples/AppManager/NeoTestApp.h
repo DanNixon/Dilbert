@@ -12,8 +12,8 @@
 		int currPattern=0;
 		NPPattern*patterns[PATTERN_COUNT];
 	public:
-		NeoTestApp(char *name)
-			: App(name){
+		NeoTestApp()
+			: App("NeoTestApp"){
 				strip = new Adafruit_NeoPixel(8, PIN, NEO_GRB + NEO_KHZ800);
 				patterns[0] = new RainbowCycle(strip,20);
 				patterns[1] = new RainbowChase(strip,50);
