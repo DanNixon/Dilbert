@@ -58,9 +58,9 @@ class SystemConfigData
     {
       m_values[CONFIG_BACK_BUTTON_EXIT_DELAY] = 500;
       m_values[CONFIG_BL_FULL_BRIGHT] = PWMRANGE;
-      m_values[CONFIG_BL_DIM_BRIGHT] = 750;
-      m_values[CONFIG_BL_DIM_TIMEOUT] = 1000;
-      m_values[CONFIG_BL_OFF_TIMEOUT] = 0;
+      m_values[CONFIG_BL_DIM_BRIGHT] = 256;
+      m_values[CONFIG_BL_DIM_TIMEOUT] = 10000;
+      m_values[CONFIG_BL_OFF_TIMEOUT] = 60000;
     }
 
     /**
