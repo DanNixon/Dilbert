@@ -25,7 +25,7 @@ public:
   }
 
   bool loadFrom(IConfigStorage *storage);
-  bool saveTo(IConfigStorage *storage) const;
+  bool saveTo(IConfigStorage *storage);
 
   /**
    * @brief Gets the system configuration.

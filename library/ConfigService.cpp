@@ -29,7 +29,7 @@ bool ConfigService::loadFrom(IConfigStorage *storage)
  * @param storage Storage to save to
  * @return True for a successful save
  */
-bool ConfigService::saveTo(IConfigStorage *storage) const
+bool ConfigService::saveTo(IConfigStorage *storage)
 {
   if (storage == nullptr)
     return false;

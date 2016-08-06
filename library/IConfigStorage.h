@@ -13,12 +13,15 @@
 class IConfigStorage
 {
 public:
+  IConfigStorage() {}
+  virtual ~IConfigStorage() {}
+
   /**
    * @brief Saves a system configuration.
    * @param data Pointer to a system data to save
    * @return True for successful saving
    */
-  virtual bool save(const SystemConfigData *data) = 0;
+  virtual bool save(SystemConfigData *data) = 0;
 
   /**
    * @brief Loads a system configuration.

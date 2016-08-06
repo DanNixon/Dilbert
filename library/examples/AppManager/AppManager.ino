@@ -21,6 +21,8 @@
 #include <MenuApp.h>
 #include <ButtonTestApp.h>
 #include <SystemSettingsApp.h>
+#include <SPIFFSConfigService.h>
+#include <ConfigService.h>
 
 #include "ProfileApp.h"
 #include "StarsApp.h"
@@ -40,6 +42,10 @@ volatile bool gpio_interrupt;
 void setup()
 {
   badge.begin();
+
+  IConfigStorage * cs = new SPIFFSConfigService();
+  ConfigService::Instance().loadFrom(cs);
+  delete cs;
 
   /* Add the app menu application
    * Typically this shoud always be the first added */
