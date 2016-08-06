@@ -2,7 +2,8 @@
 
 #include "SPIFFSConfigService.h"
 
-SPIFFSConfigService::SPIFFSConfigService() : IConfigStorage()
+SPIFFSConfigService::SPIFFSConfigService()
+    : IConfigStorage()
 {
   m_init = SPIFFS.begin();
 }
@@ -18,9 +19,9 @@ bool SPIFFSConfigService::save(SystemConfigData *data)
 {
   bool retVal = true;
 
-  for(size_t i = 0; i < SystemConfigData::NUM_CONFIGS; i++)
+  for (size_t i = 0; i < SystemConfigData::NUM_CONFIGS; i++)
   {
-    Config c = (Config) i;
+    Config c = (Config)i;
     File file = openFile(data->name(c), true);
     if (file)
     {
@@ -39,9 +40,9 @@ bool SPIFFSConfigService::load(SystemConfigData *data)
 {
   bool retVal = true;
 
-  for(size_t i = 0; i < SystemConfigData::NUM_CONFIGS; i++)
+  for (size_t i = 0; i < SystemConfigData::NUM_CONFIGS; i++)
   {
-    Config c = (Config) i;
+    Config c = (Config)i;
     File file = openFile(data->name(c), false);
     if (file)
     {
@@ -53,7 +54,7 @@ bool SPIFFSConfigService::load(SystemConfigData *data)
   return retVal;
 }
 
-File SPIFFSConfigService::openFile(char * configName, bool write)
+File SPIFFSConfigService::openFile(char *configName, bool write)
 {
   size_t len = strlen(configName) + 6;
   char filename[len];

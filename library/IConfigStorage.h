@@ -13,8 +13,12 @@
 class IConfigStorage
 {
 public:
-  IConfigStorage() {}
-  virtual ~IConfigStorage() {}
+  IConfigStorage()
+  {
+  }
+  virtual ~IConfigStorage()
+  {
+  }
 
   /**
    * @brief Saves a system configuration.

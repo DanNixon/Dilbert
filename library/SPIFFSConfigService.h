@@ -15,18 +15,18 @@
  */
 class SPIFFSConfigService : public IConfigStorage
 {
-  public:
-    SPIFFSConfigService();
-    virtual ~SPIFFSConfigService();
+public:
+  SPIFFSConfigService();
+  virtual ~SPIFFSConfigService();
 
-    virtual bool save(SystemConfigData *data);
-    virtual bool load(SystemConfigData *data);
+  virtual bool save(SystemConfigData *data);
+  virtual bool load(SystemConfigData *data);
 
-  private:
-    File openFile(char * configName, bool write);
+private:
+  File openFile(char *configName, bool write);
 
-  private:
-    bool m_init; //!< If the file system was initialised properly
+private:
+  bool m_init; //!< If the file system was initialised properly
 };
 
 #endif

@@ -24,7 +24,7 @@ public:
     return instance;
   }
 
-  inline void setStorage(IConfigStorage * storage)
+  inline void setStorage(IConfigStorage *storage)
   {
     m_storage = storage;
   }
@@ -64,7 +64,7 @@ private:
 
   SystemConfigData m_configData;
 
-  IConfigStorage * m_storage;
+  IConfigStorage *m_storage;
 };
 
 #endif
