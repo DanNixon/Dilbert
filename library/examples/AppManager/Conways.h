@@ -296,6 +296,8 @@ public:
 
   void run()
   {
+    m_manager->feedBacklight(BACKLIGHT_STATE_DIM);
+
     if (next < millis())
     {
       next = millis() + wait;

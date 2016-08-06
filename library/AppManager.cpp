@@ -9,10 +9,10 @@
  * @brief Creates a new application manager.
  * @param badge Pointer to badge driver
  */
-AppManager::AppManager(Dilbert *badge)
-    : m_badge(badge)
-    , m_activeAppIdx(0)
-    , m_bButton(nullptr)
+  AppManager::AppManager(Dilbert *badge)
+  : m_badge(badge)
+  , m_activeAppIdx(0)
+  , m_bButton(nullptr)
     , m_appExitFlag(false)
 {
   for (uint8_t i = 0; i < MAX_NUM_APPS; i++)
@@ -149,16 +149,17 @@ size_t AppManager::numApps() const
  * @brief Ensures that the backlight stays on, otherwise it is susceptible to
  *        the timeouts set in SystemConfigData.
  */
-void AppManager::feedBacklight()
+void AppManager::feedBacklight(uint8_t status)
 {
-  /* Turn the backlight back on to main brightness */
-  if (m_backlightStatus < BACKLIGHT_STATE_FULL)
+  /* Turn the backlight back on to the given level */
+  if (m_backlightStatus < status)
   {
-    m_backlightStatus = BACKLIGHT_STATE_FULL;
+    m_backlightStatus = status;
     updateBacklightOutput();
   }
 
-  m_lastBacklightFeedTime = millis();
+  if (m_backlightStatus <= status)
+    m_lastBacklightFeedTime = millis();
 }
 
 /**
@@ -171,7 +172,7 @@ void AppManager::run()
   /* Check if the B button has been held long enough to exit the app */
   if (m_bButton->isActive() && !m_appExitFlag &&
       millis() - m_bButton->lastStateChange() >=
-          ConfigService::Instance().getConfig().value(CONFIG_BACK_BUTTON_EXIT_DELAY))
+      ConfigService::Instance().getConfig().value(CONFIG_BACK_BUTTON_EXIT_DELAY))
   {
     m_apps[m_activeAppIdx]->exit();
     feedBacklight();
@@ -187,12 +188,12 @@ void AppManager::run()
     uint32_t backlightTimeout = 0;
     switch (m_backlightStatus)
     {
-    case BACKLIGHT_STATE_FULL:
-      backlightTimeout = ConfigService::Instance().getConfig().value(CONFIG_BL_DIM_TIMEOUT);
-      break;
-    case BACKLIGHT_STATE_DIM:
-      backlightTimeout = ConfigService::Instance().getConfig().value(CONFIG_BL_OFF_TIMEOUT);
-      break;
+      case BACKLIGHT_STATE_FULL:
+        backlightTimeout = ConfigService::Instance().getConfig().value(CONFIG_BL_DIM_TIMEOUT);
+        break;
+      case BACKLIGHT_STATE_DIM:
+        backlightTimeout = ConfigService::Instance().getConfig().value(CONFIG_BL_OFF_TIMEOUT);
+        break;
     }
 
     /* Ignore a timeout value of 0 */
@@ -237,14 +238,14 @@ void AppManager::updateBacklightOutput()
 
   switch (m_backlightStatus)
   {
-  case BACKLIGHT_STATE_FULL:
-    intensity = ConfigService::Instance().getConfig().value(CONFIG_BL_FULL_BRIGHT);
-    break;
-  case BACKLIGHT_STATE_DIM:
-    intensity = ConfigService::Instance().getConfig().value(CONFIG_BL_DIM_BRIGHT);
-    break;
-  default:
-    intensity = 0;
+    case BACKLIGHT_STATE_FULL:
+      intensity = ConfigService::Instance().getConfig().value(CONFIG_BL_FULL_BRIGHT);
+      break;
+    case BACKLIGHT_STATE_DIM:
+      intensity = ConfigService::Instance().getConfig().value(CONFIG_BL_DIM_BRIGHT);
+      break;
+    default:
+      intensity = 0;
   }
 
   m_badge->setBacklight(intensity);

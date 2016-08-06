@@ -64,7 +64,7 @@ public:
     return m_apps[m_activeAppIdx];
   }
 
-  void feedBacklight();
+  void feedBacklight(uint8_t status = BACKLIGHT_STATE_FULL);
 
   void run();
 
