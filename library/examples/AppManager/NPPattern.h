@@ -1,3 +1,5 @@
+/*! @file */
+
 #ifndef _NPPATTERN_
 #define _NPPATTERN_
 

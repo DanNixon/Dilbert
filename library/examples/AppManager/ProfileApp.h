@@ -22,6 +22,15 @@ public:
   {
   }
 
+  /**
+   * @copydoc App::run
+   */
+  virtual void run()
+  {
+    App::run();
+    m_manager->feedBacklight(BACKLIGHT_STATE_DIM);
+  }
+
 protected:
   /**
    * @copydoc StaticDisplayApp::drawPortrait

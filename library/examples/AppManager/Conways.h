@@ -1,3 +1,5 @@
+/*! @file */
+
 #ifndef _CONWAYS_H_
 #define _CONWAYS_H_
 

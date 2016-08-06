@@ -1,3 +1,5 @@
+/*! @file */
+
 #ifndef _RAINBOW_CHASE_
 #define _RAINBOW_CHASE_
 

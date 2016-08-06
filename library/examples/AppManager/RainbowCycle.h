@@ -1,3 +1,5 @@
+/*! @file */
+
 #ifndef _RAINBOW_CYCLE_
 #define _RAINBOW_CYCLE_
 
