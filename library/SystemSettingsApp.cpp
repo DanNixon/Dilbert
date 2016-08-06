@@ -166,7 +166,7 @@ void SystemSettingsApp::modifyCurrentSetting(int8_t direction)
   if (m_selectedIndex > 0)
   {
     SystemConfigData &scd = ConfigService::Instance().getConfig();
-    Config c = (Config) (m_selectedIndex - 1);
+    Config c = (Config)(m_selectedIndex - 1);
 
     int16_t delta = scd.delta(c) * direction;
     scd.value(c) += delta;

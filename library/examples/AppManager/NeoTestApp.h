@@ -1,10 +1,10 @@
 #ifndef _NEOTESTAPP_H_
 #define _NEOTESTAPP_H_
 
-#include <App.h>
-#include <Adafruit_NeoPixel.h>
-#include "RainbowCycle.h"
 #include "RainbowChase.h"
+#include "RainbowCycle.h"
+#include <Adafruit_NeoPixel.h>
+#include <App.h>
 
 class NeoTestApp : public App
 {
