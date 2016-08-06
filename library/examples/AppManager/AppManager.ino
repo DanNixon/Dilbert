@@ -43,9 +43,23 @@ void setup()
 {
   badge.begin();
 
-  IConfigStorage * cs = new SPIFFSConfigService();
-  ConfigService::Instance().loadFrom(cs);
-  delete cs;
+  /* Set storage */
+  ConfigService::Instance().setStorage(new SPIFFSConfigService());
+
+  badge.buttons().poll();
+  IButton * bButton = (IButton *)badge.buttons().getDevice(Dilbert::BUTTON_B);
+
+  /* Reset settings if B is held on startup */
+  if (bButton->isActive())
+  {
+    ConfigService::Instance().save();
+  }
+  else
+  {
+    /* Load config or save the default values if it is not set */
+    if(!ConfigService::Instance().load())
+      ConfigService::Instance().save();
+  }
 
   /* Add the app menu application
    * Typically this shoud always be the first added */

@@ -24,6 +24,27 @@ public:
     return instance;
   }
 
+  inline void setStorage(IConfigStorage * storage)
+  {
+    m_storage = storage;
+  }
+
+  inline bool load()
+  {
+    if (!m_storage)
+      return false;
+
+    return loadFrom(m_storage);
+  }
+
+  inline bool save()
+  {
+    if (!m_storage)
+      return false;
+
+    return saveTo(m_storage);
+  }
+
   bool loadFrom(IConfigStorage *storage);
   bool saveTo(IConfigStorage *storage);
 
@@ -42,6 +63,8 @@ private:
   void operator=(ConfigService const &);
 
   SystemConfigData m_configData;
+
+  IConfigStorage * m_storage;
 };
 
 #endif

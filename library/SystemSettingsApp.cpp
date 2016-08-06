@@ -105,6 +105,7 @@ bool SystemSettingsApp::handleButton(IButton *button)
       {
         /* Reset config option */
         ConfigService::Instance().getConfig().setDefaultValues();
+        ConfigService::Instance().save();
         redraw();
       }
       break;
@@ -172,5 +173,7 @@ void SystemSettingsApp::modifyCurrentSetting(int8_t direction)
     scd.value(c) += delta;
 
     redraw();
+
+    ConfigService::Instance().save();
   }
 }
