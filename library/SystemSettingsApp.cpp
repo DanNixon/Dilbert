@@ -55,16 +55,12 @@ void SystemSettingsApp::onEntry()
   display.print("Load Defaults");
 
   /* Setting options */
-  display.setCursor(OFFSET_X(4), MENU_START_Y + OFFSET_Y(1));
-  display.print("Exit delay");
-  display.setCursor(OFFSET_X(4), MENU_START_Y + OFFSET_Y(2));
-  display.print("BL full");
-  display.setCursor(OFFSET_X(4), MENU_START_Y + OFFSET_Y(3));
-  display.print("BL dimmed");
-  display.setCursor(OFFSET_X(4), MENU_START_Y + OFFSET_Y(4));
-  display.print("BL dim delay");
-  display.setCursor(OFFSET_X(4), MENU_START_Y + OFFSET_Y(5));
-  display.print("BL off delay");
+  SystemConfigData &scd = ConfigService::Instance().getConfig();
+  for (size_t i = 0; i < SystemConfigData::NUM_CONFIGS; i++)
+  {
+    display.setCursor(OFFSET_X(4), MENU_START_Y + OFFSET_Y((i + 1)));
+    display.print(scd.name((Config)i));
+  }
 
   redraw();
 }
@@ -103,14 +99,24 @@ bool SystemSettingsApp::handleButton(IButton *button)
       redraw();
       break;
 
+    case Dilbert::BUTTON_A:
+      /* Select item */
+      if (m_selectedIndex == 0)
+      {
+        /* Reset config option */
+        ConfigService::Instance().getConfig().setDefaultValues();
+        redraw();
+      }
+      break;
+
     case Dilbert::BUTTON_LEFT:
       /* Decrease */
-      /* TODO */
+      modifyCurrentSetting(-1);
       break;
 
     case Dilbert::BUTTON_RIGHT:
       /* Increase */
-      /* TODO */
+      modifyCurrentSetting(1);
       break;
 
     default:
@@ -131,7 +137,7 @@ void SystemSettingsApp::redraw()
   Adafruit_ILI9341 &display = m_badge->display();
 
   /* Clear display around selection arow position */
-  display.fillRect(0, MENU_START_Y, OFFSET_X(1) - 1, 319, ILI9341_BLACK);
+  display.fillRect(0, MENU_START_Y, OFFSET_X(4) - 1, 319, ILI9341_BLACK);
 
   /* Draw selection arrow */
   display.setTextSize(2);
@@ -139,19 +145,32 @@ void SystemSettingsApp::redraw()
   display.setCursor(1, MENU_START_Y + OFFSET_Y(m_selectedIndex));
   display.print(">");
 
-  SystemConfigData scd = ConfigService::Instance().getConfig();
+  SystemConfigData &scd = ConfigService::Instance().getConfig();
 
   /* Draw values */
   display.setTextSize(1);
   display.setTextColor(ILI9341_RED);
-  display.setCursor(OFFSET_X(1), VALUE_START_Y + OFFSET_Y(1));
-  display.print(scd.backButtonExitDelay);
-  display.setCursor(OFFSET_X(1), VALUE_START_Y + OFFSET_Y(2));
-  display.print(scd.backlightFullBrightness);
-  display.setCursor(OFFSET_X(1), VALUE_START_Y + OFFSET_Y(3));
-  display.print(scd.backlightPowerSaveBrightness);
-  display.setCursor(OFFSET_X(1), VALUE_START_Y + OFFSET_Y(4));
-  display.print(scd.backlightTimeToPowerSaveMs);
-  display.setCursor(OFFSET_X(1), VALUE_START_Y + OFFSET_Y(5));
-  display.print(scd.backlightTimeToOffMs);
+
+  for (size_t i = 0; i < SystemConfigData::NUM_CONFIGS; i++)
+  {
+    display.setCursor(OFFSET_X(1), VALUE_START_Y + OFFSET_Y((i + 1)));
+    display.print(scd.value((Config)i));
+  }
+}
+
+/**
+ * @brief Modifys the current value of a setting.
+ */
+void SystemSettingsApp::modifyCurrentSetting(int8_t direction)
+{
+  if (m_selectedIndex > 0)
+  {
+    SystemConfigData &scd = ConfigService::Instance().getConfig();
+    Config c = (Config) (m_selectedIndex - 1);
+
+    int16_t delta = scd.delta(c) * direction;
+    scd.value(c) += delta;
+
+    redraw();
+  }
 }

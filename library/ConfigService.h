@@ -24,8 +24,6 @@ public:
     return instance;
   }
 
-  void setDefaultConfig();
-
   bool loadFrom(IConfigStorage *storage);
   bool saveTo(IConfigStorage *storage) const;
 
@@ -33,7 +31,7 @@ public:
    * @brief Gets the system configuration.
    * @return System configuration data
    */
-  inline SystemConfigData getConfig() const
+  inline SystemConfigData &getConfig()
   {
     return m_configData;
   }

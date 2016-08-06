@@ -8,19 +8,7 @@
  */
 ConfigService::ConfigService()
 {
-  setDefaultConfig();
-}
-
-/**
- * @brief Sets the default system configuration.
- */
-void ConfigService::setDefaultConfig()
-{
-  m_configData.backButtonExitDelay = 500;
-  m_configData.backlightFullBrightness = PWMRANGE;
-  m_configData.backlightPowerSaveBrightness = 750;
-  m_configData.backlightTimeToPowerSaveMs = 1000;
-  m_configData.backlightTimeToOffMs = 0;
+  m_configData.setDefaultValues();
 }
 
 /**

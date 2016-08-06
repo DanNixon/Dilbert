@@ -26,6 +26,7 @@ public:
 
 private:
   void redraw();
+  void modifyCurrentSetting(int8_t direction);
 
 private:
   size_t m_selectedIndex; //!< Index of currently selected setting item

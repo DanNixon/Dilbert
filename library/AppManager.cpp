@@ -171,7 +171,7 @@ void AppManager::run()
   /* Check if the B button has been held long enough to exit the app */
   if (m_bButton->isActive() && !m_appExitFlag &&
       millis() - m_bButton->lastStateChange() >=
-          ConfigService::Instance().getConfig().backButtonExitDelay)
+          ConfigService::Instance().getConfig().value(CONFIG_BACK_BUTTON_EXIT_DELAY))
   {
     m_apps[m_activeAppIdx]->exit();
     feedBacklight();
@@ -188,10 +188,10 @@ void AppManager::run()
     switch (m_backlightStatus)
     {
     case BACKLIGHT_STATE_FULL:
-      backlightTimeout = ConfigService::Instance().getConfig().backlightTimeToPowerSaveMs;
+      backlightTimeout = ConfigService::Instance().getConfig().value(CONFIG_BL_DIM_TIMEOUT);
       break;
     case BACKLIGHT_STATE_DIM:
-      backlightTimeout = ConfigService::Instance().getConfig().backlightTimeToOffMs;
+      backlightTimeout = ConfigService::Instance().getConfig().value(CONFIG_BL_OFF_TIMEOUT);
       break;
     }
 
@@ -238,10 +238,10 @@ void AppManager::updateBacklightOutput()
   switch (m_backlightStatus)
   {
   case BACKLIGHT_STATE_FULL:
-    intensity = ConfigService::Instance().getConfig().backlightFullBrightness;
+    intensity = ConfigService::Instance().getConfig().value(CONFIG_BL_FULL_BRIGHT);
     break;
   case BACKLIGHT_STATE_DIM:
-    intensity = ConfigService::Instance().getConfig().backlightPowerSaveBrightness;
+    intensity = ConfigService::Instance().getConfig().value(CONFIG_BL_DIM_BRIGHT);
     break;
   default:
     intensity = 0;
