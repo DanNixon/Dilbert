@@ -185,6 +185,9 @@ public:
   {
   }
 
+  /**
+   * @copydoc App:onEntry
+   */
   void onEntry()
   {
     Serial.begin(9600);
@@ -206,6 +209,9 @@ public:
     }
   }
 
+  /**
+   * @copydoc App:handleButton
+   */
   bool handleButton(IButton *button)
   {
     if (App::handleButton(button))
@@ -296,6 +302,9 @@ public:
     return true;
   }
 
+  /**
+   * @copydoc App:run
+   */
   void run()
   {
     m_manager->feedBacklight(BACKLIGHT_STATE_DIM);
@@ -305,11 +314,6 @@ public:
       next = millis() + wait;
       cgol();
     }
-  }
-
-  void onExit()
-  {
-    App::onExit();
   }
 };
 

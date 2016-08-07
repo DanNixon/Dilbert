@@ -49,6 +49,9 @@ public:
     }
   }
 
+  /**
+   * @copydoc App:run
+   */
   virtual void run()
   {
     App::run();

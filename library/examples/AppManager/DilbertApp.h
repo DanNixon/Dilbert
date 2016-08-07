@@ -12,7 +12,6 @@
  */
 class DilbertApp : public App
 {
-
 public:
   DilbertApp()
       : App("Dilbert")
@@ -33,17 +32,10 @@ public:
     drawDilbert();
   }
 
+private:
   /**
-   * @copydoc App::handleButton
+   * @brief Draws a textual header.
    */
-  virtual bool handleButton(IButton *button)
-  {
-    if (App::handleButton(button))
-      return true;
-
-    return false;
-  }
-
   void drawHeader()
   {
     m_badge->display().setTextColor(ILI9341_WHITE);
@@ -52,9 +44,11 @@ public:
     m_badge->display().println("Dilbert");
   }
 
+  /**
+   * @brief Draws the Dilbert ASCII art.
+   */
   void drawDilbert()
   {
-
     m_badge->display().setTextSize(1);
     m_badge->display().println("");
     m_badge->display().println("       ,-._.-._.-._.-._.-.");

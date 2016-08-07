@@ -36,6 +36,9 @@ public:
       free(strip);
   }
 
+  /**
+   * @copydoc App:onEntry
+   */
   void onEntry()
   {
     App::onEntry();
@@ -54,6 +57,9 @@ public:
     m_badge->display().println("Long press B to return to app menu.\n");
   }
 
+  /**
+   * @copydoc App:handleButton
+   */
   bool handleButton(IButton *button)
   {
     if (App::handleButton(button))
@@ -105,11 +111,17 @@ public:
     return true;
   }
 
+  /**
+   * @copydoc App:run
+   */
   void run()
   {
     patterns[currPattern]->run();
   }
 
+  /**
+   * @copydoc App:onExit
+   */
   void onExit()
   {
     App::onExit();
