@@ -56,6 +56,9 @@ public:
   {
     App::run();
 
+    /* Keep backlight on */
+    m_manager->feedBacklight(BACKLIGHT_STATE_DIM);
+
     if (millis() >= m_lastRan + m_frameDelay and m_mode != 5)
     {
       m_lastRan = millis();

@@ -307,6 +307,7 @@ public:
    */
   void run()
   {
+    /* Keep backlight on */
     m_manager->feedBacklight(BACKLIGHT_STATE_DIM);
 
     if (next < millis())

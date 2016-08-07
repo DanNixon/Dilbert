@@ -28,6 +28,8 @@ public:
   virtual void run()
   {
     App::run();
+
+    /* Keep backlight on */
     m_manager->feedBacklight(BACKLIGHT_STATE_DIM);
   }
 
