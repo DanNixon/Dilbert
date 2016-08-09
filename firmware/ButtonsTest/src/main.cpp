@@ -19,6 +19,8 @@
 Adafruit_MCP23017 mcp;
 UniversalInputManager inputs;
 
+void handler(inputtype_t type, IInputDevice * device);
+
 void setup()
 {
   Serial.begin(9600);

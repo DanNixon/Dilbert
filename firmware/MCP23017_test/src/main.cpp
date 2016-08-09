@@ -27,6 +27,8 @@
 Adafruit_MCP23017 mcp;        //!< MCP23017 driver
 volatile bool interrupt_wake; //!< Flag indicating if the MCP23017 triggered an interrupt
 
+void interrupt_handle();
+
 void setup()
 {
   Serial.begin(115200);

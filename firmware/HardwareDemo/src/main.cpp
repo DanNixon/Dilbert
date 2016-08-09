@@ -22,8 +22,11 @@
 
 Dilbert badge; //!< Badge driver
 
+void handle_buttons(inputtype_t type, IInputDevice *device);
+
 #ifdef USE_BUTTON_INTERRUPTS
 volatile bool gpio_interrupt;
+void handle_int();
 #endif
 
 void setup()
