@@ -1,0 +1,3 @@
+[submodule "firmware/lib/Adafruit_ILI9341"]
+	path = firmware/lib/Adafruit_ILI9341
+	url = https://github.com/Links2004/Adafruit_ILI9341
