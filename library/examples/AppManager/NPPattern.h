@@ -5,14 +5,10 @@
 
 class NPPattern
 {
-protected:
-  Adafruit_NeoPixel *strip;
-  int brightness;
-
 public:
-  NPPattern(Adafruit_NeoPixel *inStrip, int brightness)
-      : strip(inStrip)
-      , brightness(brightness)
+  NPPattern(Adafruit_NeoPixel &strip, int brightness)
+      : m_strip(strip)
+      , m_brightness(brightness)
   {
   }
 
@@ -29,27 +25,31 @@ public:
     wheelPos = 255 - wheelPos;
     if (wheelPos < 85)
     {
-      return strip->Color(255 - wheelPos * 3, 0, wheelPos * 3);
+      return Adafruit_NeoPixel::Color(255 - wheelPos * 3, 0, wheelPos * 3);
     }
     if (wheelPos < 170)
     {
       wheelPos -= 85;
-      return strip->Color(0, wheelPos * 3, 255 - wheelPos * 3);
+      return Adafruit_NeoPixel::Color(0, wheelPos * 3, 255 - wheelPos * 3);
     }
     wheelPos -= 170;
-    return strip->Color(wheelPos * 3, 255 - wheelPos * 3, 0);
+    return Adafruit_NeoPixel::Color(wheelPos * 3, 255 - wheelPos * 3, 0);
   }
 
-  virtual void setBrightness(int inBrightness)
+  inline void setBrightness(int inBrightness)
   {
-    strip->setBrightness(inBrightness);
-    brightness = strip->getBrightness();
+    m_strip.setBrightness(inBrightness);
+    m_brightness = m_strip.getBrightness();
   }
 
-  virtual int getBrightness()
+  inline int getBrightness()
   {
-    return brightness;
+    return m_brightness;
   }
+
+protected:
+  Adafruit_NeoPixel &m_strip;
+  int m_brightness;
 };
 
 #endif

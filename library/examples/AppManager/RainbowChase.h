@@ -7,17 +7,14 @@
 
 class RainbowChase : public NPPattern
 {
-  unsigned long wait, next;
-  int j, q;
-
 public:
-  RainbowChase(Adafruit_NeoPixel *inStrip, uint8_t inWait)
-      : NPPattern(inStrip, 31)
-      , wait(inWait)
-      , j(0)
-      , q(0)
+  RainbowChase(Adafruit_NeoPixel &strip, uint8_t wait)
+      : NPPattern(strip, 31)
+      , m_wait(wait)
+      , m_j(0)
+      , m_q(0)
   {
-    next = millis();
+    m_next = millis();
   }
 
   virtual ~RainbowChase()
@@ -26,35 +23,39 @@ public:
 
   void run()
   {
-    if (next < millis())
+    if (m_next < millis())
     {
-      next = millis() + wait;
-      if (j < 256)
+      m_next = millis() + m_wait;
+      if (m_j < 256)
       {
-        if (q < 3)
+        if (m_q < 3)
         {
-          for (uint16_t i = 0; i < strip->numPixels(); i += 3)
+          for (uint16_t i = 0; i < m_strip.numPixels(); i += 3)
           {
-            strip->setPixelColor(i + q, 0);
-            strip->setPixelColor((i + q + 1) % strip->numPixels(), wheel((i + j) % 255));
+            m_strip.setPixelColor(i + m_q, 0);
+            m_strip.setPixelColor((i + m_q + 1) % m_strip.numPixels(), wheel((i + m_j) % 255));
           }
-          strip->setBrightness(brightness);
-          strip->show();
-          q++;
+          m_strip.setBrightness(m_brightness);
+          m_strip.show();
+          m_q++;
         }
         else
         {
-          q = 0;
+          m_q = 0;
         }
-        if (q >= 3)
-          j++;
+        if (m_q >= 3)
+          m_j++;
       }
       else
       {
-        j = 0;
+        m_j = 0;
       }
     }
   }
+
+private:
+  unsigned long m_wait, m_next;
+  int m_j, m_q;
 };
 
 #endif
