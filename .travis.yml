@@ -27,7 +27,7 @@ install:
   - pip install -U platformio
 
 script:
-  - yes | platformio run --project-dir PROJECT_DIR
+  - yes | platformio run --project-dir $PROJECT_DIR
   - doxygen
   - ./.travis_deploy_docs.sh
 
