@@ -17,18 +17,20 @@ public:
   NeoTestApp()
       : App("NeoTestApp")
   {
-    m_patterns[0] = new RainbowCycle(m_badge->neoPixels(), 20);
-    m_patterns[1] = new RainbowChase(m_badge->neoPixels(), 50);
-    m_currentPattern = 0;
   }
 
   ~NeoTestApp()
   {
-    for (size_t i = 0; i < PATTERN_COUNT; i++)
-    {
-      if (m_patterns[i])
-        delete m_patterns[i];
-    }
+  }
+
+  /**
+   * @copydoc App:create
+   */
+  void create()
+  {
+    m_patterns[0] = new RainbowCycle(m_badge->neoPixels(), 20);
+    m_patterns[1] = new RainbowChase(m_badge->neoPixels(), 50);
+    m_currentPattern = 0;
   }
 
   /**
@@ -50,6 +52,18 @@ public:
     m_badge->display().setTextSize(1);
     m_badge->display().print("The classic\nNeopixel strandtest\napp.\n\n");
     m_badge->display().println("Long press B to return to app menu.\n");
+  }
+
+  /**
+   * @copydoc App:destroy
+   */
+  void destroy()
+  {
+    for (size_t i = 0; i < PATTERN_COUNT; i++)
+    {
+      if (m_patterns[i])
+        delete m_patterns[i];
+    }
   }
 
   /**
