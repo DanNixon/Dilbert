@@ -10,30 +10,25 @@
 
 class NeoTestApp : public App
 {
-  static const int PIN = 15, PATTERN_COUNT = 2;
-  Adafruit_NeoPixel *strip = 0;
-  int currPattern = 0;
-  NPPattern *patterns[PATTERN_COUNT];
+public:
+  static const size_t PATTERN_COUNT = 2;
 
 public:
   NeoTestApp()
       : App("NeoTestApp")
   {
-    strip = new Adafruit_NeoPixel(8, PIN, NEO_GRB + NEO_KHZ800);
-    patterns[0] = new RainbowCycle(strip, 20);
-    patterns[1] = new RainbowChase(strip, 50);
-    currPattern = 0;
+    m_patterns[0] = new RainbowCycle(m_badge->neoPixels(), 20);
+    m_patterns[1] = new RainbowChase(m_badge->neoPixels(), 50);
+    m_currentPattern = 0;
   }
 
   ~NeoTestApp()
   {
-    for (int i = 0; i < PATTERN_COUNT; i++)
+    for (size_t i = 0; i < PATTERN_COUNT; i++)
     {
-      if (patterns[i])
-        free(patterns[i]);
+      if (m_patterns[i])
+        delete m_patterns[i];
     }
-    if (strip)
-      free(strip);
   }
 
   /**
@@ -71,40 +66,34 @@ public:
       { // short press
         if (button->getID() == 1)
         { // up
-          patterns[currPattern]->setBrightness(patterns[currPattern]->getBrightness() + 10);
+          m_patterns[m_currentPattern]->setBrightness(m_patterns[m_currentPattern]->getBrightness() + 10);
         }
         if (button->getID() == 2)
         { // down
-          patterns[currPattern]->setBrightness(patterns[currPattern]->getBrightness() - 10);
+          m_patterns[m_currentPattern]->setBrightness(m_patterns[m_currentPattern]->getBrightness() - 10);
         }
         if (button->getID() == 0)
         { // left
-          patterns[currPattern]->setBrightness(patterns[currPattern]->getBrightness() - 1);
+          m_patterns[m_currentPattern]->setBrightness(m_patterns[m_currentPattern]->getBrightness() - 1);
         }
         if (button->getID() == 3)
         { // right
-          patterns[currPattern]->setBrightness(patterns[currPattern]->getBrightness() + 1);
+          m_patterns[m_currentPattern]->setBrightness(m_patterns[m_currentPattern]->getBrightness() + 1);
         }
       }
       else
       { // long press
         if (button->getID() == 1)
         { // up
-          currPattern++;
+          m_currentPattern++;
         }
         if (button->getID() == 2)
         { // down
-          currPattern--;
+          m_currentPattern--;
         }
-        if (button->getID() == 0)
-        { // left
-        }
-        if (button->getID() == 3)
-        { // right
-        }
-        currPattern = currPattern >= PATTERN_COUNT
+        m_currentPattern = m_currentPattern >= PATTERN_COUNT
                           ? PATTERN_COUNT - 1
-                          : currPattern = currPattern < 0 ? 0 : currPattern;
+                          : m_currentPattern = m_currentPattern < 0 ? 0 : m_currentPattern;
       }
     }
 
@@ -116,7 +105,7 @@ public:
    */
   void run()
   {
-    patterns[currPattern]->run();
+    m_patterns[m_currentPattern]->run();
   }
 
   /**
@@ -125,8 +114,14 @@ public:
   void onExit()
   {
     App::onExit();
-    strip->setBrightness(0);
-    strip->show();
+
+    m_badge->neoPixels().setBrightness(0);
+    m_badge->neoPixels().show();
   }
+
+private:
+  int m_currentPattern = 0;
+  NPPattern *m_patterns[PATTERN_COUNT];
 };
+
 #endif

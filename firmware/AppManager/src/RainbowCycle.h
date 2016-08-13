@@ -7,16 +7,13 @@
 
 class RainbowCycle : public NPPattern
 {
-  unsigned long wait, next;
-  int j;
-
 public:
-  RainbowCycle(Adafruit_NeoPixel *inStrip, uint8_t inWait)
-      : NPPattern(inStrip, 31)
-      , wait(inWait)
-      , j(0)
+  RainbowCycle(Adafruit_NeoPixel &strip, uint8_t wait)
+      : NPPattern(strip, 31)
+      , m_wait(wait)
+      , m_j(0)
   {
-    next = millis();
+    m_next = millis();
   }
 
   virtual ~RainbowCycle()
@@ -25,25 +22,29 @@ public:
 
   void run()
   {
-    if (next < millis())
+    if (m_next < millis())
     {
-      next = millis() + wait;
-      if (j < 256)
+      m_next = millis() + m_wait;
+      if (m_j < 256)
       {
-        for (int i = 0; i < strip->numPixels(); i++)
+        for (int i = 0; i < m_strip.numPixels(); i++)
         {
-          strip->setPixelColor(i, wheel(((i * 256 / strip->numPixels()) + j) & 255));
+          m_strip.setPixelColor(i, wheel(((i * 256 / m_strip.numPixels()) + m_j) & 255));
         }
-        strip->setBrightness(brightness);
-        strip->show();
-        j++;
+        m_strip.setBrightness(m_brightness);
+        m_strip.show();
+        m_j++;
       }
       else
       {
-        j = 0;
+        m_j = 0;
       }
     }
   }
+
+private:
+  unsigned long m_wait, m_next;
+  int m_j;
 };
 
 #endif
