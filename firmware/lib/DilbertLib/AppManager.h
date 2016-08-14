@@ -34,6 +34,7 @@ public:
   virtual ~AppManager();
 
   void begin();
+  bool wifiBegin();
 
   uint8_t addApp(App *app);
 

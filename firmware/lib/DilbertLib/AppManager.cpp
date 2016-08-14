@@ -2,6 +2,10 @@
 
 #include "AppManager.h"
 
+#include <ArduinoJson.h>
+#include <ESP8266WiFi.h>
+#include <FS.h>
+
 #include "App.h"
 #include "ConfigService.h"
 
@@ -39,6 +43,37 @@ void AppManager::begin()
 
   /* Ensure backlight is on by default */
   feedBacklight();
+}
+
+/**
+ * @brief Connects the WiFi client using saved credentials.
+ * @return True if the WiFi init was successful
+ */
+bool AppManager::wifiBegin()
+{
+  File file = SPIFFS.open("wifi.json", "r");
+  if (!file)
+    return false;
+
+  const size_t bufferSize = 512;
+  char buffer[bufferSize];
+  size_t len = file.readBytes(buffer, bufferSize);
+  if (len >= bufferSize)
+    return false;
+
+  StaticJsonBuffer<bufferSize> json;
+  JsonObject &root = json.parseObject(buffer);
+  if (!root.success())
+    return false;
+
+  const char *ssid = root["ssid"];
+  const char *passwd = root["passwd"];
+
+  Serial.println(ssid);
+  Serial.println(passwd);
+
+  WiFi.begin(ssid, passwd);
+  return true;
 }
 
 /**

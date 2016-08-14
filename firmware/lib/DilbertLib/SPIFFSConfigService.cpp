@@ -54,6 +54,12 @@ bool SPIFFSConfigService::load(SystemConfigData *data)
   return retVal;
 }
 
+/**
+ * @brief Opens a given file.
+ * @param configName Name of the configuration the file is storing
+ * @param write If the file should be opened for writing
+ * @return The file
+ */
 File SPIFFSConfigService::openFile(char *configName, bool write)
 {
   size_t len = strlen(configName) + 6;
