@@ -1,0 +1,4 @@
+<map id="StaticDisplayApp" name="StaticDisplayApp">
+<area shape="rect" id="node3" href="$classProfileApp.html" title="Displays profile/contact information on the display. " alt="" coords="25,155,107,181"/>
+<area shape="rect" id="node2" href="$classApp.html" title="Used to encapsulate an individual application. " alt="" coords="44,5,89,32"/>
+</map>

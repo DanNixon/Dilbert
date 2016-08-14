@@ -1,0 +1,10 @@
+<map id="firmware/lib/DilbertLib/SystemConfigData.h" name="firmware/lib/DilbertLib/SystemConfigData.h">
+<area shape="rect" id="node2" href="$IConfigStorage_8h.html" title="firmware/lib/DilbertLib\l/IConfigStorage.h" alt="" coords="470,97,617,138"/>
+<area shape="rect" id="node3" href="$ConfigService_8h.html" title="firmware/lib/DilbertLib\l/ConfigService.h" alt="" coords="358,187,505,229"/>
+<area shape="rect" id="node8" href="$SPIFFSConfigService_8h.html" title="firmware/lib/DilbertLib\l/SPIFFSConfigService.h" alt="" coords="531,187,697,229"/>
+<area shape="rect" id="node4" href="$AppManager_8cpp.html" title="firmware/lib/DilbertLib\l/AppManager.cpp" alt="" coords="5,278,152,319"/>
+<area shape="rect" id="node5" href="$ConfigService_8cpp.html" title="firmware/lib/DilbertLib\l/ConfigService.cpp" alt="" coords="177,278,324,319"/>
+<area shape="rect" id="node6" href="$SystemSettingsApp_8cpp.html" title="firmware/lib/DilbertLib\l/SystemSettingsApp.cpp" alt="" coords="349,278,515,319"/>
+<area shape="rect" id="node7" href="$main_8cpp.html" title="Example with application manager. Intended to be used as the badge firmware. " alt="" coords="539,285,689,312"/>
+<area shape="rect" id="node9" href="$SPIFFSConfigService_8cpp.html" title="firmware/lib/DilbertLib\l/SPIFFSConfigService.cpp" alt="" coords="714,278,893,319"/>
+</map>

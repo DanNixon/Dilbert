@@ -1,0 +1,16 @@
+<map id="firmware/lib/DilbertLib/App.h" name="firmware/lib/DilbertLib/App.h">
+<area shape="rect" id="node2" href="$AppManager_8cpp.html" title="firmware/lib/DilbertLib\l/AppManager.cpp" alt="" coords="99,97,247,138"/>
+<area shape="rect" id="node3" href="$ButtonTestApp_8h.html" title="firmware/lib/DilbertLib\l/ButtonTestApp.h" alt="" coords="5,187,152,229"/>
+<area shape="rect" id="node5" href="$MenuApp_8h.html" title="firmware/lib/DilbertLib\l/MenuApp.h" alt="" coords="323,97,471,138"/>
+<area shape="rect" id="node7" href="$StaticDisplayApp_8h.html" title="firmware/lib/DilbertLib\l/StaticDisplayApp.h" alt="" coords="589,97,736,138"/>
+<area shape="rect" id="node10" href="$SystemSettingsApp_8h.html" title="firmware/lib/DilbertLib\l/SystemSettingsApp.h" alt="" coords="765,97,917,138"/>
+<area shape="rect" id="node12" href="$Conways_8h.html" title="firmware/src/Conways.h" alt="" coords="1014,195,1177,221"/>
+<area shape="rect" id="node13" href="$DilbertApp_8h.html" title="firmware/src/DilbertApp.h" alt="" coords="1203,195,1373,221"/>
+<area shape="rect" id="node14" href="$StarsApp_8h.html" title="firmware/src/StarsApp.h" alt="" coords="1107,104,1269,131"/>
+<area shape="rect" id="node15" href="$NeoTestApp_8h.html" title="firmware/src/NeoTestApp.h" alt="" coords="1365,104,1547,131"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title="Example with application manager. Intended to be used as the badge firmware. " alt="" coords="865,277,1015,304"/>
+<area shape="rect" id="node6" href="$MenuApp_8cpp.html" title="firmware/lib/DilbertLib\l/MenuApp.cpp" alt="" coords="229,187,376,229"/>
+<area shape="rect" id="node8" href="$StaticDisplayApp_8cpp.html" title="firmware/lib/DilbertLib\l/StaticDisplayApp.cpp" alt="" coords="401,187,553,229"/>
+<area shape="rect" id="node9" href="$ProfileApp_8h.html" title="firmware/src/ProfileApp.h" alt="" coords="578,195,747,221"/>
+<area shape="rect" id="node11" href="$SystemSettingsApp_8cpp.html" title="firmware/lib/DilbertLib\l/SystemSettingsApp.cpp" alt="" coords="823,187,989,229"/>
+</map>

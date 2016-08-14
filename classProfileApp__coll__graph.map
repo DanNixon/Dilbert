@@ -1,0 +1,6 @@
+<map id="ProfileApp" name="ProfileApp">
+<area shape="rect" id="node2" href="$classStaticDisplayApp.html" title="Used for displaying static content at any screen orientation. " alt="" coords="76,251,199,277"/>
+<area shape="rect" id="node3" href="$classApp.html" title="Used to encapsulate an individual application. " alt="" coords="115,173,160,200"/>
+<area shape="rect" id="node4" href="$classAppManager.html" title="Used to manage several applications on the badge. " alt="" coords="38,83,132,109"/>
+<area shape="rect" id="node6" href="$classDilbert.html" title="Main hardware abstraction class. " alt="" coords="159,83,219,109"/>
+</map>

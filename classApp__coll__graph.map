@@ -1,0 +1,4 @@
+<map id="App" name="App">
+<area shape="rect" id="node2" href="$classAppManager.html" title="Used to manage several applications on the badge. " alt="" coords="38,83,132,109"/>
+<area shape="rect" id="node4" href="$classDilbert.html" title="Main hardware abstraction class. " alt="" coords="159,83,219,109"/>
+</map>

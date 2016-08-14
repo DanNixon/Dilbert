@@ -1,0 +1,5 @@
+<map id="DilbertApp" name="DilbertApp">
+<area shape="rect" id="node2" href="$classApp.html" title="Used to encapsulate an individual application. " alt="" coords="115,173,160,200"/>
+<area shape="rect" id="node3" href="$classAppManager.html" title="Used to manage several applications on the badge. " alt="" coords="38,83,132,109"/>
+<area shape="rect" id="node5" href="$classDilbert.html" title="Main hardware abstraction class. " alt="" coords="159,83,219,109"/>
+</map>

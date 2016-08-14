@@ -1,0 +1,12 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classApp.html" title="Used to encapsulate an individual application. " alt="" coords="5,183,51,209"/>
+<area shape="rect" id="node2" href="$classButtonTestApp.html" title="Simple demo/test of the buttons. " alt="" coords="113,5,223,32"/>
+<area shape="rect" id="node3" href="$classConways.html" title="Conways" alt="" coords="129,56,207,83"/>
+<area shape="rect" id="node4" href="$classDilbertApp.html" title="Displays Dilbert image. " alt="" coords="127,107,209,133"/>
+<area shape="rect" id="node5" href="$classMenuApp.html" title="Provides a menu for launching applications. " alt="" coords="129,157,207,184"/>
+<area shape="rect" id="node6" href="$classNeoTestApp.html" title="NeoTestApp" alt="" coords="121,208,215,235"/>
+<area shape="rect" id="node7" href="$classStarsApp.html" title="Displays Starfield. " alt="" coords="130,259,206,285"/>
+<area shape="rect" id="node8" href="$classStaticDisplayApp.html" title="Used for displaying static content at any screen orientation. " alt="" coords="107,309,229,336"/>
+<area shape="rect" id="node10" href="$classSystemSettingsApp.html" title="Provides functionality for changing system setings. " alt="" coords="99,360,237,387"/>
+<area shape="rect" id="node9" href="$classProfileApp.html" title="Displays profile/contact information on the display. " alt="" coords="285,309,368,336"/>
+</map>

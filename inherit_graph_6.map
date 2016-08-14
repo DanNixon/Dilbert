@@ -1,0 +1,4 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classIConfigStorage.html" title="Interface for configuration storage. " alt="" coords="5,5,115,32"/>
+<area shape="rect" id="node2" href="$classSPIFFSConfigService.html" title="Configuration storage service for saving to the SPI flash file system. " alt="" coords="163,5,314,32"/>
+</map>
