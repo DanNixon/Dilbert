@@ -98,6 +98,8 @@ connected to a button.
 ## Flashing
 
 - Clone this repository
+- Run `./init_submodules.sh` (this downloads git submodules containing
+  libraries)
 - Install [PlatfromIO](http://platformio.org)
 - Connect the badge via an FTDI adapter
 - Hold the *SWD* switch and press the *RESET* switch, keeping *SWD* pressed
