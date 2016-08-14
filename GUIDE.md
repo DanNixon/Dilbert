@@ -102,7 +102,7 @@ connected to a button.
 - Connect the badge via an FTDI adapter
 - Hold the *SWD* switch and press the *RESET* switch, keeping *SWD* pressed
   while the ESP8266 resets (the LED on the ESP12 should blink once)
-- `cd firmware/AppManager`
+- `cd firmware`
 - `pio run -t upload`
 - ???
 - Profit

@@ -14,11 +14,6 @@ env:
   global:
     - GH_REF=github.com/DanNixon/Dilbert.git
     - secure="ZmGxo4z6E0jlKm2GMtMAw0IFclScl/EI4c3+A9QLZDllv/xqECJ/stpKQkm8h4daeDNSR6SQT8UxnMax/b//CdL/sukrNHQSCiqnxjet1jcbGwxzXyWk38nDPcVEnI1TczZbVT9fdvgW9QMGEMKJ8V8Z7IzfDBTYY9TbxhhFlQjS3m5xGaG+ncKFMPrp8UCNYNGABq/C10MAcyVUAPQcJdMJAIUbdvafENWOPANvyEW+apaAonGdGS6onecl9YrR7YmvBjPYgRIYaebvuBAmRrAS33JDySZ9F/OAN0c6D2E4hhvyx5Sx9hfkTJmUkJgFqY8sVtA/L9qDGKdQ62f2m1DHLeu3IIWpINvviv2oiOOBfQby1NS1W+2fgh6qfcJyxKjSX5lX7ins8iFk7WxdJAMn/6dSpVmUgasVj792tr7WH9BMRie7oBY9XkjAWdzT0YJTc7w/KOPPdy8TYzaQlO1QINY+vFfAdD13OFZPeQaLor+UCcjBS85Opy+bIkFU9IUywCG+u+1wZAu9f1LgO39GQxHCkCUauUSFSbiOuMY28x3Hw+KM61fPSYb2qPngrdA7BCIZeGirT4pPV4O2zWamyMQvrVO3kDrIILzyj5+M1gQglwJTo8rfv26lmqxJb5kTpWNaG2fUmzFE7F4F3u/0+jyrc4YRKSTvyJ2Rh+Y="
-  matrix:
-    - PROJECT_DIR=firmware/AppManager
-    - PROJECT_DIR=firmware/ButtonsTest
-    - PROJECT_DIR=firmware/HardwareDemo
-    - PROJECT_DIR=firmware/MCP23017_test
 
 install:
   - sudo apt-get -qq update
@@ -27,7 +22,7 @@ install:
   - pip install -U platformio
 
 script:
-  - yes | platformio run --project-dir $PROJECT_DIR
+  - yes | platformio run --project-dir ./firmware
   - doxygen
   - ./.travis_deploy_docs.sh
 
