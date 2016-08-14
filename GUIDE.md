@@ -97,15 +97,13 @@ connected to a button.
 
 ## Flashing
 
-- Ensure required Arduino libraries are installed and the Dilbert library is
-  installed
-- Load the code you want to flash
+- Clone this repository
+- Install [PlatfromIO](http://platformio.org)
 - Connect the badge via an FTDI adapter
-- Select *Generis ESP8266 Module* as the board type
-- Select *4M (1M SPIFFS)* as the flash size
 - Hold the *SWD* switch and press the *RESET* switch, keeping *SWD* pressed
   while the ESP8266 resets (the LED on the ESP12 should blink once)
-- Press upload in Arduino IDE
+- `cd firmware/AppManager`
+- `pio run -t upload`
 - ???
 - Profit
 
