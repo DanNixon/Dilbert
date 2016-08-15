@@ -1,0 +1,7 @@
+{
+  "exitDelay": 500,
+  "blFull": 1023,
+  "blDim": 256,
+  "blDimMs": 10000,
+  "blOffMs": 30000
+}

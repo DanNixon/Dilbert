@@ -5,8 +5,6 @@
 
 #include "IConfigStorage.h"
 
-#include <FS.h>
-
 /**
  * @class SPIFFSConfigService
  * @author Dan Nixon
@@ -16,17 +14,14 @@
 class SPIFFSConfigService : public IConfigStorage
 {
 public:
+  static const size_t JSON_BUFFER_LEN = 512;
+
+public:
   SPIFFSConfigService();
   virtual ~SPIFFSConfigService();
 
   virtual bool save(SystemConfigData *data);
   virtual bool load(SystemConfigData *data);
-
-private:
-  File openFile(char *configName, bool write);
-
-private:
-  bool m_init; //!< If the file system was initialised properly
 };
 
 #endif

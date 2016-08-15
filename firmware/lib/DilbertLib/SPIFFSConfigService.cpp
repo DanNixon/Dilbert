@@ -2,10 +2,12 @@
 
 #include "SPIFFSConfigService.h"
 
+#include <ArduinoJson.h>
+#include <FS.h>
+
 SPIFFSConfigService::SPIFFSConfigService()
     : IConfigStorage()
 {
-  m_init = SPIFFS.begin();
 }
 
 SPIFFSConfigService::~SPIFFSConfigService()
@@ -17,20 +19,20 @@ SPIFFSConfigService::~SPIFFSConfigService()
  */
 bool SPIFFSConfigService::save(SystemConfigData *data)
 {
-  bool retVal = true;
+  StaticJsonBuffer<JSON_BUFFER_LEN> jsonBuffer;
+  JsonObject &root = jsonBuffer.createObject();
 
   for (size_t i = 0; i < SystemConfigData::NUM_CONFIGS; i++)
-  {
-    Config c = (Config)i;
-    File file = openFile(data->name(c), true);
-    if (file)
-    {
-      file.print(data->value(c));
-      file.close();
-    }
-  }
+    root[data->name((Config)i)] = data->value((Config)i);
 
-  return retVal;
+  File file = SPIFFS.open("/config.json", "w");
+  if (!file)
+    return false;
+
+  root.printTo(file);
+  file.close();
+
+  return true;
 }
 
 /**
@@ -38,34 +40,20 @@ bool SPIFFSConfigService::save(SystemConfigData *data)
  */
 bool SPIFFSConfigService::load(SystemConfigData *data)
 {
-  bool retVal = true;
+  File file = SPIFFS.open("/config.json", "r");
+  if (!file)
+    return false;
+
+  char buffer[JSON_BUFFER_LEN];
+  file.readBytes(buffer, JSON_BUFFER_LEN);
+
+  StaticJsonBuffer<JSON_BUFFER_LEN> jsonBuffer;
+  JsonObject &root = jsonBuffer.parseObject(buffer);
+  if (!root.success())
+    return false;
 
   for (size_t i = 0; i < SystemConfigData::NUM_CONFIGS; i++)
-  {
-    Config c = (Config)i;
-    File file = openFile(data->name(c), false);
-    if (file)
-    {
-      data->value(c) = file.parseInt();
-      file.close();
-    }
-  }
+    data->value((Config)i) = root[data->name((Config)i)];
 
-  return retVal;
-}
-
-/**
- * @brief Opens a given file.
- * @param configName Name of the configuration the file is storing
- * @param write If the file should be opened for writing
- * @return The file
- */
-File SPIFFSConfigService::openFile(char *configName, bool write)
-{
-  size_t len = strlen(configName) + 6;
-  char filename[len];
-  sprintf(filename, "/%s.txt", configName);
-
-  File file = SPIFFS.open(filename, write ? "w" : "r");
-  return file;
+  return true;
 }

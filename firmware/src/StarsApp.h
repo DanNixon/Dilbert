@@ -39,6 +39,7 @@ public:
   virtual void onEntry()
   {
     App::onEntry();
+
     /* Clear the screen */
     m_badge->display().fillScreen(ILI9341_BLACK);
 

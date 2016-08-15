@@ -23,14 +23,13 @@
 #include <SPIFFSConfigService.h>
 #include <ConfigService.h>
 
-#include "ButtonTestApp.h"
+#include "DebugApp.h"
 #include "ProfileApp.h"
 #include "StarsApp.h"
 #include "DilbertApp.h"
 #include "Conways.h"
 #include "NeoTestApp.h"
 #include "WeatherApp.h"
-#include "FreeHeapApp.h"
 
 /* #define USE_BUTTON_INTERRUPTS */
 
@@ -70,13 +69,12 @@ void setup()
   /* Add other applications */
   appManager.addApp(new SystemSettingsApp());
   appManager.addApp(new ProfileApp());
-  appManager.addApp(new ButtonTestApp());
+  appManager.addApp(new DebugApp());
   appManager.addApp(new StarsApp());
   appManager.addApp(new DilbertApp());
   appManager.addApp(new Conways());
   appManager.addApp(new NeoTestApp());
   appManager.addApp(new WeatherApp("Newcastle,UK"));
-  appManager.addApp(new FreeHeapApp());
 
   /* Small delay before app manager start (which turns on backlight) */
   delay(100);

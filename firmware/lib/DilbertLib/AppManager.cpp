@@ -51,7 +51,7 @@ void AppManager::begin()
  */
 bool AppManager::wifiBegin()
 {
-  File file = SPIFFS.open("wifi.json", "r");
+  File file = SPIFFS.open("/wifi.json", "r");
   if (!file)
     return false;
 
@@ -69,10 +69,15 @@ bool AppManager::wifiBegin()
   const char *ssid = root["ssid"];
   const char *passwd = root["passwd"];
 
-  Serial.println(ssid);
-  Serial.println(passwd);
-
+  WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, passwd);
+
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(500);
+    m_badge->display().print(".");
+  }
+
   return true;
 }
 

@@ -24,6 +24,12 @@ public:
   WeatherApp(char *location);
   virtual ~WeatherApp();
 
+  virtual void onEntry()
+  {
+    m_badge->display().fillScreen(ILI9341_BLACK);
+    bool res = m_manager->wifiBegin();
+  }
+
 private:
   void update();
 
