@@ -19,11 +19,11 @@
 #include <Dilbert.h>
 #include <AppManager.h>
 #include <MenuApp.h>
-#include <ButtonTestApp.h>
 #include <SystemSettingsApp.h>
 #include <SPIFFSConfigService.h>
 #include <ConfigService.h>
 
+#include "DebugApp.h"
 #include "ProfileApp.h"
 #include "StarsApp.h"
 #include "DilbertApp.h"
@@ -68,7 +68,7 @@ void setup()
   /* Add other applications */
   appManager.addApp(new SystemSettingsApp());
   appManager.addApp(new ProfileApp());
-  appManager.addApp(new ButtonTestApp());
+  appManager.addApp(new DebugApp());
   appManager.addApp(new StarsApp());
   appManager.addApp(new DilbertApp());
   appManager.addApp(new Conways());
