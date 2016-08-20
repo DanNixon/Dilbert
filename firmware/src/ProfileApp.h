@@ -7,6 +7,7 @@
 
 #define PROFILE_DAN
 /* #define PROFILE_ALISTAIR */
+/* #define PROFILE_JON */
 
 /**
  * @class ProfileApp
@@ -75,6 +76,22 @@ protected:
     m_badge->display().setTextSize(3);
     m_badge->display().println("Gibberish\nspeaker from the north\neast.");
 #endif
+
+#ifdef PROFILE_JON
+    m_badge->display().setTextColor(ILI9341_YELLOW);
+    m_badge->display().setTextSize(6);
+    m_badge->display().println("Jon\nDavies\n");
+
+    m_badge->display().setTextSize(3);
+    m_badge->display().setTextColor(ILI9341_CYAN);
+    m_badge->display().println("@jondavies");
+    m_badge->display().setTextColor(ILI9341_BLUE);
+    m_badge->display().println("fb: jonpd\n");
+
+    m_badge->display().setTextColor(ILI9341_RED);
+    m_badge->display().setTextSize(3);
+    m_badge->display().println("Network nut.");
+#endif
   }
 
   /**
@@ -118,6 +135,25 @@ protected:
     m_badge->display().setTextColor(ILI9341_RED);
     m_badge->display().setTextSize(3);
     m_badge->display().println("Gibberish speaker\nfrom the north\neast.");
+#endif
+
+#ifdef PROFILE_JON
+    m_badge->display().setTextColor(ILI9341_YELLOW);
+    m_badge->display().setTextSize(5);
+    m_badge->display().println("Jon Davies");
+
+    m_badge->display().setTextSize(3);
+    m_badge->display().println();
+
+    m_badge->display().setTextSize(3);
+    m_badge->display().setTextColor(ILI9341_CYAN);
+    m_badge->display().println("@jondavies");
+    m_badge->display().setTextColor(ILI9341_BLUE);
+    m_badge->display().println("facebook: jonpd\n");
+
+    m_badge->display().setTextColor(ILI9341_RED);
+    m_badge->display().setTextSize(3);
+    m_badge->display().println("Network nut.");
 #endif
   }
 };
