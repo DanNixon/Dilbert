@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _SYSTEMCONFIGDATA_H_
-#define _SYSTEMCONFIGDATA_H_
+#pragma once
 
 #include <Arduino.h>
 
@@ -104,5 +103,3 @@ private:
   uint16_t m_delta[NUM_CONFIGS];  //!< Array of delta values for changes to configs
   char *m_names[NUM_CONFIGS];     //!< Names of configuration options
 };
-
-#endif

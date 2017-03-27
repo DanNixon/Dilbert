@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _CONFIGSERVICE_H_
-#define _CONFIGSERVICE_H_
+#pragma once
 
 #include "IConfigStorage.h"
 #include "SystemConfigData.h"
@@ -66,5 +65,3 @@ private:
 
   IConfigStorage *m_storage;
 };
-
-#endif

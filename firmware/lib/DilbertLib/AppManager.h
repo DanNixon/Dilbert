@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _APPMANAGER_H_
-#define _APPMANAGER_H_
+#pragma once
 
 #include <Arduino.h>
 #include <IButton.h>
@@ -85,5 +84,3 @@ private:
   uint8_t m_backlightStatus;
   uint32_t m_lastBacklightFeedTime;
 };
-
-#endif

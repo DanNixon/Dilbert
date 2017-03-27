@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _STARSAPP_H_
-#define _STARSAPP_H_
+#pragma once
 
 #include <App.h>
 
@@ -178,5 +177,3 @@ private:
     }
   }
 };
-
-#endif

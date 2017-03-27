@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _NEOTESTAPP_H_
-#define _NEOTESTAPP_H_
+#pragma once
 
 #include "RainbowChase.h"
 #include "RainbowCycle.h"
@@ -137,5 +136,3 @@ private:
   int m_currentPattern = 0;
   NPPattern *m_patterns[PATTERN_COUNT];
 };
-
-#endif

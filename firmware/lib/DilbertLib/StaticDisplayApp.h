@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _STATICDISPLAYAPP_H_
-#define _STATICDISPLAYAPP_H_
+#pragma once
 
 #include "App.h"
 
@@ -38,5 +37,3 @@ protected:
   {
   }
 };
-
-#endif

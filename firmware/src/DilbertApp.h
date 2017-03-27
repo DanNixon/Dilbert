@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _DILBERTAPP_H_
-#define _DILBERTAPP_H_
+#pragma once
 
 #include <App.h>
 
@@ -93,5 +92,3 @@ private:
     m_badge->display().println(" ;________.___|   |___.________;");
   }
 };
-
-#endif

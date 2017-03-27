@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _RAINBOW_CHASE_
-#define _RAINBOW_CHASE_
+#pragma once
 
 #include "NPPattern.h"
 
@@ -57,5 +56,3 @@ private:
   unsigned long m_wait, m_next;
   int m_j, m_q;
 };
-
-#endif

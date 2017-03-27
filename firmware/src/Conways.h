@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _CONWAYS_H_
-#define _CONWAYS_H_
+#pragma once
 
 #include <App.h>
 
@@ -317,5 +316,3 @@ public:
     }
   }
 };
-
-#endif

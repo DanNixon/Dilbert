@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _SPIFFSCONFIGSERVICE_H_
-#define _SPIFFSCONFIGSERVICE_H_
+#pragma once
 
 #include "IConfigStorage.h"
 
@@ -28,5 +27,3 @@ private:
 private:
   bool m_init; //!< If the file system was initialised properly
 };
-
-#endif

@@ -1,7 +1,6 @@
 /*! \file */
 
-#ifndef _ARDUINOUNIVERSALINPUTS_MCP23017BUTTON_H
-#define _ARDUINOUNIVERSALINPUTS_MCP23017BUTTON_H
+#pragma once
 
 #include <IButton.h>
 
@@ -57,5 +56,3 @@ private:
   bool m_activeLow;        //!< If the button logic is active low
   bool m_pullUp;           //!< If the button pin is pulled up
 };
-
-#endif

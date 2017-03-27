@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _SYSTEMSETTINGS_H_
-#define _SYSTEMSETTINGS_H_
+#pragma once
 
 #include "App.h"
 
@@ -31,5 +30,3 @@ private:
 private:
   size_t m_selectedIndex; //!< Index of currently selected setting item
 };
-
-#endif

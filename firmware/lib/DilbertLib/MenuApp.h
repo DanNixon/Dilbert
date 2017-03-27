@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _MENUAPP_H_
-#define _MENUAPP_H_
+#pragma once
 
 #include "App.h"
 
@@ -34,5 +33,3 @@ protected:
 
   uint8_t m_selectedAppIndex; //!< Index of currently selected item
 };
-
-#endif

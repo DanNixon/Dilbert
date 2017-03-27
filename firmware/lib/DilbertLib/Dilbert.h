@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _DILBERT_H_
-#define _DILBERT_H_
+#pragma once
 
 #include <Adafruit_ILI9341.h>
 #include <Adafruit_NeoPixel.h>
@@ -101,5 +100,3 @@ private:
 
   Adafruit_NeoPixel *m_neopixels; //!< NeoPixel driver
 };
-
-#endif

@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _DEBUG_APP_H_
-#define _DEBUG_APP_H_
+#pragma once
 
 #include <App.h>
 
@@ -19,5 +18,3 @@ public:
   virtual void onEntry();
   virtual bool handleButton(IButton *button);
 };
-
-#endif

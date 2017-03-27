@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _ICONFIGSTORAGE_H_
-#define _ICONFIGSTORAGE_H_
+#pragma once
 
 #include "SystemConfigData.h"
 
@@ -34,5 +33,3 @@ public:
    */
   virtual bool load(SystemConfigData *data) = 0;
 };
-
-#endif

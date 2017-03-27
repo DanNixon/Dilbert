@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _RAINBOW_CYCLE_
-#define _RAINBOW_CYCLE_
+#pragma once
 
 #include "NPPattern.h"
 
@@ -46,5 +45,3 @@ private:
   unsigned long m_wait, m_next;
   int m_j;
 };
-
-#endif

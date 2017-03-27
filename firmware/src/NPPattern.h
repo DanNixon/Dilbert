@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _NPPATTERN_
-#define _NPPATTERN_
+#pragma once
 
 class NPPattern
 {
@@ -51,5 +50,3 @@ protected:
   Adafruit_NeoPixel &m_strip;
   int m_brightness;
 };
-
-#endif

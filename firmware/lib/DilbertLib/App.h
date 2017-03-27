@@ -1,7 +1,6 @@
 /*! @file */
 
-#ifndef _APP_H_
-#define _APP_H_
+#pragma once
 
 #include <IButton.h>
 
@@ -134,5 +133,3 @@ protected:
 
   uint16_t m_backgroundColour; //!< Background colour
 };
-
-#endif
